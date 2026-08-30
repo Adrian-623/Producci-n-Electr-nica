@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentación del Proyecto</title>
     <style>
-        /* Estilos generales inspirados en el minimalismo */
+        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +22,7 @@
 
         /* Sección de Título Principal */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -30,6 +30,14 @@
             text-align: center;
             background-color: #0a0a0a;
             padding: 20px;
+        }
+
+        /* Estilo para la imagen principal de hasta arriba */
+        .hero-img {
+            max-width: 100%;
+            width: 400px; /* Puedes ajustar este tamaño */
+            margin-bottom: 30px;
+            border-radius: 15px; /* Bordes ligeramente redondeados */
         }
 
         .hero h1 {
@@ -93,7 +101,7 @@
             font-size: 1.1rem;
         }
 
-        /* Herramientas - Lista en formato de píldoras */
+        /* Herramientas */
         .tools-list {
             display: flex;
             flex-wrap: wrap;
@@ -124,33 +132,84 @@
             margin-bottom: 30px;
         }
 
-        /* Footer - Datos de presentación */
-        footer {
-            padding: 80px 10vw;
-            background-color: #000000;
-            text-align: center;
-            color: #86868b;
+        /* Nuevas Tarjetas de Presentación (Equipo) */
+        .team-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
         }
 
-        footer h4 {
-            color: #f5f5f7;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+        .team-card {
+            display: flex;
+            align-items: center;
+            background-color: #151516;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
         }
 
-        footer p {
-            font-size: 1rem;
+        /* Imagen circular a la izquierda */
+        .team-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%; /* Hace la imagen redonda */
+            margin-right: 40px;
+            border: 2px solid #333333;
+        }
+
+        .team-info {
+            text-align: left;
+        }
+
+        .team-info h3 {
+            font-size: 2rem;
+            color: #ffffff;
             margin-bottom: 10px;
+        }
+
+        .team-info h4 {
+            font-size: 1.2rem;
+            color: #86868b;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .team-info p {
+            color: #a1a1a6;
+            font-size: 1.1rem;
+        }
+
+        /* Ajuste para pantallas pequeñas (Celulares) */
+        @media (max-width: 768px) {
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .team-card img {
+                margin-right: 0;
+                margin-bottom: 25px;
+            }
+            .team-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Título Principal -->
     <header class="hero">
-        <h1>Proyecto Final</h1>
+        <!-- Reemplaza "imagen-principal.png" con el nombre exacto de tu archivo -->
+        <img src="Portada.jpeg" alt="Imagen principal del proyecto" class="hero-img">
+        
+        <h1>Producción Electrónica</h1>
         <p>Innovación tecnológica y diseño estructural. Documentación completa del desarrollo.</p>
     </header>
 
+    <!-- Procedimientos -->
     <section id="procedimientos">
         <h2 class="section-title">Procedimientos</h2>
         <div class="grid-container">
@@ -169,6 +228,7 @@
         </div>
     </section>
 
+    <!-- Herramientas -->
     <section id="herramientas">
         <h2 class="section-title">Herramientas Utilizadas</h2>
         <ul class="tools-list">
@@ -179,6 +239,7 @@
         </ul>
     </section>
 
+    <!-- Resultados -->
     <section id="resultados">
         <h2 class="section-title">Resultados Obtenidos</h2>
         <div class="results-content">
@@ -186,12 +247,33 @@
         </div>
     </section>
 
-    <footer id="presentacion">
-        <h4>Equipo de Desarrollo</h4>
-        <p>Jorge Adrián Pérez y [Nombre de tu compañera]</p>
-        <p>Ingeniería Mecatrónica - Universidad IBERO Puebla</p>
-        <p>2026</p>
-    </footer>
+    <!-- Equipo de Desarrollo -->
+    <section id="presentacion">
+        <h2 class="section-title">Equipo de Desarrollo</h2>
+        <div class="team-container">
+            
+            <!-- Cuadro 1: Jorge -->
+            <div class="team-card">
+                <img src="foto-jorge.png" alt="Foto de Jorge Adrián Pérez">
+                <div class="team-info">
+                    <h3>Jorge Adrián Pérez Fernández</h3>
+                    <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
+                    <p>Información de contaco: 204560@iberopuebla.mx</p>
+                </div>
+            </div>
+
+            <!-- Cuadro 2: Compañera -->
+            <div class="team-card">
+                <img src="foto-companera.png" alt="Foto de Compañera">
+                <div class="team-info">
+                    <h3>Ana Paula Mendoza Linares</h3>
+                    <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
+                    <p>Información de contacto: 203339@iberopuebla.mx</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 </body>
 </html>
