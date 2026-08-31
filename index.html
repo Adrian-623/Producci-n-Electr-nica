@@ -3,313 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentación del Proyecto</title>
+    <title>Producción Electrónica</title>
     <style>
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #000000;
-            color: #f5f5f7;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* Sección de Título Principal */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('Portada.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        /* Estilo para la imagen principal de hasta arriba */
-        .hero-img {
-            max-width: 100%;
-            width: 400px; /* Puedes ajustar este tamaño */
-            margin-bottom: 30px;
-            border-radius: 15px; /* Bordes ligeramente redondeados */
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: #86868b;
-            max-width: 600px;
-        }
-
-        /* Configuración de las secciones */
-        section {
-            padding: 120px 10vw;
-            border-bottom: 1px solid #333333;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 60px;
-            text-align: center;
-            letter-spacing: -0.03em;
-        }
-
-        /* Procedimientos - Tarjetas informativas */
-        .grid-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-        }
-
-        .card {
-            background-color: #151516;
-            padding: 40px;
-            border-radius: 20px;
-            width: 320px;
-            transition: margin-top 0.3s ease;
-            margin-top: 0;
-        }
-
-        .card:hover {
-            margin-top: -15px;
-            background-color: #1d1d1f;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .card p {
-            color: #a1a1a6;
-            font-size: 1.1rem;
-        }
-
-        /* Herramientas */
-        .tools-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .tool-item {
-            background-color: #1d1d1f;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #f5f5f7;
-        }
-
-        /* Resultados */
-        .results-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .results-content p {
-            font-size: 1.4rem;
-            color: #a1a1a6;
-            margin-bottom: 30px;
-        }
-
-        /* Nuevas Tarjetas de Presentación (Equipo) */
-        .team-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .team-card {
-            display: flex;
-            align-items: center;
-            background-color: #151516;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 900px;
-            width: 100%;
-        }
-
-        /* Imagen circular a la izquierda */
-        .team-card img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%; /* Hace la imagen redonda */
-            margin-right: 40px;
-            border: 2px solid #333333;
-        }
-
-        .team-info {
-            text-align: left;
-        }
-
-        .team-info h3 {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .team-info h4 {
-            font-size: 1.2rem;
-            color: #86868b;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .team-info p {
-            color: #a1a1a6;
-            font-size: 1.1rem;
-        }
-
-        /* Ajuste para pantallas pequeñas (Celulares) */
-        @media (max-width: 768px) {
-            .team-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            .team-card img {
-                margin-right: 0;
-                margin-bottom: 25px;
-            }
-            .team-info {
-                text-align: center;
-            }
-        }
-
-        /* Barra de navegación superior */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #000000; color: #f5f5f7; line-height: 1.5; overflow-x: hidden; }
+        
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: center; padding: 15px 0; z-index: 1000;
             border-bottom: 1px solid #333333;
         }
+        nav a { color: #f5f5f7; text-decoration: none; margin: 0 25px; font-size: 1rem; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: #a1a1a6; }
 
-        nav a {
-            color: #f5f5f7;
-            text-decoration: none;
-            margin: 0 25px;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
+        .materia-intro {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
         }
-
-        nav a:hover {
-            color: #a1a1a6;
-        }
+        .materia-intro h1 { font-size: 4rem; font-weight: 700; margin-bottom: 10px; color: #ffffff; }
+        .materia-intro h2 { font-size: 2rem; color: #86868b; margin-bottom: 30px; font-weight: 400; }
+        .materia-intro p { font-size: 1.2rem; color: #a1a1a6; max-width: 700px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <!-- Barra de navegación -->
+
     <nav>
         <a href="index.html">Inicio</a>
-        <!-- Cambia 'tu-otro-archivo.html' por el nombre exacto de tu archivo en GitHub -->
-        <a href="pcb1.html">Pcb1</a> 
+        <a href="pcb1.html">Inicio</a>
+        <a href="Proyecto_Final.html">Proyecto Final</a>
     </nav>
 
-    <!-- Título Principal -->
-    <header class="hero">
+    <header class="materia-intro">
         <h1>Producción Electrónica</h1>
-        <p>Innovación tecnológica y diseño estructural. Documentación completa del desarrollo.</p>
+        <h2>Ingeniería Mecatrónica | Universidad IBERO Puebla</h2>
+        <p>Bitácora digital del curso.</p>
+        <p>Aquí documentaremos las prácticas, herramientas y el desarrollo integral de nuestro proyecto final a lo largo del semestre.</p>
     </header>
-
-    <!-- Procedimientos -->
-    <section id="procedimientos">
-        <h2 class="section-title">Procedimientos</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>Fase 1: Diseño Mecánico</h3>
-                <p>Modelado 3D de las piezas estructurales y planificación arquitectónica del prototipo.</p>
-            </div>
-            <div class="card">
-                <h3>Fase 2: Electrónica</h3>
-                <p>Integración de circuitos y configuración de la placa principal para el manejo de los actuadores.</p>
-            </div>
-            <div class="card">
-                <h3>Fase 3: Programación</h3>
-                <p>Desarrollo del código de control, lectura de sensores y pruebas de respuesta en tiempo real.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Herramientas -->
-    <section id="herramientas">
-        <h2 class="section-title">Herramientas Utilizadas</h2>
-        <ul class="tools-list">
-            <li class="tool-item">SolidWorks</li>
-            <li class="tool-item">Microcontrolador ESP32</li>
-            <li class="tool-item">Lenguaje C</li>
-            <li class="tool-item">Impresión 3D</li>
-        </ul>
-    </section>
-
-    <!-- Resultados -->
-    <section id="resultados">
-        <h2 class="section-title">Resultados Obtenidos</h2>
-        <div class="results-content">
-            <p>Se logró implementar un sistema completamente funcional que cumple con las especificaciones de la clase. La integración de hardware y software demostró un rendimiento óptimo bajo condiciones de prueba continuas.</p>
-        </div>
-    </section>
-
-    <!-- Equipo de Desarrollo -->
-    <section id="presentacion">
-        <h2 class="section-title">Equipo de Desarrollo</h2>
-        <div class="team-container">
-            
-            <!-- Cuadro 1: Jorge -->
-            <div class="team-card">
-                <img src="Jorge.jpg" alt="Foto de Jorge Adrián Pérez">
-                <div class="team-info">
-                    <h3>Jorge Adrián Pérez Fernández</h3>
-                    <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
-                    <p>Información de contaco: 204560@iberopuebla.mx</p>
-                </div>
-            </div>
-
-            <!-- Cuadro 2: Compañera -->
-            <div class="team-card">
-                <img src="foto-companera.png" alt="Foto de Compañera">
-                <div class="team-info">
-                    <h3>Ana Paula Mendoza Linares</h3>
-                    <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
-                    <p>Información de contacto: 203339@iberopuebla.mx</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
 </body>
 </html>
