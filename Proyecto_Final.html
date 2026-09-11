@@ -61,6 +61,31 @@
             .team-card img { margin-right: 0; margin-bottom: 25px; }
             .team-info { text-align: center; }
         }
+
+        /* Animación del personaje caminando de derecha a izquierda */
+        .personaje-animado {
+            position: fixed;
+            bottom: 0;
+            right: -150px; /* Empieza escondido fuera de la pantalla a la derecha */
+            z-index: 9999;
+            width: 100px; /* Puedes cambiar el tamaño ajustando este valor */
+            animation: caminar-izquierda 12s linear infinite; 
+            pointer-events: none;
+            
+            /* Esta línea voltea el GIF horizontalmente. 
+               Si tu personaje ya mira hacia la izquierda, puedes borrarla. */
+            transform: scaleX(-1); 
+        }
+
+        /* Fotogramas clave para el movimiento */
+        @keyframes caminar-izquierda {
+            0% {
+                right: -150px;
+            }
+            100% {
+                right: 100vw; /* Termina al otro lado de la pantalla (izquierda) */
+            }
+        }
     </style>
 </head>
 <body>
@@ -122,7 +147,7 @@
                 </div>
             </div>
             <div class="team-card">
-                <img src="foto-companera.png" alt="Foto de compañera">
+                <img src="Ana.jpeg" alt="Foto de compañera">
                 <div class="team-info">
                     <h3>Ana Paula Mendoza Linares</h3>
                     <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
@@ -131,6 +156,7 @@
             </div>
         </div>
     </section>
-
+<!-- Personaje animado en la parte inferior -->
+    <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
 </body>
 </html>
