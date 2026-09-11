@@ -32,6 +32,28 @@
             background-repeat: no-repeat; 
             background-attachment: fixed;
         }
+        /* Animación del personaje caminando de derecha a izquierda */
+        .personaje-animado {
+            position: fixed;
+            bottom: 0;
+            right: -150px; 
+            z-index: 9999;
+            width: 100px; 
+            animation: caminar-izquierda 12s linear infinite; 
+            pointer-events: none;
+            
+            /* Borra esta línea si tu GIF ya mira hacia la izquierda */
+            transform: scaleX(-1); 
+        }
+
+        @keyframes caminar-izquierda {
+            0% {
+                left: -150px;
+            }
+            100% {
+                left: 100vw; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -49,5 +71,7 @@
         <p>Aquí documentaremos las actividades, herramientas y el desarrollo de nuestro proyecto final a lo largo del semestre.</p>
     </header>
 
+    <!-- Personaje animado en la parte inferior -->
+    <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
 </body>
 </html>
