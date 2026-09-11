@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación - KiCad</title>
+    <style>
+        /* Estilos generales */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #000000; color: #f5f5f7; line-height: 1.5; overflow-x: hidden; }
+
+        /* Barra de navegación */
+        nav {
+            position: fixed; top: 0; width: 100%; background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: center; padding: 15px 0; z-index: 1000;
+            border-bottom: 1px solid #333333;
+        }
+        nav a { color: #f5f5f7; text-decoration: none; margin: 0 25px; font-size: 1rem; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: #FFE81F; } /* Hover en amarillo */
+
+        /* Textos resaltados */
+        .texto-amarillo { color: #FFF7B0; }
+
+        /* Sección de Título Principal con Logo Llamativo */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
+        }
+        
+        /* Animación y resplandor para el logo de KiCad */
+        .hero-logo {
+            width: 250px; 
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 40px rgba(255, 232, 31, 0.4)); /* Resplandor amarillo */
+            animation: flotar 4s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+        .hero p { font-size: 1.5rem; color: #a1a1a6; max-width: 600px; }
+
+        /* Configuración de las secciones */
+        section { padding: 100px 10vw; border-bottom: 1px solid #333333; }
+        .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
+
+        /* Tarjetas de introducción */
+        .grid-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+        .card { 
+            background-color: #151516; padding: 40px; border-radius: 20px; width: 320px; 
+            border: 2px solid #FFE81F; /* Borde amarillo */
+            text-align: center;
+        }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #ffffff; }
+        .card p { color: #a1a1a6; font-size: 1.1rem; }
+
+        /* Contenedores para Capturas de Pantalla (Estilo horizontal) */
+        .screenshot-container {
+            display: flex; align-items: center; background-color: #151516; 
+            padding: 40px; border-radius: 20px; max-width: 1000px; margin: 0 auto 40px auto;
+            border: 2px solid #FFE81F;
+        }
+        
+        /* Imagen de captura ajustada para no ser circular */
+        .screenshot-container img {
+            width: 55%; border-radius: 10px; margin-right: 40px; 
+            border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .screenshot-info { width: 45%; text-align: left; }
+        .screenshot-info h3 { font-size: 2rem; color: #ffffff; margin-bottom: 15px; }
+        .screenshot-info p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 15px; }
+
+        /* Alternar la imagen a la derecha para romper la monotonía */
+        .reverse { flex-direction: row-reverse; }
+        .reverse img { margin-right: 0; margin-left: 40px; }
+
+        /* Personaje animado */
+        .personaje-animado {
+            position: fixed; bottom: 0; right: -150px; z-index: 9999; width: 100px; 
+            animation: caminar-izquierda 12s linear infinite; pointer-events: none;
+            transform: scaleX(-1);
+        }
+        @keyframes caminar-izquierda {
+            0% { right: -150px; }
+            100% { right: 100vw; }
+        }
+
+        /* Responsividad para pantallas pequeñas */
+        @media (max-width: 900px) {
+            .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
+            .screenshot-container img, .screenshot-container.reverse img { width: 100%; margin: 0 0 25px 0; }
+            .screenshot-info { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="proyecto.html">Proyecto Final</a>
+        <a href="kicad.html" class="texto-amarillo">Documentación KiCad</a>
+    </nav>
+
+    <!-- Título Principal -->
+    <header class="hero">
+        <!-- Reemplaza 'logo-kicad.png' por una imagen del logo con fondo transparente -->
+        <img src="KiCad.svg" alt="Logo de KiCad" class="hero-logo">
+        <h1>Diseño de PCB en KiCad</h1>
+        <p>Proceso de diseño electrónico, desde la captura del diagrama esquemático hasta el modelado 3D de la placa.</p>
+    </header>
+
+    <!-- Introducción -->
+    <section id="introduccion">
+        <h2 class="section-title">Flujo de Trabajo</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>1. Diagrama Esquemático</h3>
+                <p>Uso de Eeschema para la colocación de símbolos electrónicos y establecimiento de conexiones lógicas.</p>
+            </div>
+            <div class="card">
+                <h3>2. Asignación de Huellas</h3>
+                <p>Selección de <span class="texto-amarillo">footprints</span> precisos para asegurar que los componentes físicos encajen en la placa.</p>
+            </div>
+            <div class="card">
+                <h3>3. Ruteo de PCB</h3>
+                <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capturas de Pantalla -->
+    <section id="desarrollo">
+        <h2 class="section-title">Proceso de Diseño</h2>
+
+        <!-- Captura 1: Esquemático -->
+        <div class="screenshot-container">
+            <img src="captura-esquematico.png" alt="Captura del esquemático">
+            <div class="screenshot-info">
+                <h3>Esquemático del Circuito</h3>
+                <p>En esta etapa conectamos el <span class="texto-amarillo">microcontrolador ESP32</span> junto con los push buttons y los LEDs indicadores de estado.</p>
+                <p>Se estructuró el diagrama utilizando etiquetas globales para mantener la hoja de trabajo organizada y limpia.</p>
+            </div>
+        </div>
+
+        <!-- Captura 2: Layout (Imagen a la derecha) -->
+        <div class="screenshot-container reverse">
+            <img src="captura-layout.png" alt="Captura del layout PCB">
+            <div class="screenshot-info">
+                <h3>Layout y Ruteo</h3>
+                <p>El diseño de la placa de circuito impreso. Se priorizó un <span class="texto-amarillo">ruteo eficiente</span>, respetando las reglas de diseño (DRC) para evitar cortocircuitos.</p>
+                <p>Se añadieron las vías de conexión y se ajustó el grosor de las pistas dependiendo del flujo de corriente.</p>
+            </div>
+        </div>
+
+        <!-- Captura 3: Visor 3D -->
+        <div class="screenshot-container">
+            <img src="captura-3d.png" alt="Captura del visor 3D">
+            <div class="screenshot-info">
+                <h3>Visualización 3D</h3>
+                <p>Una renderización final generada con el visor 3D nativo de la herramienta.</p>
+                <p>Esto nos permitió verificar que ningún componente físico interfiera mecánicamente con otro, garantizando que el diseño <span class="texto-amarillo">cumple con las especificaciones estructurales</span> antes de la fabricación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personaje animado -->
+    <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
+
+</body>
+</html>
