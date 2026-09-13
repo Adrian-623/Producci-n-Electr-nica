@@ -97,6 +97,16 @@
             .screenshot-container img, .screenshot-container.reverse img { width: 100%; margin: 0 0 25px 0; }
             .screenshot-info { width: 100%; text-align: center; }
         }
+
+        /* Agrégalo al final de la sección <style> */
+        .texto-grande {
+            font-size: 17px; /* Cambia a 20px, 28px, 32px, etc. según lo grande que lo desees */
+        }
+
+        .imagen-borde-amarillo {
+            border: 3px solid #FFE81F; /* Contorno amarillo Star Wars */
+            border-radius: 20px;       /* Esquinas redondeadas */
+        }
     </style>
 </head>
 <body>
@@ -113,29 +123,39 @@
         <!-- Reemplaza 'logo-kicad.png' por una imagen del logo con fondo transparente -->
         <img src="KiCad.svg" alt="Logo de KiCad" class="hero-logo">
         <h1>Diseño de PCB en KiCad</h1>
-        <p>Programa utilizado para diseñar PCBs desde diagramas esquematicos</p>
+        <p class="texto-grande">Programa utilizado para diseñar PCBs desde diagramas esquematicos</p>
     </header>
 
     <!-- Introducción -->
     <section id="introduccion">
         <h2 class="section-title"><span class="texto-amarillo">¿Qué es KiCad?</span></h2>
-        Es una aplicación que nos premite
+        <figure class="text-center">
+            Es una aplicación que nos permite crear esquemas electrónicos y diseños de placas de circuito impreso de manera profesional
+
+        </figure>
+        
+    </section>
+
+    <section id="Secciones_a _usar">
+        <h2 class="section-title"><span class="texto-amarillo">Apliaciones principales usadas</span></h2>
         <div class="grid-container">
             <div class="card">
-                <h3>1. Diagrama Esquemático</h3>
-                <p>Uso de Eeschema para la colocación de símbolos electrónicos y establecimiento de conexiones lógicas.</p>
+                <h3><span class="texto-amarillo">Editor de esquemas</span></h3>
+                <p>Es donde dibujas el diagrama lógico o eléctrico de tu circuito. Aquí conectas los componentes (resistencias, microcontroladores, etc) mediante líneas eléctricas llamadas pistas</p>
+                <img src="imgs/Esquema.png" alt="Descripción de la imagen" class="imagen-borde-amarillo">
             </div>
             <div class="card">
-                <h3>2. Asignación de Huellas</h3>
+                <h3><span class="texto-amarillo">Asignación de Huellas</span></h3>
                 <p>Selección de <span class="texto-amarillo">footprints</span> precisos para asegurar que los componentes físicos encajen en la placa.</p>
             </div>
             <div class="card">
-                <h3>3. Ruteo de PCB</h3>
+                <h3><span class="texto-amarillo">Ruteo de PCB</span></h3>
                 <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra.</p>
             </div>
         </div>
-    </section>
 
+    </section>
+    
     <!-- Capturas de Pantalla -->
     <section id="desarrollo">
         <h2 class="section-title">Proceso de Diseño</h2>
