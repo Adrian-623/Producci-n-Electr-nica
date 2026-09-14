@@ -112,7 +112,77 @@
             height: auto;     /* Mantiene la proporción de la imagen sin deformarla */
             display: block;   /* Elimina espacios extra no deseados */
             margin: 15px auto 0 auto; /* La centra y le da un espacio con el texto de arriba */
-}
+        }
+        /* Estilos del Carrusel a la medida */
+        .carrusel-contenedor {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            border: 3px solid #FFE81F; /* Borde amarillo Star Wars */
+            background-color: #151516;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .carrusel-slide {
+            display: none; /* Oculta todas las imágenes por defecto */
+            animation: aparecer 0.5s;
+        }
+
+        .carrusel-slide.activo {
+            display: block; /* Solo muestra la activa */
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .carrusel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #333333;
+        }
+
+        .carrusel-texto {
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .carrusel-texto h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .carrusel-texto p {
+            font-size: 1.2rem;
+            color: #a1a1a6;
+        }
+
+        /* Botones de navegación (Flechas) */
+        .carrusel-btn {
+            position: absolute;
+            top: 40%; /* Centradas respecto a la imagen */
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #FFE81F;
+            border: 2px solid #FFE81F;
+            font-size: 24px;
+            padding: 10px 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .carrusel-btn:hover {
+            background-color: #FFE81F;
+            color: #000;
+        }
+
+        .prev { left: 15px; }
+        .next { right: 15px; }
     </style>
     
 </head>
@@ -144,41 +214,59 @@
 
     <section id="Secciones_a_usar">
         <h2 class="section-title"><span class="texto-amarillo">Aplicaciones principales usadas</span></h2>
-
-        <!-- Aplicación 1: Editor de esquemas -->
-        <div class="screenshot-container">
-            <img src="imgs/Esquema.png" alt="Editor de esquemas" class="imagen-borde-amarillo">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Editor de esquemas</span></h3>
-                <p>Es donde dibujas el diagrama lógico o eléctrico de tu circuito. Aquí conectas los componentes (resistencias, microcontroladores, etc) mediante líneas eléctricas llamadas pistas.</p>
+        
+        <div class="carrusel-contenedor">
+            
+            <!-- Slide 1: Inicio -->
+            <div class="carrusel-slide activo">
+                <!-- Recuerda subir tu imagen de inicio a la carpeta imgs -->
+                <img src="imgs/Inicio.png" alt="Pantalla de Inicio de KiCad">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Inicio del Proyecto</span></h3>
+                    <p>Pantalla principal de KiCad desde donde se gestionan todos los archivos del proyecto y se accede a las diferentes herramientas de diseño.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Aplicación 2: Asignación (Invertida: imagen a la derecha) -->
-        <div class="screenshot-container reverse">
-            <img src="imgs/Placa.png" alt="Asignación de huellas" class="imagen-borde-amarillo">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Asignación de Huellas</span></h3>
-                <p>Selección de <span class="texto-amarillo">footprints</span> precisos para asegurar que los componentes físicos encajen en la placa.</p>
+            <!-- Slide 2: Esquemas -->
+            <div class="carrusel-slide">
+                <img src="imgs/Esquema.png" alt="Editor de esquemas">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Editor de esquemas</span></h3>
+                    <p>Es donde dibujas el diagrama lógico o eléctrico de tu circuito. Aquí conectas los componentes mediante líneas eléctricas llamadas pistas.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Aplicación 3: Ruteo -->
-        <div class="screenshot-container">
-            <img src="imgs/Conversorimg.png" alt="Ruteo de PCB" class="imagen-borde-amarillo">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Ruteo de PCB</span></h3>
-                <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra.</p>
+            <!-- Slide 3: Huellas -->
+            <div class="carrusel-slide">
+                <img src="imgs/Placa.png" alt="Asignación de huellas">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Asignación de Huellas</span></h3>
+                    <p>Selección de <span class="texto-amarillo">footprints</span> precisos para asegurar que los componentes físicos encajen perfectamente en la placa.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Aplicación 4: Gestor (Invertida) -->
-        <div class="screenshot-container reverse">
-            <img src="imgs/Gestor.png" alt="Gestor de complementos" class="imagen-borde-amarillo">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Gestor</span></h3>
-                <p>Administración de bibliotecas, plugins y paquetes adicionales de KiCad.</p>
+            <!-- Slide 4: Ruteo -->
+            <div class="carrusel-slide">
+                <img src="imgs/Conversorimg.png" alt="Ruteo de PCB">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Ruteo de PCB</span></h3>
+                    <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra de manera eficiente.</p>
+                </div>
             </div>
+
+            <!-- Slide 5: Gestor -->
+            <div class="carrusel-slide">
+                <img src="imgs/Gestor.png" alt="Gestor de complementos">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Gestor</span></h3>
+                    <p>Administración de bibliotecas, plugins y paquetes adicionales descargables de KiCad para expandir los componentes.</p>
+                </div>
+            </div>
+
+            <!-- Botones de Control -->
+            <button class="carrusel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1)">&#10095;</button>
+
         </div>
     </section>
     
@@ -220,5 +308,28 @@
     <!-- Personaje animado -->
     <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
 
+    <!-- Script del Carrusel -->
+    <script>
+        let slideActual = 0;
+        const slides = document.querySelectorAll('.carrusel-slide');
+
+        function moverSlide(direccion) {
+            // Oculta el slide actual
+            slides[slideActual].classList.remove('activo');
+            
+            // Calcula cuál es el siguiente slide
+            slideActual = slideActual + direccion;
+            
+            // Si llega al final, regresa al inicio, y viceversa
+            if (slideActual >= slides.length) {
+                slideActual = 0;
+            } else if (slideActual < 0) {
+                slideActual = slides.length - 1;
+            }
+            
+            // Muestra el nuevo slide
+            slides[slideActual].classList.add('activo');
+        }
+    </script>
 </body>
 </html>
