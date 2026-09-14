@@ -136,7 +136,34 @@
         .prev { left: 15px; }
         .next { right: 15px; }
 
-        .centrar-imagen { display: block; margin: 0 auto; }   
+        .centrar-imagen { display: block; margin: 0 auto; max-width: 90%; height: auto; }   
+
+        .fondo-blanco {
+            background-color: #ffffff !important;
+            padding: 5px; /* Le da un pequeño margen para que se vea mejor */
+        }
+
+        /* Estilo para cuando la imagen de la tabla reciba el clic (Zoom) */
+        .mini-slide {
+            /* (Tus estilos anteriores de .mini-slide se quedan igual, solo asegúrate de agregar esto:) */
+            cursor: zoom-in; /* Pone el cursor de lupa */
+        }
+
+        .mini-slide.ampliada {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw !important; /* Ocupará el 80% del ancho de la pantalla */
+            height: auto !important;
+            max-height: 90vh;
+            z-index: 10000;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            border: 3px solid #D4AC0D;
+            opacity: 1 !important; /* Fuerza a que se vea aunque no sea la activa */
+            cursor: zoom-out;
+            border-radius: 15px;
+        }
 
         /* Contenedor principal para alinear las tablas lado a lado */
         .contenedor-tablas {
@@ -375,8 +402,8 @@
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/E.png" class="mini-slide activo" alt="Letra E">
-                            <img src="imgs/E2.png" class="mini-slide" alt="Letra E 2">
+                            <img src="imgs/E.png" class="mini-slide activo fondo-blanco" alt="Letra E">
+                            <img src="imgs/E2.png" class="mini-slide fondo-blanco" alt="Letra E 2">
                             <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
@@ -387,7 +414,7 @@
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/R.png" class="mini-slide activo" alt="Letra R">
+                            <img src="imgs/R.png" class="mini-slide activo fondo-blanco" alt="Letra R">
                         </div>
                     </td>
                     <td>Sirve para rotar el elemento que se haya seleccionado, nos deja acomodarlo a nuestra conveniencia en el esquema</td>
@@ -532,6 +559,15 @@
 
         document.querySelectorAll('.animar-conteo').forEach(numero => {
             observadorScroll.observe(numero);
+        });
+    </script>
+    <!-- Script para el Zoom de las imágenes en la tabla -->
+    <script>
+        document.querySelectorAll('.mini-slide').forEach(img => {
+            img.addEventListener('click', function() {
+                // Al darle clic, activa o desactiva la clase que la hace gigante
+                this.classList.toggle('ampliada');
+            });
         });
     </script>
 </body>
