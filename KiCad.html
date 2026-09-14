@@ -107,7 +107,14 @@
             border: 3px solid #FFE81F; /* Contorno amarillo Star Wars */
             border-radius: 20px;       /* Esquinas redondeadas */
         }
+        .card img {
+            max-width: 100%;  /* La imagen nunca será más ancha que la tarjeta */
+            height: auto;     /* Mantiene la proporción de la imagen sin deformarla */
+            display: block;   /* Elimina espacios extra no deseados */
+            margin: 15px auto 0 auto; /* La centra y le da un espacio con el texto de arriba */
+}
     </style>
+    
 </head>
 <body>
 
@@ -146,14 +153,17 @@
             <div class="card">
                 <h3><span class="texto-amarillo">Asignación de Huellas</span></h3>
                 <p>Selección de <span class="texto-amarillo">footprints</span> precisos para asegurar que los componentes físicos encajen en la placa.</p>
+                <img src="imgs/Placa.png" alt="Descripción de la imagen" class="imagen-borde-amarillo">
             </div>
             <div class="card">
                 <h3><span class="texto-amarillo">Ruteo de PCB</span></h3>
                 <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra.</p>
+                <img src="imgs/Conversorimg.png" alt="Descripción de la imagen" class="imagen-borde-amarillo">
             </div>
             <div class="card">
                 <h3><span class="texto-amarillo">Gestor</span></h3>
                 <p>Uso de Pcbnew para organizar los componentes, trazar pistas de cobre y definir planos de tierra.</p>
+                <img src="imgs/Gestor.png" alt="Descripción de la imagen" class="imagen-borde-amarillo">
             </div>
         </div>
 
