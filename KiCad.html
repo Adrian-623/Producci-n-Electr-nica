@@ -183,6 +183,97 @@
 
         .prev { left: 15px; }
         .next { right: 15px; }
+
+        /* Mantiene solo el estilo visual */
+
+        .centrar-imagen {
+            display: block;
+          margin: 0 auto;
+        }   
+        /* Contenedor principal para alinear las tablas lado a lado */
+        .contenedor-tablas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        /* Estilo base de las tablas con degradado */
+        .tabla-comparativa {
+            flex: 1;
+            min-width: 320px; /* Para que en celulares se pongan una sobre otra */
+            border-collapse: collapse;
+            background: linear-gradient(to bottom, #FFE81F 0%, #151516 70%, #000000 100%);
+            border-radius: 20px;
+            overflow: hidden; /* Respeta los bordes redondeados */
+            box-shadow: 0 10px 30px rgba(255, 232, 31, 0.15);
+            border: 2px solid rgba(255, 232, 31, 0.5);
+        }
+
+        /* Líneas divisorias de la tabla (semitransparentes para combinar con el degradado) */
+        .tabla-comparativa th, .tabla-comparativa td {
+            border: 1px solid rgba(255, 232, 31, 0.3);
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Ajuste de colores de texto según el degradado */
+        /* Filas 1 y 2 (Fondo amarillo = Texto negro) */
+        .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) {
+            color: #000000;
+            font-weight: 700;
+        }
+        /* Fila 3 y 4 (Transición = Texto oscuro/gris oscuro) */
+        .tabla-comparativa tr:nth-child(3), .tabla-comparativa tr:nth-child(4) {
+            color: #222222;
+            font-weight: 600;
+        }
+        /* Filas de la 5 en adelante (Fondo oscuro = Texto claro) */
+        .tabla-comparativa tr:nth-child(n+5) {
+            color: #f5f5f7;
+        }
+
+        /* Animación del Mini Carrusel de 2 imágenes (Tabla 1) */
+        .mini-carrusel {
+            position: relative;
+            width: 100px;
+            height: 80px;
+            margin: 0 auto;
+        }
+        .mini-carrusel img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            animation: fade-imagenes 6s infinite; /* Intercambia cada 3 segundos */
+        }
+        .mini-carrusel img.img-2 {
+            animation-delay: 3s; /* Desfase para la segunda imagen */
+            opacity: 0;
+        }
+        @keyframes fade-imagenes {
+            0%, 45% { opacity: 1; }
+            50%, 95% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Estilo de los números grandes (Tabla 2) */
+        .numero-contador {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FFE81F; /* Amarillo brillante para contrastar */
+            text-shadow: 0 0 10px rgba(255, 232, 31, 0.4);
+        }
+
+        /* Imágenes de la Tabla 2 (sin borde amarillo, como pediste) */
+        .img-sencilla {
+            width: 100px;
+            border-radius: 8px;
+        }
     </style>
     
 </head>
@@ -248,7 +339,7 @@
             <div class="carrusel-slide">
                 <img src="imgs/Conversorimg.png" alt="Conversor de imagenes">
                 <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Ruteo de PCB</span></h3>
+                    <h3><span class="texto-amarillo">Conversor de imágenes</span></h3>
                     <p>Toma imágenes de cualquier formato (como .png, .jpg o .bmp) y las convierte en elementos que puedes integrar directamente en tus proyectos de KiCad</p>
                     <p>Es para transformar logotipos, ilustraciones, iconos de advertencia o gráficos en huellas(footprints) o simbolos de esquemas</p>
                 </div>
@@ -258,7 +349,7 @@
             <div class="carrusel-slide">
                 <img src="imgs/Gestor.png" alt="Gestor de complementos">
                 <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Gestor</span></h3>
+                    <h3><span class="texto-amarillo">Gestor de componentes y contenido</span></h3>
                     <p>Administración de bibliotecas, plugins y paquetes adicionales descargables de KiCad para expandir los componentes</p>
                 </div>
             </div>
@@ -280,6 +371,149 @@
                 <p>Esta librería contiene componentes específicos optimizados para fabricación digital, con las especificaciones y footprints adecuados para el proceso de fresado que utilizaremos</p>
             </div>
         </div>
+    </section>
+
+    <section id="Paso_2">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 2</span></h2>
+        <p style="text-align: center;">
+            Para el siguiente paso en la producción de nuestra PCB debemos ir a la herramienta <span class="texto-amarillo"> Editor de esquemas </span>, ahí nos aparecerá lo siguientes:
+        </p>
+        <img src="imgs/Inicio_esquema.png" alt="Descripción" class="imagen-borde-amarillo centrar-imagen">
+        <p style="text-align: center;">
+            Una vez que estabamos ahí para formar nuestro esquema de el circuito usamos los siguientes instrumentos y cantidad de componentes usados:
+        </p>
+
+        <div class="contenedor-tablas">
+        
+        <!-- ================= TABLA 1: Instrumentos ================= -->
+        <table class="tabla-comparativa">
+            <tbody>
+                <!-- Fila 1: Título Unido -->
+                <tr>
+                    <td colspan="2"><h3>Instrumentos Utilizados</h3></td>
+                </tr>
+                <!-- Fila 2: Subtítulos Textuales -->
+                <tr>
+                    <td>Símbolo y contenido</td>
+                    <td>Descripción</td>
+                </tr>
+                <!-- Fila 3: Mini Carrusel + Texto -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/Simbolo1.png" class="img-1" alt="Inst 1A">
+                            <img src="imgs/Simbolo2.png" class="img-2" alt="Inst 1B">
+                        </div>
+                    </td>
+                    <td>Aquí pudimos seleccionar los componentes que necesitabamos para hacer el esquema del circuito, y se puede seleccionar una mayor variedad</td>
+                </tr>
+                <!-- Fila 4 -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/Alimentacion1.png" class="img-1">
+                            <img src="imgs/Alimentacion2.png" class="img-2">
+                        </div>
+                    </td>
+                    <td>Aquí escogemos el tipo de alimentación que le daremos al circuito al igual que la liena tierra necesaria para cualquier circuito </td>
+                </tr>
+                <!-- Fila 5 -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/Etiqueta1.png" class="img-1">
+                            <img src="imgs/Etiqueta2.png" class="img-2">
+                        </div>
+                    </td>
+                    <td>Con estas etiquetas podemos conectar componentes y fuentes de manera con mayor failidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectadosinternamente y los podremos conectar en el Editor de Placas</td>
+                </tr>
+                <!-- Fila 6 -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/Texto1.png" class="img-1">
+                            <img src="imgs/Texto2.png" class="img-2">
+                        </div>
+                    </td>
+                    <td>Ayuda a colocar textos en nuestros esquemas, ayuda para guiarnos y por ejmeplo poder nombrar ciertoas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
+                </tr>
+                <!-- Fila 7 -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/Cuadro1.png">
+                        </div>
+                    </td>
+                    <td>Genera un cuadrado en el cual podemos rodear componentes y delimitar espacios, sirve más para organización</td>
+                </tr>
+                <!-- Fila 8 -->
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/E.png" class="img-1">
+                            <img src="imgs/E2.png" class="img-2">
+                        </div>
+                    </td>
+                    <td>Cuando seleccionamos cualquier elemento como texto, componente, ect; y damos click a la letra "E" en nuestro nos permite editar lo seleccionado, funciona como un doble click</td>
+                </tr>
+                <!-- Fila 9 -->
+                <tr>
+                    <td>
+                        <div>
+                            <img src="imgs/R.png">
+                        </div>
+                    </td>
+                    <td>Sirve para rotar el elemento que se haya seleccionado, nos deja acomodarlo a nuestra conveniencia en el esquema</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ================= TABLA 2: Especificaciones / Contadores ================= -->
+        <table class="tabla-comparativa">
+            <tbody>
+                <!-- Fila 1: Título Unido -->
+                <tr>
+                    <td colspan="2"><h3>Cantidad de componentes usados</h3></td>
+                </tr>
+                <!-- Fila 2: Subtítulos Textuales -->
+                <tr>
+                    <td>Componente</td>
+                    <td>Cantidad</td>
+                </tr>
+                <!-- Fila 3: Imagen + Número (CON LETRA) -->
+                <tr>
+                    <td><img src="imgs/Resistencia.png" class="img-sencilla" alt="Resistencia"></td>
+                    <!-- El atributo data-objetivo es hasta donde cuenta, data-letra es lo que pone al lado -->
+                    <td><span class="numero-contador animar-conteo" data-objetivo="220" >8</span></td>
+                </tr>
+                <!-- Fila 4: Imagen + Número -->
+                <tr>
+                    <td><img src="imgs/LED.png" class="img-sencilla" alt="Capacitor"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="1000" >4</span></td>
+                </tr>
+                <!-- Fila 5: Imagen + Número -->
+                <tr>
+                    <td><img src="imgs/Switch.png" class="img-sencilla" alt="Voltaje"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="5" >4</span></td>
+                </tr>
+                <!-- Fila 6: Imagen + Número -->
+                <tr>
+                    <td><img src="imgs/Pin1x2.png" class="img-sencilla" alt="Corriente"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="500" >1</span></td>
+                </tr>
+                <!-- Fila 7: Imagen + Número -->
+                <tr>
+                    <td><img src="imgs/Pin1x4.png" class="img-sencilla" alt="Frecuencia"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="60" >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div> 
+
+        <p style="text-align: center;">
+            Y nuestro circuito se basó basado en los circuitos "Pull up" y "Pull down", fueron 2 de cada uno
+        </p>
     </section>
 
     <!-- Capturas de Pantalla -->
@@ -342,6 +576,44 @@
             // Muestra el nuevo slide
             slides[slideActual].classList.add('activo');
         }
+    </script>
+    <script>
+        // Lógica para que los números cuenten solos al scrollear
+        const animarNumeros = (entradas, observador) => {
+            entradas.forEach((entrada) => {
+                // Si el número es visible en la pantalla
+                if (entrada.isIntersecting) {
+                    const elemento = entrada.target;
+                    const objetivo = +elemento.getAttribute('data-objetivo');
+                    const letra = elemento.getAttribute('data-letra') || '';
+                    let contador = 0;
+                    
+                    // Ajusta este número (100) para hacer la animación más rápida o lenta
+                    const incremento = objetivo / 100; 
+
+                    const actualizarContador = () => {
+                        contador += incremento;
+                        if (contador < objetivo) {
+                            elemento.innerText = Math.ceil(contador) + letra;
+                            requestAnimationFrame(actualizarContador);
+                        } else {
+                            elemento.innerText = objetivo + letra;
+                        }
+                    };
+                    actualizarContador();
+                    observador.unobserve(elemento); // Hace que solo cuente una vez
+                }
+            });
+        };
+
+        const observadorScroll = new IntersectionObserver(animarNumeros, {
+            threshold: 0.5 // Empieza a contar cuando el número está a la mitad de la pantalla
+        });
+
+        // Aplicamos el observador a todos los números
+        document.querySelectorAll('.animar-conteo').forEach(numero => {
+            observadorScroll.observe(numero);
+        });
     </script>
 </body>
 </html>
