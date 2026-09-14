@@ -136,7 +136,7 @@
         .prev { left: 15px; }
         .next { right: 15px; }
 
-        .centrar-imagen { display: block; margin: 0 auto; max-width: 70%; height: auto; }   
+        .centrar-imagen { display: block; margin: 0 auto; max-width: 60%; height: auto; }   
 
         .fondo-blanco {
             background-color: #ffffff !important;
@@ -149,20 +149,33 @@
             cursor: zoom-in; /* Pone el cursor de lupa */
         }
 
+        /* El fondo oscuro que tapará toda la página */
+        #fondo-oscuro-zoom {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo casi negro */
+            backdrop-filter: blur(5px); /* Difumina lo que queda atrás */
+            z-index: 99998; /* Justo debajo de la imagen ampliada */
+        }
+
+        /* Estilo de la imagen cuando está gigante */
         .mini-slide.ampliada {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80vw !important; /* Ocupará el 80% del ancho de la pantalla */
+            width: 80vw !important;
             height: auto !important;
             max-height: 90vh;
-            z-index: 10000;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            z-index: 99999 !important; /* Fuerza a estar por encima de todo */
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
             border: 3px solid #D4AC0D;
-            opacity: 1 !important; /* Fuerza a que se vea aunque no sea la activa */
+            opacity: 1 !important;
             cursor: zoom-out;
             border-radius: 15px;
+            background-color: #ffffff; /* Asegura que el fondo sea blanco por si la imagen es transparente */
         }
 
         /* Contenedor principal para alinear las tablas lado a lado */
@@ -491,6 +504,8 @@
         </div>
     </section>
 
+    <div id="fondo-oscuro-zoom"></div>
+
     <script>
         let slideActual = 0;
         const slides = document.querySelectorAll('.carrusel-slide');
@@ -567,15 +582,29 @@
     </script>
     <!-- Script para el Zoom de las imágenes en la tabla -->
     <!-- Script para el Zoom de las imágenes en la tabla -->
+    <!-- Script para el Zoom de las imágenes con fondo oscuro -->
     <script>
+        const fondoOscuro = document.getElementById('fondo-oscuro-zoom');
+
         document.querySelectorAll('.mini-slide').forEach(img => {
             img.addEventListener('click', function() {
-                // Activa o desactiva la clase que la hace gigante
                 this.classList.toggle('ampliada');
                 
-                // Busca su contenedor padre (.mini-carrusel) y lo manda al frente de todo
-                this.closest('.mini-carrusel').classList.toggle('al-frente');
+                // Si la imagen se amplió, muestra el fondo oscuro. Si no, lo oculta.
+                if(this.classList.contains('ampliada')) {
+                    fondoOscuro.style.display = 'block';
+                } else {
+                    fondoOscuro.style.display = 'none';
+                }
             });
+        });
+
+        // Permite cerrar la imagen también dando clic fuera de ella (en el fondo oscuro)
+        fondoOscuro.addEventListener('click', function() {
+            document.querySelectorAll('.mini-slide.ampliada').forEach(img => {
+                img.classList.remove('ampliada');
+            });
+            fondoOscuro.style.display = 'none';
         });
     </script>
 </body>
