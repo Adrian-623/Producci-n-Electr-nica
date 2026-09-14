@@ -17,10 +17,10 @@
             border-bottom: 1px solid #333333;
         }
         nav a { color: #f5f5f7; text-decoration: none; margin: 0 25px; font-size: 1rem; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: #FFE81F; } /* Hover en amarillo */
+        nav a:hover { color: #D4AC0D; } /* Hover en el nuevo amarillo */
 
         /* Textos resaltados */
-        .texto-amarillo { color: #FFF7B0; }
+        .texto-amarillo { color: #F7E596; } /* Amarillo pastel suave para lectura */
 
         /* Sección de Título Principal con Logo Llamativo */
         .hero {
@@ -33,7 +33,7 @@
         .hero-logo {
             width: 250px; 
             margin-bottom: 40px;
-            filter: drop-shadow(0 0 40px rgba(255, 232, 31, 0.4)); /* Resplandor amarillo */
+            filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); /* Resplandor amarillo suave */
             animation: flotar 4s ease-in-out infinite;
         }
 
@@ -53,7 +53,7 @@
         .grid-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
         .card { 
             background-color: #151516; padding: 40px; border-radius: 20px; width: 320px; 
-            border: 2px solid #FFE81F; /* Borde amarillo */
+            border: 2px solid #D4AC0D; /* Borde amarillo suave */
             text-align: center;
         }
         .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #ffffff; }
@@ -63,7 +63,7 @@
         .screenshot-container {
             display: flex; align-items: center; background-color: #151516; 
             padding: 40px; border-radius: 20px; max-width: 1000px; margin: 0 auto 40px auto;
-            border: 2px solid #FFE81F;
+            border: 2px solid #D4AC0D;
         }
         
         /* Imagen de captura ajustada para no ser circular */
@@ -80,17 +80,6 @@
         .reverse { flex-direction: row-reverse; }
         .reverse img { margin-right: 0; margin-left: 40px; }
 
-        /* Personaje animado */
-        .personaje-animado {
-            position: fixed; bottom: 0; right: -150px; z-index: 9999; width: 100px; 
-            animation: caminar-izquierda 12s linear infinite; pointer-events: none;
-            transform: scaleX(-1);
-        }
-        @keyframes caminar-izquierda {
-            0% { left: -150px; }
-            100% { left: 100vw; }
-        }
-
         /* Responsividad para pantallas pequeñas */
         @media (max-width: 900px) {
             .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
@@ -98,217 +87,160 @@
             .screenshot-info { width: 100%; text-align: center; }
         }
 
-        /* Agrégalo al final de la sección <style> */
-        .texto-grande {
-            font-size: 17px; /* Cambia a 20px, 28px, 32px, etc. según lo grande que lo desees */
-        }
+        .texto-grande { font-size: 17px; }
 
         .imagen-borde-amarillo {
-            border: 3px solid #FFE81F; /* Contorno amarillo Star Wars */
-            border-radius: 20px;       /* Esquinas redondeadas */
+            border: 3px solid #D4AC0D; 
+            border-radius: 20px;       
         }
+
         .card img {
-            max-width: 100%;  /* La imagen nunca será más ancha que la tarjeta */
-            height: auto;     /* Mantiene la proporción de la imagen sin deformarla */
-            display: block;   /* Elimina espacios extra no deseados */
-            margin: 15px auto 0 auto; /* La centra y le da un espacio con el texto de arriba */
+            max-width: 100%;  
+            height: auto;     
+            display: block;   
+            margin: 15px auto 0 auto; 
         }
-        /* Estilos del Carrusel a la medida */
+
+        /* Estilos del Carrusel Principal */
         .carrusel-contenedor {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
             border-radius: 20px;
-            border: 3px solid #FFE81F; /* Borde amarillo Star Wars */
+            border: 3px solid #D4AC0D; 
             background-color: #151516;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .carrusel-slide {
-            display: none; /* Oculta todas las imágenes por defecto */
-            animation: aparecer 0.5s;
-        }
-
-        .carrusel-slide.activo {
-            display: block; /* Solo muestra la activa */
-        }
-
-        @keyframes aparecer {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
-        }
+        .carrusel-slide { display: none; animation: aparecer 0.5s; }
+        .carrusel-slide.activo { display: block; }
+        @keyframes aparecer { from { opacity: 0.4; } to { opacity: 1; } }
 
         .carrusel-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 2px solid #333333;
+            width: 100%; height: auto; display: block; border-bottom: 2px solid #333333;
         }
 
-        .carrusel-texto {
-            padding: 30px 40px;
-            text-align: center;
-        }
+        .carrusel-texto { padding: 30px 40px; text-align: center; }
+        .carrusel-texto h3 { font-size: 2rem; margin-bottom: 10px; }
+        .carrusel-texto p { font-size: 1.2rem; color: #a1a1a6; }
 
-        .carrusel-texto h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .carrusel-texto p {
-            font-size: 1.2rem;
-            color: #a1a1a6;
-        }
-
-        /* Botones de navegación (Flechas) */
         .carrusel-btn {
-            position: absolute;
-            top: 40%; /* Centradas respecto a la imagen */
-            transform: translateY(-50%);
+            position: absolute; top: 40%; transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.7);
-            color: #FFE81F;
-            border: 2px solid #FFE81F;
-            font-size: 24px;
-            padding: 10px 18px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            color: #D4AC0D; border: 2px solid #D4AC0D;
+            font-size: 24px; padding: 10px 18px; cursor: pointer;
+            border-radius: 50%; transition: all 0.3s ease;
         }
-
-        .carrusel-btn:hover {
-            background-color: #FFE81F;
-            color: #000;
-        }
-
+        .carrusel-btn:hover { background-color: #D4AC0D; color: #000; }
         .prev { left: 15px; }
         .next { right: 15px; }
 
-        /* Mantiene solo el estilo visual */
+        .centrar-imagen { display: block; margin: 0 auto; }   
 
-        .centrar-imagen {
-            display: block;
-          margin: 0 auto;
-        }   
         /* Contenedor principal para alinear las tablas lado a lado */
         .contenedor-tablas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            max-width: 1200px;
+            display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;
+            max-width: 1300px; /* Un poco más ancho para las imágenes grandes */
             margin: 50px auto;
         }
 
-        /* Estilo base de las tablas con degradado */
+        /* Estilo base de las tablas con degradado invertido (Oscuro arriba, Amarillo abajo) */
         .tabla-comparativa {
-            flex: 1;
-            min-width: 320px; /* Para que en celulares se pongan una sobre otra */
+            flex: 1; min-width: 320px; 
             border-collapse: collapse;
-            background: linear-gradient(to bottom, #FFE81F 0%, #151516 70%, #000000 100%);
-            border-radius: 20px;
-            overflow: hidden; /* Respeta los bordes redondeados */
-            box-shadow: 0 10px 30px rgba(255, 232, 31, 0.15);
-            border: 2px solid rgba(255, 232, 31, 0.5);
+            background: linear-gradient(to top, #D4AC0D 0%, #151516 60%, #000000 100%);
+            border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(212, 172, 13, 0.15);
+            border: 2px solid rgba(212, 172, 13, 0.5);
         }
 
-        /* Líneas divisorias de la tabla (semitransparentes para combinar con el degradado) */
+        /* Líneas divisorias de la tabla */
         .tabla-comparativa th, .tabla-comparativa td {
-            border: 1px solid rgba(255, 232, 31, 0.3);
-            padding: 15px;
-            text-align: center;
-            vertical-align: middle;
+            border: 1px solid rgba(212, 172, 13, 0.3);
+            padding: 15px; text-align: center; vertical-align: middle;
         }
 
-        /* Ajuste de colores de texto según el degradado */
-        /* Filas 1 y 2 (Fondo amarillo = Texto negro) */
-        .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) {
-            color: #000000;
-            font-weight: 700;
-        }
-        /* Fila 3 y 4 (Transición = Texto oscuro/gris oscuro) */
-        .tabla-comparativa tr:nth-child(3), .tabla-comparativa tr:nth-child(4) {
-            color: #222222;
-            font-weight: 600;
-        }
-        /* Filas de la 5 en adelante (Fondo oscuro = Texto claro) */
-        .tabla-comparativa tr:nth-child(n+5) {
-            color: #f5f5f7;
-        }
+        /* Ajuste de colores de texto para el nuevo degradado */
+        .tabla-comparativa tr { color: #f5f5f7; }
+        .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) { color: #ffffff; font-weight: 700; }
+        
+        /* Las últimas filas (Fondo amarillo = Texto oscuro) */
+        .tabla-comparativa tr:nth-last-child(1), .tabla-comparativa tr:nth-last-child(2) { color: #000000; font-weight: 700; }
+        .tabla-comparativa tr:nth-last-child(3) { color: #222222; font-weight: 600; }
 
-        /* Animación del Mini Carrusel de 2 imágenes (Tabla 1) */
+        /* ================= Mini Carrusel de las tablas ================= */
         .mini-carrusel {
             position: relative;
-            width: 100px;
-            height: 80px;
+            width: 220px; /* Imagen mucho más grande */
+            height: 150px;
             margin: 0 auto;
-        }
-        .mini-carrusel img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
             border-radius: 8px;
-            animation: fade-imagenes 6s infinite; /* Intercambia cada 3 segundos */
+            overflow: hidden;
+            background-color: #000; /* Fondo negro para que resalten las capturas */
+            border: 1px solid rgba(212, 172, 13, 0.5);
         }
-        .mini-carrusel img.img-2 {
-            animation-delay: 3s; /* Desfase para la segunda imagen */
+
+        .mini-slide {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: contain; /* Evita que la imagen se corte */
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        @keyframes fade-imagenes {
-            0%, 45% { opacity: 1; }
-            50%, 95% { opacity: 0; }
-            100% { opacity: 1; }
+
+        .mini-slide.activo { opacity: 1; z-index: 1; }
+
+        .mini-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.8); color: #D4AC0D;
+            border: 1px solid #D4AC0D; font-size: 14px;
+            padding: 6px 10px; cursor: pointer;
+            border-radius: 50%; z-index: 2; transition: background-color 0.2s;
+        }
+        .mini-btn:hover { background-color: #D4AC0D; color: #000; }
+        .mini-btn.prev { left: 5px; }
+        .mini-btn.next { right: 5px; }
+
+        /* Imágenes fijas de la Tabla 2 */
+        .img-sencilla {
+            width: 180px; /* Imagen mucho más grande */
+            border-radius: 8px; display: block; margin: 0 auto;
         }
 
         /* Estilo de los números grandes (Tabla 2) */
         .numero-contador {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FFE81F; /* Amarillo brillante para contrastar */
-            text-shadow: 0 0 10px rgba(255, 232, 31, 0.4);
-        }
-
-        /* Imágenes de la Tabla 2 (sin borde amarillo, como pediste) */
-        .img-sencilla {
-            width: 100px;
-            border-radius: 8px;
+            font-size: 2.8rem; font-weight: 800; color: #ffffff; 
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
     </style>
     
 </head>
 <body>
 
-    <!-- Navegación -->
     <nav>
         <a href="index.html">Inicio</a>
         <a href="pcb1.html">PCB1</a>
         <a href="Proyecto_Final.html">Proyecto Final</a>
     </nav>
 
-    <!-- Título Principal -->
     <header class="hero">
-        <!-- Reemplaza 'logo-kicad.png' por una imagen del logo con fondo transparente -->
         <img src="KiCad.svg" alt="Logo de KiCad" class="hero-logo">
         <h1>Diseño de PCB en KiCad</h1>
         <p class="texto-grande">Programa utilizado para diseñar PCBs desde diagramas esquematicos</p>
     </header>
 
-    <!-- Introducción -->
     <section id="introduccion">
         <h2 class="section-title"><span class="texto-amarillo">¿Qué es KiCad?</span></h2>
         <p style="text-align: center;">
             Es una aplicación que nos permite crear esquemas electrónicos y diseños de placas de circuito impreso de manera profesional
         </p>
-        
     </section>
 
     <section id="Secciones_a_usar">
         <h2 class="section-title"><span class="texto-amarillo">Aplicaciones principales usadas</span></h2>
         
         <div class="carrusel-contenedor">
-            
-            <!-- Slide 1: Inicio -->
             <div class="carrusel-slide activo">
                 <img src="imgs/Inicio.png" alt="Pantalla de Inicio de KiCad">
                 <div class="carrusel-texto">
@@ -316,8 +248,6 @@
                     <p>Pantalla principal de KiCad desde donde se gestionan todos los archivos del proyecto y se accede a las diferentes herramientas de diseño</p>
                 </div>
             </div>
-
-            <!-- Slide 2: Esquemas -->
             <div class="carrusel-slide">
                 <img src="imgs/Esquema.png" alt="Editor de esquemas">
                 <div class="carrusel-texto">
@@ -325,8 +255,6 @@
                     <p>Es donde dibujas el diagrama lógico o eléctrico de tu circuito. Aquí conectas los componentes mediante líneas eléctricas llamadas pistas</p>
                 </div>
             </div>
-
-            <!-- Slide 3: Huellas -->
             <div class="carrusel-slide">
                 <img src="imgs/Placa.png" alt="Editor de placas">
                 <div class="carrusel-texto">
@@ -334,18 +262,13 @@
                     <p>Aquí se diseña la tarjeta física de circuito impreso (PCB). Importas tu circuito del esquema y ubicas los componentes en la placa real</p>
                 </div>
             </div>
-
-            <!-- Slide 4: Ruteo -->
             <div class="carrusel-slide">
                 <img src="imgs/Conversorimg.png" alt="Conversor de imagenes">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Conversor de imágenes</span></h3>
                     <p>Toma imágenes de cualquier formato (como .png, .jpg o .bmp) y las convierte en elementos que puedes integrar directamente en tus proyectos de KiCad</p>
-                    <p>Es para transformar logotipos, ilustraciones, iconos de advertencia o gráficos en huellas(footprints) o simbolos de esquemas</p>
                 </div>
             </div>
-
-            <!-- Slide 5: Gestor -->
             <div class="carrusel-slide">
                 <img src="imgs/Gestor.png" alt="Gestor de complementos">
                 <div class="carrusel-texto">
@@ -353,21 +276,18 @@
                     <p>Administración de bibliotecas, plugins y paquetes adicionales descargables de KiCad para expandir los componentes</p>
                 </div>
             </div>
-
-            <!-- Botones de Control -->
             <button class="carrusel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
             <button class="carrusel-btn next" onclick="moverSlide(1)">&#10095;</button>
-
         </div>
     </section>
     
     <section id="Paso_1">
         <h2 class="section-title"><span class="texto-amarillo">Paso 1</span></h2>
         <div class="screenshot-container">
-            <img src="imgs/Librería.png" alt="Captura del esquemático">
+            <img src="imgs/Librería.png" alt="Captura de la librería">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Instalación de la librería</span></h3>
-                <p>Para la instalación de una librería debemos seleccionar la herramienta <span class="texto-amarillo">Gestor de complementos</span>y buscamos la librería <span class="texto-amarillo">KiCad FabLib</span></p>
+                <p>Para la instalación de una librería debemos seleccionar la herramienta <span class="texto-amarillo">Gestor de complementos</span> y buscamos la librería <span class="texto-amarillo">KiCad FabLib</span></p>
                 <p>Esta librería contiene componentes específicos optimizados para fabricación digital, con las especificaciones y footprints adecuados para el proceso de fresado que utilizaremos</p>
             </div>
         </div>
@@ -375,92 +295,99 @@
 
     <section id="Paso_2">
         <h2 class="section-title"><span class="texto-amarillo">Paso 2</span></h2>
-        <p style="text-align: center;">
-            Para el siguiente paso en la producción de nuestra PCB debemos ir a la herramienta <span class="texto-amarillo"> Editor de esquemas </span>, ahí nos aparecerá lo siguientes:
+        <p style="text-align: center; margin-bottom: 20px;">
+            Para el siguiente paso en la producción de nuestra PCB debemos ir a la herramienta <span class="texto-amarillo"> Editor de esquemas </span>, ahí nos aparecerá lo siguiente:
         </p>
-        <img src="imgs/Inicio_esquema.png" alt="Descripción" class="imagen-borde-amarillo centrar-imagen">
-        <p style="text-align: center;">
-            Una vez que estabamos ahí para formar nuestro esquema de el circuito usamos los siguientes instrumentos y cantidad de componentes usados:
+        <img src="imgs/Inicio_esquema.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen">
+        <p style="text-align: center; margin-top: 20px;">
+            Una vez que estabamos ahí para formar nuestro esquema del circuito usamos los siguientes instrumentos y componentes:
         </p>
 
         <div class="contenedor-tablas">
         
-        <!-- ================= TABLA 1: Instrumentos ================= -->
         <table class="tabla-comparativa">
             <tbody>
-                <!-- Fila 1: Título Unido -->
                 <tr>
                     <td colspan="2"><h3>Instrumentos Utilizados</h3></td>
                 </tr>
-                <!-- Fila 2: Subtítulos Textuales -->
                 <tr>
                     <td>Símbolo y contenido</td>
                     <td>Descripción</td>
                 </tr>
-                <!-- Fila 3: Mini Carrusel + Texto -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/Simbolo1.png" class="img-1" alt="Inst 1A">
-                            <img src="imgs/Simbolo2.png" class="img-2" alt="Inst 1B">
+                            <img src="imgs/Simbolo1.png" class="mini-slide activo" alt="Símbolo 1">
+                            <img src="imgs/Simbolo2.png" class="mini-slide" alt="Símbolo 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
                     <td>Aquí pudimos seleccionar los componentes que necesitabamos para hacer el esquema del circuito, y se puede seleccionar una mayor variedad</td>
                 </tr>
-                <!-- Fila 4 -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/Alimentacion1.png" class="img-1">
-                            <img src="imgs/Alimentacion2.png" class="img-2">
+                            <img src="imgs/Alimentacion1.png" class="mini-slide activo" alt="Alimentacion 1">
+                            <img src="imgs/Alimentacion2.png" class="mini-slide" alt="Alimentacion 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Aquí escogemos el tipo de alimentación que le daremos al circuito al igual que la liena tierra necesaria para cualquier circuito </td>
+                    <td>Aquí escogemos el tipo de alimentación que le daremos al circuito al igual que la línea tierra necesaria para cualquier circuito</td>
                 </tr>
-                <!-- Fila 5 -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/Etiqueta1.png" class="img-1">
-                            <img src="imgs/Etiqueta2.png" class="img-2">
+                            <img src="imgs/Etiqueta1.png" class="mini-slide activo" alt="Etiqueta 1">
+                            <img src="imgs/Etiqueta2.png" class="mini-slide" alt="Etiqueta 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Con estas etiquetas podemos conectar componentes y fuentes de manera con mayor failidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectadosinternamente y los podremos conectar en el Editor de Placas</td>
+                    <td>Con estas etiquetas podemos conectar componentes y fuentes con mayor facilidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectados internamente y los podremos conectar en el Editor de Placas</td>
                 </tr>
-                <!-- Fila 6 -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/Texto1.png" class="img-1">
-                            <img src="imgs/Texto2.png" class="img-2">
+                            <img src="imgs/Texto1.png" class="mini-slide activo" alt="Texto 1">
+                            <img src="imgs/Texto2.png" class="mini-slide" alt="Texto 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Ayuda a colocar textos en nuestros esquemas, ayuda para guiarnos y por ejmeplo poder nombrar ciertoas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
+                    <td>Ayuda a colocar textos en nuestros esquemas, ayuda para guiarnos y por ejemplo poder nombrar ciertas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
                 </tr>
-                <!-- Fila 7 -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/Cuadro1.png">
+                            <img src="imgs/Cuadro1.png" class="mini-slide activo" alt="Cuadro">
                         </div>
                     </td>
                     <td>Genera un cuadrado en el cual podemos rodear componentes y delimitar espacios, sirve más para organización</td>
                 </tr>
-                <!-- Fila 8 -->
+                
                 <tr>
                     <td>
                         <div class="mini-carrusel">
-                            <img src="imgs/E.png" class="img-1">
-                            <img src="imgs/E2.png" class="img-2">
+                            <img src="imgs/E.png" class="mini-slide activo" alt="Letra E">
+                            <img src="imgs/E2.png" class="mini-slide" alt="Letra E 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Cuando seleccionamos cualquier elemento como texto, componente, ect; y damos click a la letra "E" en nuestro nos permite editar lo seleccionado, funciona como un doble click</td>
+                    <td>Cuando seleccionamos cualquier elemento y damos click a la letra "E" en nuestro teclado nos permite editar lo seleccionado, funciona como un doble click</td>
                 </tr>
-                <!-- Fila 9 -->
+                
                 <tr>
                     <td>
-                        <div>
-                            <img src="imgs/R.png">
+                        <div class="mini-carrusel">
+                            <img src="imgs/R.png" class="mini-slide activo" alt="Letra R">
                         </div>
                     </td>
                     <td>Sirve para rotar el elemento que se haya seleccionado, nos deja acomodarlo a nuestra conveniencia en el esquema</td>
@@ -468,128 +395,121 @@
             </tbody>
         </table>
 
-        <!-- ================= TABLA 2: Especificaciones / Contadores ================= -->
         <table class="tabla-comparativa">
             <tbody>
-                <!-- Fila 1: Título Unido -->
                 <tr>
                     <td colspan="2"><h3>Cantidad de componentes usados</h3></td>
                 </tr>
-                <!-- Fila 2: Subtítulos Textuales -->
                 <tr>
                     <td>Componente</td>
                     <td>Cantidad</td>
                 </tr>
-                <!-- Fila 3: Imagen + Número (CON LETRA) -->
                 <tr>
                     <td><img src="imgs/Resistencia.png" class="img-sencilla" alt="Resistencia"></td>
-                    <!-- El atributo data-objetivo es hasta donde cuenta, data-letra es lo que pone al lado -->
-                    <td><span class="numero-contador animar-conteo" data-objetivo="220" >8</span></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="8">0</span></td>
                 </tr>
-                <!-- Fila 4: Imagen + Número -->
                 <tr>
-                    <td><img src="imgs/LED.png" class="img-sencilla" alt="Capacitor"></td>
-                    <td><span class="numero-contador animar-conteo" data-objetivo="1000" >4</span></td>
+                    <td><img src="imgs/LED.png" class="img-sencilla" alt="LED"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="4">0</span></td>
                 </tr>
-                <!-- Fila 5: Imagen + Número -->
                 <tr>
-                    <td><img src="imgs/Switch.png" class="img-sencilla" alt="Voltaje"></td>
-                    <td><span class="numero-contador animar-conteo" data-objetivo="5" >4</span></td>
+                    <td><img src="imgs/Switch.png" class="img-sencilla" alt="Switch"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="4">0</span></td>
                 </tr>
-                <!-- Fila 6: Imagen + Número -->
                 <tr>
-                    <td><img src="imgs/Pin1x2.png" class="img-sencilla" alt="Corriente"></td>
-                    <td><span class="numero-contador animar-conteo" data-objetivo="500" >1</span></td>
+                    <td><img src="imgs/Pin1x2.png" class="img-sencilla" alt="Pin 1x2"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="1">0</span></td>
                 </tr>
-                <!-- Fila 7: Imagen + Número -->
                 <tr>
-                    <td><img src="imgs/Pin1x4.png" class="img-sencilla" alt="Frecuencia"></td>
-                    <td><span class="numero-contador animar-conteo" data-objetivo="60" >1</span></td>
+                    <td><img src="imgs/Pin1x4.png" class="img-sencilla" alt="Pin 1x4"></td>
+                    <td><span class="numero-contador animar-conteo" data-objetivo="1">0</span></td>
                 </tr>
             </tbody>
         </table>
 
-    </div> 
-
-        <p style="text-align: center;">
-            Y nuestro circuito se basó basado en los circuitos "Pull up" y "Pull down", fueron 2 de cada uno
+        </div> 
+        <p style="text-align: center; margin-top: 30px;">
+            Y nuestro circuito se basó en los circuitos "Pull up" y "Pull down", fueron 2 de cada uno.
         </p>
     </section>
 
-    <!-- Capturas de Pantalla -->
     <section id="desarrollo">
         <h2 class="section-title">Proceso de Diseño</h2>
-
-        <!-- Captura 1: Esquemático -->
         <div class="screenshot-container">
             <img src="captura-esquematico.png" alt="Captura del esquemático">
             <div class="screenshot-info">
                 <h3>Esquemático del Circuito</h3>
                 <p>En esta etapa conectamos el <span class="texto-amarillo">microcontrolador ESP32</span> junto con los push buttons y los LEDs indicadores de estado.</p>
-                <p>Se estructuró el diagrama utilizando etiquetas globales para mantener la hoja de trabajo organizada y limpia.</p>
             </div>
         </div>
 
-        <!-- Captura 2: Layout (Imagen a la derecha) -->
         <div class="screenshot-container reverse">
             <img src="captura-layout.png" alt="Captura del layout PCB">
             <div class="screenshot-info">
                 <h3>Layout y Ruteo</h3>
-                <p>El diseño de la placa de circuito impreso. Se priorizó un <span class="texto-amarillo">ruteo eficiente</span>, respetando las reglas de diseño (DRC) para evitar cortocircuitos.</p>
-                <p>Se añadieron las vías de conexión y se ajustó el grosor de las pistas dependiendo del flujo de corriente.</p>
+                <p>El diseño de la placa de circuito impreso. Se priorizó un <span class="texto-amarillo">ruteo eficiente</span>, respetando las reglas de diseño.</p>
             </div>
         </div>
 
-        <!-- Captura 3: Visor 3D -->
         <div class="screenshot-container">
             <img src="captura-3d.png" alt="Captura del visor 3D">
             <div class="screenshot-info">
                 <h3>Visualización 3D</h3>
-                <p>Una renderización final generada con el visor 3D nativo de la herramienta.</p>
-                <p>Esto nos permitió verificar que ningún componente físico interfiera mecánicamente con otro, garantizando que el diseño <span class="texto-amarillo">cumple con las especificaciones estructurales</span> antes de la fabricación.</p>
+                <p>Una renderización final generada con el visor 3D nativo de la herramienta que <span class="texto-amarillo">cumple con las especificaciones estructurales</span> antes de la fabricación.</p>
             </div>
         </div>
     </section>
 
-    <!-- Personaje animado -->
-    <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
-
-    <!-- Script del Carrusel -->
     <script>
         let slideActual = 0;
         const slides = document.querySelectorAll('.carrusel-slide');
 
         function moverSlide(direccion) {
-            // Oculta el slide actual
             slides[slideActual].classList.remove('activo');
-            
-            // Calcula cuál es el siguiente slide
             slideActual = slideActual + direccion;
             
-            // Si llega al final, regresa al inicio, y viceversa
-            if (slideActual >= slides.length) {
-                slideActual = 0;
-            } else if (slideActual < 0) {
-                slideActual = slides.length - 1;
-            }
+            if (slideActual >= slides.length) slideActual = 0;
+            else if (slideActual < 0) slideActual = slides.length - 1;
             
-            // Muestra el nuevo slide
             slides[slideActual].classList.add('activo');
         }
     </script>
+    
     <script>
-        // Lógica para que los números cuenten solos al scrollear
+        function moverMini(boton, direccion) {
+            // Encuentra el contenedor del mini-carrusel donde se dio el clic
+            const carrusel = boton.closest('.mini-carrusel');
+            // Encuentra todas las imágenes dentro de este carrusel
+            const slides = carrusel.querySelectorAll('.mini-slide');
+            
+            // Busca cuál es la imagen que está activa ahorita
+            let indexActivo = Array.from(slides).findIndex(slide => slide.classList.contains('activo'));
+            
+            // Oculta la imagen activa
+            slides[indexActivo].classList.remove('activo');
+            
+            // Mueve el índice según la flecha presionada (-1 o +1)
+            indexActivo += direccion;
+            
+            // Si llega al límite, se reinicia al principio o al final
+            if (indexActivo >= slides.length) indexActivo = 0;
+            if (indexActivo < 0) indexActivo = slides.length - 1;
+            
+            // Muestra la nueva imagen
+            slides[indexActivo].classList.add('activo');
+        }
+    </script>
+
+    <script>
         const animarNumeros = (entradas, observador) => {
             entradas.forEach((entrada) => {
-                // Si el número es visible en la pantalla
                 if (entrada.isIntersecting) {
                     const elemento = entrada.target;
                     const objetivo = +elemento.getAttribute('data-objetivo');
                     const letra = elemento.getAttribute('data-letra') || '';
                     let contador = 0;
                     
-                    // Ajusta este número (100) para hacer la animación más rápida o lenta
-                    const incremento = objetivo / 100; 
+                    const incremento = objetivo / 50; // Ajustado para un conteo más rápido y fluido
 
                     const actualizarContador = () => {
                         contador += incremento;
@@ -601,16 +521,15 @@
                         }
                     };
                     actualizarContador();
-                    observador.unobserve(elemento); // Hace que solo cuente una vez
+                    observador.unobserve(elemento);
                 }
             });
         };
 
         const observadorScroll = new IntersectionObserver(animarNumeros, {
-            threshold: 0.5 // Empieza a contar cuando el número está a la mitad de la pantalla
+            threshold: 0.5 
         });
 
-        // Aplicamos el observador a todos los números
         document.querySelectorAll('.animar-conteo').forEach(numero => {
             observadorScroll.observe(numero);
         });
