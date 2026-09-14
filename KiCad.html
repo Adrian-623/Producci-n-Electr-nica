@@ -136,7 +136,7 @@
         .prev { left: 15px; }
         .next { right: 15px; }
 
-        .centrar-imagen { display: block; margin: 0 auto; max-width: 90%; height: auto; }   
+        .centrar-imagen { display: block; margin: 0 auto; max-width: 70%; height: auto; }   
 
         .fondo-blanco {
             background-color: #ffffff !important;
@@ -239,6 +239,10 @@
         .numero-contador {
             font-size: 2.8rem; font-weight: 800; color: #ffffff; 
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        /* Fuerza al contenedor a pasar por encima de las demás filas al hacer zoom */
+        .mini-carrusel.al-frente {
+            z-index: 99999 !important;
         }
     </style>
     
@@ -562,11 +566,15 @@
         });
     </script>
     <!-- Script para el Zoom de las imágenes en la tabla -->
+    <!-- Script para el Zoom de las imágenes en la tabla -->
     <script>
         document.querySelectorAll('.mini-slide').forEach(img => {
             img.addEventListener('click', function() {
-                // Al darle clic, activa o desactiva la clase que la hace gigante
+                // Activa o desactiva la clase que la hace gigante
                 this.classList.toggle('ampliada');
+                
+                // Busca su contenedor padre (.mini-carrusel) y lo manda al frente de todo
+                this.closest('.mini-carrusel').classList.toggle('al-frente');
             });
         });
     </script>
