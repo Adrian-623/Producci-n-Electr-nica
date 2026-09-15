@@ -648,7 +648,7 @@
         </p>
         <img src="imgs/Placa_conectada.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen2">
 
-        <div class="screenshot-container reverse">
+        <div class="screenshot-container">
             <!-- Carrusel adaptado -->
             <div class="mini-carrusel carrusel-captura">
                 <img src="imgs/Checklist.png" class="mini-slide activo" alt="Restricciones de la fresadora">
@@ -660,36 +660,34 @@
 
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Ejecutar DRC</span></h3>
-                <p>Como paso final antes de que guardemos nuestra placa en archivos Gerber o SVG para cortarlo en la MonoFab debemos seleccionar el botón "Comprobar reglas de diseño".</p>
-                <p>Esto nos srive para que el programa nos diga si no hay ningun tipo error en nuestra placa y podamos continuar; solo hay que dar click en "Ejecutar DRC" y comprobar
+                <p style="text-align: center; margin-top: 30px;">Como paso final antes de que guardemos nuestra placa en archivos Gerber o SVG para cortarlo en la MonoFab debemos seleccionar el botón "Comprobar reglas de diseño" que esta en la barra de herramientas de la parte superior.</p>
+                <p>Esto nos srive para que el programa nos diga si no hay ningun tipo error en nuestra placa y podamos continuar; solo hay que dar click en "Ejecutar DRC" y comprobar (Hay algunos avisos que se pueden ignorar)
                 </p>
             </div>
         </div>
     </section> 
 
-    <section id="desarrollo">
-        <h2 class="section-title">Proceso de Diseño</h2>
-        <div class="screenshot-container">
-            <img src="captura-esquematico.png" alt="Captura del esquemático">
-            <div class="screenshot-info">
-                <h3>Esquemático del Circuito</h3>
-                <p>En esta etapa conectamos el <span class="texto-amarillo">microcontrolador ESP32</span> junto con los push buttons y los LEDs indicadores de estado.</p>
-            </div>
-        </div>
-
+    <section id="Paso_5">
+        <h2 class="section-title"> <span class="texto-amarillo">Paso 4</span></h2>
+        <p style="text-align: center; margin-top: 30px;">Una vez que al ejecutar el DRC no nos marca ningún error podemos guardar nuestro archivo en formato Gerber o SVG, de acuerdo a lo que necesites
+        </p>
         <div class="screenshot-container reverse">
-            <img src="captura-layout.png" alt="Captura del layout PCB">
-            <div class="screenshot-info">
-                <h3>Layout y Ruteo</h3>
-                <p>El diseño de la placa de circuito impreso. Se priorizó un <span class="texto-amarillo">ruteo eficiente</span>, respetando las reglas de diseño.</p>
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/Archivo1.png" class="mini-slide activo" alt="Restricciones de la fresadora">
+                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
+                <img src="imgs/Archivo2.png" class="mini-slide" alt="Segunda captura de restricciones">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
             </div>
-        </div>
 
-        <div class="screenshot-container">
-            <img src="captura-3d.png" alt="Captura del visor 3D">
             <div class="screenshot-info">
-                <h3>Visualización 3D</h3>
-                <p>Una renderización final generada con el visor 3D nativo de la herramienta que <span class="texto-amarillo">cumple con las especificaciones estructurales</span> antes de la fabricación.</p>
+                <h3><span class="texto-amarillo">Generación de archivos y guardado en SVG</span></h3>
+                <p>Primero seleccionamos Archivo, depués Salida de Fabriación y finalmente Gerbers</p>
+                <p>Nos abrira una pestaña donde nos da a seleccionar el tipo de archivo en el que querramos guardar nuestro arhicvo, en nuestro caso fue SVG,
+                    depués seleccionamos las capas en las que hicimos nuestra placa (como F.Cu, Edge.Cuts, User.1 y User.2) y lo úlltimo que es Ajustar página a la placa.
+                </p>
+                <p>Para finalizar todo el procedimiento que debemos seguir en KiCad damos click en "Trazar" y los archivos se guardaran en la carpeta donde tengamos nuestro proyecto</p>
             </div>
         </div>
     </section>
