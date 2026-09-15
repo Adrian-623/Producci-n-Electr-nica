@@ -324,6 +324,18 @@
                 height: 250px !important; 
             }
         }
+        .personaje-animado {
+            position: fixed;
+            bottom: 0;
+            right: -150px; 
+            z-index: 9999;
+            width: 100px; 
+            animation: caminar-izquierda 12s linear infinite; 
+            pointer-events: none;
+            
+            /* Borra esta línea si tu GIF ya mira hacia la izquierda */
+            transform: scaleX(-1); 
+        }
     </style>
 </head>
 <body>
