@@ -250,6 +250,39 @@
         .mini-carrusel.al-frente {
             z-index: 99999 !important;
         }
+
+        /* Tarjeta estática estilo Carrusel (Imagen arriba, texto abajo) */
+        .tarjeta-destacada {
+            max-width: 900px;
+            margin: 0 auto 40px auto; /* Centrado y con margen inferior */
+            border-radius: 20px;
+            border: 3px solid #D4AC0D; 
+            background-color: #151516;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .tarjeta-destacada img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #333333; /* Línea que separa la imagen del texto */
+        }
+
+        .tarjeta-destacada-texto {
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .tarjeta-destacada-texto h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .tarjeta-destacada-texto p {
+            font-size: 1.2rem;
+            color: #a1a1a6;
+        }
     </style>
 </head>
 <body>
@@ -486,10 +519,21 @@
             Y nuestro circuito se basó en los circuitos "Pull up" y "Pull down", fueron 2 de cada uno.
             Así fue como quedaron después de armar los circuitos:
         </p>
+        <p></p>
 
         <img src="imgs/Esquema_final.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen">
 
     </section>
+
+    <section id="Paso_3">
+        <div class="tarjeta-destacada">
+            <img src="imgs/CambioEd.png" alt="Descripción de la imagen">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Botón para cambiar entre editores</span></h3>
+                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas, ya una que acabemos todo lo necesario en el Editor de placas le damos click para que nos mande al Editor de placas</p>
+            </div>
+        </div>
+    </section> 
 
     <section id="desarrollo">
         <h2 class="section-title">Proceso de Diseño</h2>
