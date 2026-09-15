@@ -253,7 +253,7 @@
 
         /* Tarjeta estática estilo Carrusel (Imagen arriba, texto abajo) */
         .tarjeta-destacada {
-            max-width: 00px;
+            max-width: 100%;
             margin: 0 auto 40px auto; /* Centrado y con margen inferior */
             border-radius: 20px;
             border: 3px solid #D4AC0D; 
@@ -265,8 +265,11 @@
         .tarjeta-destacada img {
             width: 100%;
             height: auto;
+            min-height: 250px; /* Da un espacio base por si la imagen tarda en cargar o se rompe */
             display: block;
-            border-bottom: 2px solid #333333; /* Línea que separa la imagen del texto */
+            border-bottom: 2px solid #333333;
+            object-fit: contain; /* Ajusta la imagen para que no se deforme */
+            background-color: #000000;
         }
 
         .tarjeta-destacada-texto {
@@ -563,6 +566,7 @@
 
     <section id="Paso_3">
         <h2 class="section-title"> <span class="texto-amarillo">Paso 3</span></h2>
+
         <div class="tarjeta-destacada">
             <img src="imgs/CambioEd.png" alt="Descripción de la imagen">
             <div class="tarjeta-destacada-texto">
