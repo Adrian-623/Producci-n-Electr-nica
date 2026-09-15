@@ -251,10 +251,10 @@
             z-index: 99999 !important;
         }
 
-        /* Tarjeta estática estilo Carrusel (Imagen arriba, texto abajo) */
         .tarjeta-destacada {
-            max-width: 00px;
-            margin: 0 auto 40px auto; /* Centrado y con margen inferior */
+            width: fit-content; /* Se adapta exactamente al ancho de la imagen */
+            max-width: 700px;   /* Límite máximo para que no crezca de más */
+            margin: 0 auto 40px auto; /* Centrada y separada */
             border-radius: 20px;
             border: 3px solid #D4AC0D; 
             background-color: #151516;
@@ -263,16 +263,17 @@
         }
 
         .tarjeta-destacada img {
-            width: 55%;
+            width: 100%;
             height: auto;
+            max-height: 600px; /* Evita que imágenes gigantes abarquen toda la pantalla */
             display: block;
+            object-fit: contain;
             border-bottom: 2px solid #333333;
-            object-fit: contain; /* Ajusta la imagen para que no se deforme */
-            background-color: #000000;
+            background-color: #000000; /* Fondo negro por si la imagen tiene espacios vacíos */
         }
 
         .tarjeta-destacada-texto {
-            padding: 30px 40px;
+            padding: 25px 35px;
             text-align: center;
         }
 
@@ -566,19 +567,11 @@
     <section id="Paso_3">
         <h2 class="section-title"> <span class="texto-amarillo">Paso 3</span></h2>
 
-        <div class="screenshot-container">
-            <img src="imgs/CambioEd.png" alt="Captura de la librería">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Botón para cambiar entre editores</span></h3>
-                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas, ya una  vez que acabemos todo lo necesario en el Editor de placas le damos click para que nos mande al Editor de placas</p>
-            </div>
-        </div>
-
         <div class="tarjeta-destacada">
-            <img src="imgs/CambioEd.png" alt="Descripción de la imagen">
+            <img src="imgs/CambioEd.png" alt="Botón para cambiar entre editores">
             <div class="tarjeta-destacada-texto">
                 <h3><span class="texto-amarillo">Botón para cambiar entre editores</span></h3>
-                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas, ya una  vez que acabemos todo lo necesario en el Editor de placas le damos click para que nos mande al Editor de placas</p>
+                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas. Una vez que acabemos todo lo necesario en el esquemático, le damos clic para que nos mande al Editor de placas.</p>
             </div>
         </div>
 
