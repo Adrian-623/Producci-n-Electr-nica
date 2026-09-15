@@ -17,10 +17,10 @@
             border-bottom: 1px solid #333333;
         }
         nav a { color: #f5f5f7; text-decoration: none; margin: 0 25px; font-size: 1rem; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: #D4AC0D; } /* Hover en el nuevo amarillo */
+        nav a:hover { color: #D4AC0D; } 
 
         /* Textos resaltados */
-        .texto-amarillo { color: #F7E596; } /* Amarillo pastel suave para lectura */
+        .texto-amarillo { color: #F7E596; } 
 
         /* Sección de Título Principal con Logo Llamativo */
         .hero {
@@ -29,11 +29,10 @@
             background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
         }
         
-        /* Animación y resplandor para el logo de KiCad */
         .hero-logo {
             width: 250px; 
             margin-bottom: 40px;
-            filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); /* Resplandor amarillo suave */
+            filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); 
             animation: flotar 4s ease-in-out infinite;
         }
 
@@ -45,28 +44,24 @@
         .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
         .hero p { font-size: 1.5rem; color: #a1a1a6; max-width: 600px; }
 
-        /* Configuración de las secciones */
         section { padding: 100px 10vw; border-bottom: 1px solid #333333; }
         .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
 
-        /* Tarjetas de introducción */
         .grid-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
         .card { 
             background-color: #151516; padding: 40px; border-radius: 20px; width: 320px; 
-            border: 2px solid #D4AC0D; /* Borde amarillo suave */
+            border: 2px solid #D4AC0D; 
             text-align: center;
         }
         .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #ffffff; }
         .card p { color: #a1a1a6; font-size: 1.1rem; }
 
-        /* Contenedores para Capturas de Pantalla (Estilo horizontal) */
         .screenshot-container {
             display: flex; align-items: center; background-color: #151516; 
             padding: 40px; border-radius: 20px; max-width: 1000px; margin: 0 auto 40px auto;
             border: 2px solid #D4AC0D;
         }
         
-        /* Imagen de captura ajustada para no ser circular */
         .screenshot-container img {
             width: 55%; border-radius: 10px; margin-right: 40px; 
             border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
@@ -76,11 +71,9 @@
         .screenshot-info h3 { font-size: 2rem; color: #ffffff; margin-bottom: 15px; }
         .screenshot-info p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 15px; }
 
-        /* Alternar la imagen a la derecha para romper la monotonía */
         .reverse { flex-direction: row-reverse; }
         .reverse img { margin-right: 0; margin-left: 40px; }
 
-        /* Responsividad para pantallas pequeñas */
         @media (max-width: 900px) {
             .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
             .screenshot-container img, .screenshot-container.reverse img { width: 100%; margin: 0 0 25px 0; }
@@ -140,27 +133,23 @@
 
         .fondo-blanco {
             background-color: #ffffff !important;
-            padding: 5px; /* Le da un pequeño margen para que se vea mejor */
+            padding: 5px; 
         }
 
-        /* Estilo para cuando la imagen de la tabla reciba el clic (Zoom) */
         .mini-slide {
-            /* (Tus estilos anteriores de .mini-slide se quedan igual, solo asegúrate de agregar esto:) */
-            cursor: zoom-in; /* Pone el cursor de lupa */
+            cursor: zoom-in; 
         }
 
-        /* El fondo oscuro que tapará toda la página */
         #fondo-oscuro-zoom {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background-color: rgba(0, 0, 0, 0.9); /* Fondo casi negro */
-            backdrop-filter: blur(5px); /* Difumina lo que queda atrás */
-            z-index: 99998; /* Justo debajo de la imagen ampliada */
+            background-color: rgba(0, 0, 0, 0.9); 
+            backdrop-filter: blur(5px); 
+            z-index: 99998; 
         }
 
-        /* Estilo de la imagen cuando está gigante */
         .mini-slide.ampliada {
             position: fixed;
             top: 50%;
@@ -169,62 +158,68 @@
             width: 80vw !important;
             height: auto !important;
             max-height: 90vh;
-            z-index: 99999 !important; /* Fuerza a estar por encima de todo */
+            z-index: 99999 !important; 
             box-shadow: 0 0 50px rgba(0, 0, 0, 1);
             border: 3px solid #D4AC0D;
             opacity: 1 !important;
             cursor: zoom-out;
             border-radius: 15px;
-            background-color: #ffffff; /* Asegura que el fondo sea blanco por si la imagen es transparente */
+            background-color: #ffffff; 
         }
 
-        /* Contenedor principal para alinear las tablas lado a lado */
+        /* Contenedor principal de las tablas */
         .contenedor-tablas {
             display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;
-            max-width: 1300px; /* Un poco más ancho para las imágenes grandes */
+            max-width: 1400px; 
             margin: 50px auto;
         }
 
-        /* Estilo base de las tablas con degradado invertido (Oscuro arriba, Amarillo abajo) */
+        /* Nuevo estilo oscuro para las tablas */
         .tabla-comparativa {
-            flex: 1; min-width: 320px; 
+            flex: 1; min-width: 400px; 
             border-collapse: collapse;
-            background: linear-gradient(to top, #D4AC0D 0%, #151516 60%, #000000 100%);
+            background-color: #151516; /* Fondo oscuro liso */
             border-radius: 20px; overflow: hidden; 
             box-shadow: 0 10px 30px rgba(212, 172, 13, 0.15);
-            border: 2px solid rgba(212, 172, 13, 0.5);
+            border: 2px solid #D4AC0D;
         }
 
-        /* Líneas divisorias de la tabla */
+        /* Líneas divisorias de la tabla EN AMARILLO */
         .tabla-comparativa th, .tabla-comparativa td {
-            border: 1px solid rgba(212, 172, 13, 0.3);
+            border: 1px solid #D4AC0D; 
             padding: 15px; text-align: center; vertical-align: middle;
+            color: #ffffff; /* Textos en blanco para verse en fondo negro */
         }
 
-        /* Ajuste de colores de texto para el nuevo degradado */
-        .tabla-comparativa tr { color: #f5f5f7; }
-        .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) { color: #ffffff; font-weight: 700; }
-        
-        /* Las últimas filas (Fondo amarillo = Texto oscuro) */
-        .tabla-comparativa tr:nth-last-child(1), .tabla-comparativa tr:nth-last-child(2) { color: #000000; font-weight: 700; }
-        .tabla-comparativa tr:nth-last-child(3) { color: #222222; font-weight: 600; }
+        /* Estilo para los subtítulos (Símbolo y contenido / Descripción) */
+        .tabla-comparativa tr:nth-child(2) {
+            background-color: rgba(212, 172, 13, 0.1); /* Ligero resaltado para cabeceras */
+            font-weight: bold;
+        }
+
+        /* Clase para forzar a la tercera tabla a ir abajo y centrarse */
+        .tabla-centrada {
+            flex: 0 0 100%; /* Obliga a la tabla a ocupar toda la fila */
+            max-width: 800px; /* Tamaño máximo para que luzca bien al centro */
+            margin: 20px auto 0 auto;
+        }
 
         /* ================= Mini Carrusel de las tablas ================= */
         .mini-carrusel {
             position: relative;
-            width: 220px; /* Imagen mucho más grande */
+            width: 220px; 
             height: 150px;
             margin: 0 auto;
             border-radius: 8px;
             overflow: hidden;
-            background-color: #000; /* Fondo negro para que resalten las capturas */
-            border: 1px solid rgba(212, 172, 13, 0.5);
+            background-color: #000; 
+            border: 1px solid #D4AC0D;
         }
 
         .mini-slide {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: contain; /* Evita que la imagen se corte */
+            object-fit: contain; 
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -242,23 +237,20 @@
         .mini-btn.prev { left: 5px; }
         .mini-btn.next { right: 5px; }
 
-        /* Imágenes fijas de la Tabla 2 */
         .img-sencilla {
-            width: 180px; /* Imagen mucho más grande */
+            width: 180px; 
             border-radius: 8px; display: block; margin: 0 auto;
         }
 
-        /* Estilo de los números grandes (Tabla 2) */
         .numero-contador {
             font-size: 2.8rem; font-weight: 800; color: #ffffff; 
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
-        /* Fuerza al contenedor a pasar por encima de las demás filas al hacer zoom */
+        
         .mini-carrusel.al-frente {
             z-index: 99999 !important;
         }
     </style>
-    
 </head>
 <body>
 
@@ -347,12 +339,14 @@
             Una vez que estabamos ahí para formar nuestro esquema del circuito usamos los siguientes instrumentos y componentes:
         </p>
 
+        <!-- ================= INICIO DE CONTENEDOR DE TABLAS ================= -->
         <div class="contenedor-tablas">
         
+        <!-- === TABLA 1: Instrumentos (Parte 1) === -->
         <table class="tabla-comparativa">
             <tbody>
                 <tr>
-                    <td colspan="2"><h3>Instrumentos Utilizados</h3></td>
+                    <td colspan="2"><h3 class="texto-amarillo">Herramientas Utilizadas (1/2)</h3></td>
                 </tr>
                 <tr>
                     <td>Símbolo y contenido</td>
@@ -392,7 +386,7 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Con estas etiquetas podemos conectar componentes y fuentes con mayor facilidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectados internamente y los podremos conectar en el Editor de Placas</td>
+                    <td>Con estas etiquetas podemos conectar componentes y fuentes con mayor facilidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectados internamente</td>
                 </tr>
                 
                 <tr>
@@ -405,6 +399,19 @@
                         </div>
                     </td>
                     <td>Ayuda a colocar textos en nuestros esquemas, ayuda para guiarnos y por ejemplo poder nombrar ciertas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- === TABLA 2: Instrumentos (Parte 2) === -->
+        <table class="tabla-comparativa">
+            <tbody>
+                <tr>
+                    <td colspan="2"><h3 class="texto-amarillo">Herramientas Utilizadas (2/2)</h3></td>
+                </tr>
+                <tr>
+                    <td>Símbolo y contenido</td>
+                    <td>Descripción</td>
                 </tr>
                 
                 <tr>
@@ -439,10 +446,11 @@
             </tbody>
         </table>
 
-        <table class="tabla-comparativa">
+        <!-- === TABLA 3: Componentes (Centrada Abajo) === -->
+        <table class="tabla-comparativa tabla-centrada">
             <tbody>
                 <tr>
-                    <td colspan="2"><h3>Cantidad de componentes usados</h3></td>
+                    <td colspan="2"><h3 class="texto-amarillo">Cantidad de componentes usados</h3></td>
                 </tr>
                 <tr>
                     <td>Componente</td>
@@ -472,6 +480,8 @@
         </table>
 
         </div> 
+        <!-- ================= FIN DE CONTENEDOR DE TABLAS ================= -->
+
         <p style="text-align: center; margin-top: 30px;">
             Y nuestro circuito se basó en los circuitos "Pull up" y "Pull down", fueron 2 de cada uno.
         </p>
@@ -523,25 +533,18 @@
     
     <script>
         function moverMini(boton, direccion) {
-            // Encuentra el contenedor del mini-carrusel donde se dio el clic
             const carrusel = boton.closest('.mini-carrusel');
-            // Encuentra todas las imágenes dentro de este carrusel
             const slides = carrusel.querySelectorAll('.mini-slide');
             
-            // Busca cuál es la imagen que está activa ahorita
             let indexActivo = Array.from(slides).findIndex(slide => slide.classList.contains('activo'));
             
-            // Oculta la imagen activa
             slides[indexActivo].classList.remove('activo');
             
-            // Mueve el índice según la flecha presionada (-1 o +1)
             indexActivo += direccion;
             
-            // Si llega al límite, se reinicia al principio o al final
             if (indexActivo >= slides.length) indexActivo = 0;
             if (indexActivo < 0) indexActivo = slides.length - 1;
             
-            // Muestra la nueva imagen
             slides[indexActivo].classList.add('activo');
         }
     </script>
@@ -555,7 +558,7 @@
                     const letra = elemento.getAttribute('data-letra') || '';
                     let contador = 0;
                     
-                    const incremento = objetivo / 50; // Ajustado para un conteo más rápido y fluido
+                    const incremento = objetivo / 50; 
 
                     const actualizarContador = () => {
                         contador += incremento;
@@ -580,9 +583,7 @@
             observadorScroll.observe(numero);
         });
     </script>
-    <!-- Script para el Zoom de las imágenes en la tabla -->
-    <!-- Script para el Zoom de las imágenes en la tabla -->
-    <!-- Script para el Zoom de las imágenes con fondo oscuro -->
+
     <script>
         const fondoOscuro = document.getElementById('fondo-oscuro-zoom');
 
@@ -590,7 +591,6 @@
             img.addEventListener('click', function() {
                 this.classList.toggle('ampliada');
                 
-                // Si la imagen se amplió, muestra el fondo oscuro. Si no, lo oculta.
                 if(this.classList.contains('ampliada')) {
                     fondoOscuro.style.display = 'block';
                 } else {
@@ -599,7 +599,6 @@
             });
         });
 
-        // Permite cerrar la imagen también dando clic fuera de ella (en el fondo oscuro)
         fondoOscuro.addEventListener('click', function() {
             document.querySelectorAll('.mini-slide.ampliada').forEach(img => {
                 img.classList.remove('ampliada');
