@@ -253,7 +253,7 @@
 
         /* Tarjeta estática estilo Carrusel (Imagen arriba, texto abajo) */
         .tarjeta-destacada {
-            max-width: 700px;
+            max-width: 00px;
             margin: 0 auto 40px auto; /* Centrado y con margen inferior */
             border-radius: 20px;
             border: 3px solid #D4AC0D; 
@@ -282,6 +282,42 @@
         .tarjeta-destacada-texto p {
             font-size: 1.2rem;
             color: #a1a1a6;
+        }
+
+        /* Ajuste para usar el mini-carrusel en los recuadros grandes de desarrollo */
+        .carrusel-captura {
+            width: 55% !important;
+            height: 350px !important; /* Puedes aumentar o reducir esta altura según veas tus fotos */
+            border: 1px solid #333 !important;
+            border-radius: 10px !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+            background-color: #000 !important;
+        }
+
+        /* Espaciado porque está en la clase "reverse" (a la derecha) */
+        .screenshot-container.reverse .carrusel-captura {
+            margin-left: 40px !important;
+            margin-right: 0 !important;
+        }
+
+        /* Protegemos la imagen para que encaje bien en el contenedor sin romper el Zoom */
+        .carrusel-captura .mini-slide:not(.ampliada) {
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 10px !important;
+            object-fit: contain !important; 
+        }
+        
+        /* Ajuste para celulares */
+        @media (max-width: 900px) {
+            .carrusel-captura { 
+                width: 100% !important; 
+                margin: 0 0 25px 0 !important; 
+                height: 250px !important; 
+            }
         }
     </style>
 </head>
@@ -526,11 +562,32 @@
     </section>
 
     <section id="Paso_3">
+        <h2 class="section-title"> <span class="texto-amarillo">Paso 3</span></h2>
         <div class="tarjeta-destacada">
             <img src="imgs/CambioEd.png" alt="Descripción de la imagen">
             <div class="tarjeta-destacada-texto">
                 <h3><span class="texto-amarillo">Botón para cambiar entre editores</span></h3>
-                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas, ya una que acabemos todo lo necesario en el Editor de placas le damos click para que nos mande al Editor de placas</p>
+                <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas, ya una  vez que acabemos todo lo necesario en el Editor de placas le damos click para que nos mande al Editor de placas</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <img src="Restricciones.png" class="mini-slide activo" alt="Restricciones de la fresadora">
+                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
+                <img src="Restricciones2.png" class="mini-slide" alt="Segunda captura de restricciones">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Restricciones</span></h3>
+                <p>Antes de empezar a acomodar todos los componentes y conectarlos con pistas es recomendable colocar las restricciones de la fresadora,
+                    que en este caso fue la fresadora Roland monoFab SRM-20.</p>
+                <p>Establecimos una distancia mínima entre los conductores de 0.4 mm, este parámetro asegura un diseño conforme al material utilizado de la placa.
+                    Igualmente agregamos el ancho de 2.0 mm para las lineas que representan el corte del borde de nuestra placa.
+                </p>
             </div>
         </div>
     </section> 
