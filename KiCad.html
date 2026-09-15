@@ -131,7 +131,7 @@
         .next { right: 15px; }
 
         .centrar-imagen { display: block; margin: 0 auto; max-width: 55%; height: auto; } 
-        .centrar-imagen2 { display: block; margin: 0 auto; max-width: 35%; height: auto; }    
+        .centrar-imagen2 { display: block; margin: 0 auto; max-width: 25%; height: auto; }    
 
         .fondo-blanco {
             background-color: #ffffff !important;
@@ -648,6 +648,23 @@
         </p>
         <img src="imgs/Placa_conectada.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen2">
 
+        <div class="screenshot-container reverse">
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/Checklist.png" class="mini-slide activo" alt="Restricciones de la fresadora">
+                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
+                <img src="imgs/Checklist2.png" class="mini-slide" alt="Segunda captura de restricciones">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Ejecutar DRC</span></h3>
+                <p>Como paso final antes de que guardemos nuestra placa en archivos Gerber o SVG para cortarlo en la MonoFab debemos seleccionar el botón "Comprobar reglas de diseño".</p>
+                <p>Esto nos srive para que el programa nos diga si no hay ningun tipo error en nuestra placa y podamos continuar; solo hay que dar click en "Ejecutar DRC" y comprobar
+                </p>
+            </div>
+        </div>
     </section> 
 
     <section id="desarrollo">
