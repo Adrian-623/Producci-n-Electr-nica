@@ -447,13 +447,15 @@
 
         /* Clase para evitar que las imágenes del acordeón sean enormes */
         .img-acordeon {
-            max-width: 600px; /* Límite de tamaño */
-            width: 100%; /* Adaptable en celulares */
-            height: auto;
-            display: block;
-            margin: 30px auto 10 auto; /* Separación  centrado */
+            max-width: 600px !important; 
+            width: 100% !important; 
+            height: auto !important;
+            
+            /* Estas dos líneas obligan al centrado absoluto */
+            display: block !important;
+            margin: 30px auto 20px auto !important; 
+            
             border-radius: 10px;
-            border: 1px solid #D4AC0D;
         }
     </style>
 </head>
