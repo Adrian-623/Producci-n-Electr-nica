@@ -401,6 +401,7 @@
         }
 
         /* Contenedor colapsable */
+        /* Contenedor maestro animado con CSS Grid */
         .accordion-collapse {
             display: grid !important;
             grid-template-rows: 0fr !important;
@@ -409,18 +410,30 @@
             background-color: #151516;
         }
 
+        /* Expansión exacta al 100% de lo que mida el contenido */
         .accordion-collapse.abierto {
             grid-template-rows: 1fr !important;
         }
 
+        /* ¡LA SOLUCIÓN! Escondemos el relleno (padding) para que no haga "bulto" al cerrar */
         .accordion-body {
-            min-height: 0 !important; /* Regla estricta para evitar desbordes en el Grid */
-            padding: 25px 30px;
+            min-height: 0 !important; 
+            overflow: hidden !important; /* Corta cualquier texto que intente asomarse */
+            
+            /* Empieza con padding vertical en 0 y sin línea separadora */
+            padding: 0 30px !important; 
+            border-top: 0px solid transparent !important;
+            
             color: #a1a1a6;
             font-size: 1.1rem;
-            border-top: 1px solid #333333;
+            transition: padding 0.4s ease-out !important;
         }
 
+        /* Cuando le damos clic y se abre, recupera sus espacios y su línea */
+        .accordion-collapse.abierto .accordion-body {
+            padding: 25px 30px !important;
+            border-top: 1px solid #333333 !important;
+        }
         /* Enlaces dentro del acordeón */
         .accordion-body a {
             color: #ffffff;
