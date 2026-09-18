@@ -347,6 +347,95 @@
                 left: 100vw; 
             }
         }
+
+        /* ================= ESTILOS DEL ACORDEÓN ================= */
+        .accordion {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #D4AC0D;
+            background-color: #151516;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #333333;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Botón principal del acordeón */
+        .accordion-button {
+            width: 100%;
+            text-align: left;
+            background-color: #1a1a1a;
+            color: #D4AC0D;
+            padding: 20px 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-button:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* El ícono de "+" y "-" */
+        .accordion-button::after {
+            content: '+';
+            font-size: 1.8rem;
+            color: #D4AC0D;
+            transition: transform 0.3s ease;
+        }
+        .accordion-button:not(.collapsed)::after {
+            content: '−'; /* Cambia a menos cuando está abierto */
+            transform: rotate(180deg);
+        }
+
+        /* Contenedor colapsable */
+        .accordion-collapse {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out; /* Animación suave al abrir/cerrar */
+            background-color: #151516;
+        }
+
+        .accordion-body {
+            padding: 25px 30px;
+            color: #a1a1a6;
+            font-size: 1.1rem;
+            border-top: 1px solid #333333;
+        }
+
+        /* Enlaces dentro del acordeón */
+        .accordion-body a {
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: #D4AC0D;
+            font-weight: 600;
+        }
+        .accordion-body a:hover {
+            color: #D4AC0D;
+        }
+
+        /* Clase para evitar que las imágenes del acordeón sean enormes */
+        .img-acordeon {
+            max-width: 400px; /* Límite de tamaño */
+            width: 100%; /* Adaptable en celulares */
+            height: auto;
+            display: block;
+            margin: 20px auto 0 auto; /* Separación y centrado */
+            border-radius: 10px;
+            border: 1px solid #D4AC0D;
+        }
     </style>
 </head>
 <body>
@@ -362,6 +451,64 @@
         <h1>Diseño de PCB en KiCad</h1>
         <p class="texto-grande">Programa utilizado para diseñar PCBs desde diagramas esquematicos</p>
     </header>
+
+    <section id="Descarga">
+        Antes que nada para poder usar esta aplicación la debemos descargar desde internet 
+        <section id="detalles-extra">
+    <h2 class="section-title"><span class="texto-amarillo">Detalles Adicionales</span></h2>
+
+    <div class="accordion" id="accordionExample">
+        
+        <!-- ELEMENTO 1: Texto y Link -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button">
+                    1. Página de internet para descargar la aplicación
+                </button>
+            </h2>
+            <!-- Este empieza abierto (sin la clase 'collapsed' en el botón y con max-height en JS) -->
+            <div class="accordion-collapse" style="max-height: 1000px;">
+                <div class="accordion-body">
+                    <p>Para poder descargar la apliación debes visitar el siguiente link: <a href="https://www.kicad.org/download/" target="_blank">Link para KiCad</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ELEMENTO 2: Texto e Imagen -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button">
+                    2. Opción a elegir
+                </button>
+            </h2>
+            <div class="accordion-collapse">
+                <div class="accordion-body">
+                    <p>Aquí se muestran las opciones que tenemos para elegir de acuerdo al sistema operativo que tengamos en nuestro dispositivo, en nuestro caso fue Windows</p>
+                    
+                    <img src="imgs/Operativo_Ki.png" alt="Detalle del enrutado" class="img-acordeon imagen-borde-amarillo centrar-imagen2">
+                </div>
+            </div>
+        </div>
+
+        <!-- ELEMENTO 3: Texto e Imagen -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button">
+                    3. Versión para el Sistema Operativo
+                </button>
+            </h2>
+            <div class="accordion-collapse">
+                <div class="accordion-body">
+                    <p>Ya cómo último paso para poder descargar el KiCad es esocger la versión que querramos, nosotros ecogimos la de Github de Norte América y de 64-bit x64</p>
+                    <!-- Agrega tu imagen aquí -->
+                    <img src="imgs/Version.png" alt="Visión de capas" class="img-acordeon imagen-borde-amarillo centrar-imagen2">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+    </section>
 
     <section id="introduccion">
         <h2 class="section-title"><span class="texto-amarillo">¿Qué es KiCad?</span></h2>
