@@ -31,6 +31,8 @@
         
         .hero-logo {
             width: 250px; 
+            max-width: 80%; /* Para que en celulares no se salga */
+            height: auto;   /* ¡CLAVE! Obliga al navegador a renderizar las proporciones del SVG */
             margin-bottom: 40px;
             filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); 
             animation: flotar 4s ease-in-out infinite;
