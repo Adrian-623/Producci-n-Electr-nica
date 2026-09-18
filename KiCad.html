@@ -402,17 +402,19 @@
 
         /* Contenedor colapsable */
         .accordion-collapse {
-            max-height: 0 !important; /* Obliga a que mida 0 cuando está cerrado */
-            overflow: hidden !important; /* Esconde el contenido */
-            transition: max-height 0.6s ease-in-out !important; 
+            display: grid !important;
+            grid-template-rows: 0fr !important;
+            overflow: hidden !important;
+            transition: grid-template-rows 0.4s ease-out !important;
             background-color: #151516;
         }
 
         .accordion-collapse.abierto {
-            max-height: 3000px; /* Un límite muy grande para que quepa cualquier imagen */
+            grid-template-rows: 1fr !important;
         }
 
         .accordion-body {
+            min-height: 0 !important; /* Regla estricta para evitar desbordes en el Grid */
             padding: 25px 30px;
             color: #a1a1a6;
             font-size: 1.1rem;
