@@ -402,14 +402,14 @@
 
         /* Contenedor colapsable */
         .accordion-collapse {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease-in-out; /* Animación fluida */
+            max-height: 0 !important; /* Obliga a que mida 0 cuando está cerrado */
+            overflow: hidden !important; /* Esconde el contenido */
+            transition: max-height 0.6s ease-in-out !important; 
             background-color: #151516;
         }
 
         .accordion-collapse.abierto {
-            max-height: 2500px; /* Un límite muy grande para que quepa cualquier imagen */
+            max-height: 3000px; /* Un límite muy grande para que quepa cualquier imagen */
         }
 
         .accordion-body {
@@ -466,14 +466,14 @@
 
         <div class="accordion" id="accordionExample">
             
-            <!-- ELEMENTO 1: Texto y Link -->
+            <!-- ELEMENTO 1 -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button">
                         1. Página oficial de descarga
                     </button>
                 </h2>
-                <!-- Este empieza abierto -->
+                <!-- La palabra "abierto" hace que este inicie desplegado -->
                 <div class="accordion-collapse abierto">
                     <div class="accordion-body">
                         <p>Para poder descargar la aplicación debes visitar el siguiente link: <a href="https://www.kicad.org/download/" target="_blank">Página de descargas de KiCad</a>.</p>
@@ -481,34 +481,31 @@
                 </div>
             </div>
 
-            <!-- ELEMENTO 2: Texto e Imagen -->
+            <!-- ELEMENTO 2 -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button">
                         2. Sistema Operativo a elegir
                     </button>
                 </h2>
-                <div class="accordion-collapse abierto">
+                <div class="accordion-collapse">
                     <div class="accordion-body">
                         <p>Aquí se muestran las opciones que tenemos para elegir de acuerdo al sistema operativo que tengamos en nuestro dispositivo. En nuestro caso seleccionamos Windows.</p>
-                        
                         <img src="imgs/Operativo_Ki.png" alt="Opciones de Sistema Operativo" class="img-acordeon imagen-borde-amarillo">
                     </div>
                 </div>
             </div>
 
-            <!-- ELEMENTO 3: Texto e Imagen -->
+            <!-- ELEMENTO 3 -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button">
                         3. Versión para el Sistema Operativo
                     </button>
                 </h2>
-                <div class="accordion-collapse abierto">
+                <div class="accordion-collapse">
                     <div class="accordion-body">
                         <p>Ya como último paso para poder descargar KiCad es escoger la versión que queramos. Nosotros escogimos la de GitHub de Norte América en su versión de 64-bit (x64).</p>
-                        
-                        <!-- Agrega tu imagen aquí -->
                         <img src="imgs/Version.png" alt="Versión de descarga" class="img-acordeon imagen-borde-amarillo">
                     </div>
                 </div>
@@ -966,5 +963,32 @@
         });
     </script>
     <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
+
+    <!-- Script definitivo para el Acordeón -->
+    <script>
+        const botonesAcordeon = document.querySelectorAll('.accordion-button');
+
+        botonesAcordeon.forEach(boton => {
+            boton.addEventListener('click', function() {
+                const item = this.closest('.accordion-item');
+                const contenido = item.querySelector('.accordion-collapse');
+                const estaAbierto = contenido.classList.contains('abierto');
+
+                // 1. Cierra todos los paneles ocultándolos
+                document.querySelectorAll('.accordion-collapse').forEach(panel => {
+                    panel.classList.remove('abierto');
+                });
+                
+                // 2. Regresa todos los botones a su símbolo de más (+)
+                botonesAcordeon.forEach(b => b.classList.add('collapsed'));
+
+                // 3. Si la pestaña que tocaste estaba cerrada, ábrela
+                if (!estaAbierto) {
+                    this.classList.remove('collapsed'); // Pone el símbolo de menos (-)
+                    contenido.classList.add('abierto'); // Muestra el contenido
+                }
+            });
+        });
+    </script>
 </body>
 </html>
