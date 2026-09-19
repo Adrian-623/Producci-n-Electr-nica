@@ -609,7 +609,10 @@
                 <img src="imgs/Herramientas_esquema.jpeg" alt="Editor de esquemas">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Herramientas principales</span></h3>
-                    <p>Las herramientas señaladas son las que usamos principalmente a la hora de conectar nuestro circuito</p>
+                    <p>Las herramientas señaladas son las que usamos principalmente para formar nuestro esquema </p>
+                    <p>El apartado de <span class="texto-amarillo">Propiedades</span> nos permite verl as características elmento selccionado en el circuito o de cualquier elemento seleccionado; como 
+                        Números de pines, Nombres de pines, Posición en X y Y, Orientación y Propiedades específicas del componente
+                    </p>
                 </div>
             </div>
             
@@ -645,7 +648,8 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Aquí pudimos seleccionar los componentes que necesitabamos para hacer el esquema del circuito, y se puede seleccionar una mayor variedad</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Colocar símbolos</span></h2>
+                        Aquí seleccionamos los componentes que necesitabamos para hacer el esquema del circuito, y se puede seleccionar una mayor variedad de componentes</td>
                 </tr>
                 
                 <tr>
@@ -657,7 +661,8 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Aquí escogemos el tipo de alimentación que le daremos al circuito al igual que la línea tierra necesaria para cualquier circuito</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Colocar símbolos de alimentación</span></h2>
+                        Aquí escogemos el tipo de alimentación que le daremos al circuito al igual que la línea de tierra necesaria para cualquier circuito</td>
                 </tr>
                 
                 <tr>
@@ -669,7 +674,8 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Con estas etiquetas podemos conectar componentes y fuentes con mayor facilidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectados internamente</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Colocar etiquetas de red</span></h2>
+                        Con estas etiquetas podemos conectar componentes y fuentes con mayor facilidad, si conectamos 2 componentes a la misma etiqueta estos quedaran conectados internamente que podremos conectar posteriormete en el <spanc class="texto-amarillo">Editor de placas</spanc></td>
                 </tr>
                 
                 <tr>
@@ -681,7 +687,8 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Ayuda a colocar textos en nuestros esquemas, ayuda para guiarnos y por ejemplo poder nombrar ciertas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Dibujar texto</span></h2>
+                        Ayuda a colocar textos en nuestros esquemas, nos guia al organizar el esquema y por ejemplo poder nombrar ciertas partes del circuito (Este texto no aparece en el Editor de Placas)</td>
                 </tr>
             </tbody>
         </table>
@@ -703,7 +710,8 @@
                             <img src="imgs/Cuadro1.png" class="mini-slide activo" alt="Cuadro">
                         </div>
                     </td>
-                    <td>Genera un cuadrado en el cual podemos rodear componentes y delimitar espacios, sirve más para organización</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Dibujar rectángulos</span></h2>
+                        Genera un cuadrado en el cual podemos rodear componentes y delimitar espacios, sirve más para organización</td>
                 </tr>
                 
                 <tr>
@@ -715,7 +723,8 @@
                             <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
                         </div>
                     </td>
-                    <td>Cuando seleccionamos cualquier elemento y damos click a la letra "E" en nuestro teclado nos permite editar lo seleccionado, funciona como un doble click</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Tecla "E"</span></h2>
+                        Cuando seleccionamos cualquier elemento y damos click a la letra "E" en nuestro teclado nos permite editar lo seleccionado, funciona como un doble click</td>
                 </tr>
                 
                 <tr>
@@ -724,7 +733,20 @@
                             <img src="imgs/R.png" class="mini-slide activo fondo-blanco" alt="Letra R">
                         </div>
                     </td>
-                    <td>Sirve para rotar el elemento que se haya seleccionado, nos deja acomodarlo a nuestra conveniencia en el esquema</td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Tecla R</span></h2>
+                        Sirve para rotar el elemento que se haya seleccionado, nos deja acomodarlo a nuestra conveniencia en el esquema</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mini-carrusel">
+                            <img src="imgs/ERC.png" class="mini-slide activo fondo-blanco" alt="Letra E">
+                            <img src="imgs/ERC_ejecutado.png" class="mini-slide fondo-blanco" alt="Letra E 2">
+                            <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                            <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+                        </div>
+                    </td>
+                    <td><h2 class="section-subtitle"><span class="texto-amarillo">Ejecutar ERC</span></h2>
+                        Una vez que tenemos todo conectado ejecutamos el ERC para verificar que no hayamos olvidado conectar algo o tengamos algun error</td>
                 </tr>
             </tbody>
         </table>
@@ -787,11 +809,22 @@
             </div>
         </div>
 
-        <div class="tarjeta-destacada">
-            <img src="imgs/Mesa_Placa.png" alt="Botón para cambiar entre editores">
-            <div class="tarjeta-destacada-texto">
+        <div class="carrusel-contenedor">
+            <div class="carrusel-slide activo">
+                <img src="imgs/Inicio_esquema.png" alt="Pantalla de Inicio de KiCad">
                 <p>Así es cómo se ve la mesa de trabajo de Editor de Placas</p>
             </div>
+            <div class="carrusel-slide">
+                <img src="imgs/Herramientas_esquema.jpeg" alt="Editor de esquemas">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Herramientas principales</span></h3>
+                    <p>Las herramientas señaladas son las que usamos principalmente para editar la placa y conectar los componentes </p>
+                </div>
+            </div>
+            
+            <!-- CORRECCIÓN AQUÍ: Se añadió "this" a los botones -->
+            <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1, this)">&#10095;</button>
         </div>
 
 
@@ -899,10 +932,11 @@
 
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Confirmación de restricciones</span></h3>
-                <p>Restricción 1: Margen Mínimo</p>
+                <p><span class="texto-amarillo">Restricción 1: Margen Mínimo</span></p>
                 <p>La primera restricción es para poner la separecación mínima que querramos entre pistas, como se puede ver en la primera imagen</p>
-                <p>Restrcción 2: Ancho mínimo de pista</p>
+                <p><span class="texto-amarillo">Restrcción 2: Ancho mínimo de pista</span></p>
                 <p>La segunda restricción nos indica el ancho mínimo para las pistas que conectan los componentes</p>
+                <p>(El instrumento de medida no es demasiado preciso en medidas inferiores a un milímetro y por eso hay variación de 0.1mm en las imágenes mostradas con anterioridad)</p>
             </div>
         </div>
     </section> 
