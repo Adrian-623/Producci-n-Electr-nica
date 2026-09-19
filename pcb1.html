@@ -163,13 +163,13 @@
 
         <!-- Buscar el programa adecuado -->
         <h3 style="text-align: center; margin-bottom: 20px; font-size: 2rem; color: #fff;">1. Selección de Máquina</h3>
-        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Dentro de la página, damos clic derecho, elegimos <em>Programs > Open server program</em>, en el buscador escribimos "SRM" y seleccionamos <strong class="texto-amarillo">mill 2d pcb</strong>.</p>
+        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Dentro de la página elegimos <em>Programs</em>, en el buscador escribimos "SRM" y seleccionamos <strong class="texto-amarillo">mill 2d pcb</strong>.</p>
         
         <img src="imgs/Mods_buscar.png" alt="Buscador de Mods" class="imagen-borde-amarillo">
 
         <!-- Interfaz General -->
         <h3 style="text-align: center; margin: 50px 0 20px 0; font-size: 2rem; color: #fff;">Interfaz General</h3>
-        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Al cargar el programa, se desplegará una red de nodos conectados automáticamente. Así es como se ve el área de trabajo completa:</p>
+        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Al cargar el programa, se desplegará una red de módulos conectados automáticamente. Así es como se ve el área de trabajo completa:</p>
         
         <img src="imgs/SRM_interfaz.png" alt="Vista General de Mods" class="imagen-borde-amarillo" style="max-width: 95%;">
     </section>
@@ -247,25 +247,25 @@
         <div class="config-grid">
             <!-- Tarjeta 1 -->
             <div class="config-card">
-                <h3>1. Perforaciones (Drill)</h3>
+                <h3>1. Perforaciones</h3>
                 <ul>
-                    <li><strong>Broca / Herramienta:</strong> <span>1/32"</span></li>
-                    <li><strong>Cut Depth:</strong> <span>0.6 mm</span></li>
-                    <li><strong>Max Depth:</strong> <span>1.8 mm</span></li>
+                    <li><strong>Broca / Herramienta:</strong> <span>0.79mm drill</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.254 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>1.7018 mm</span></li>
                     <li><strong>Offset Number:</strong> <span>1</span></li>
-                    <li><strong>Speed:</strong> <span>1.5 mm/s</span></li>
+                    <li><strong>Speed:</strong> <span>0.3 mm/s</span></li>
                 </ul>
             </div>
 
             <!-- Tarjeta 2 -->
             <div class="config-card">
-                <h3>2. Pistas (Traces)</h3>
+                <h3>2. Pistas</h3>
                 <ul>
-                    <li><strong>Broca / Herramienta:</strong> <span>1/64"</span></li>
-                    <li><strong>Cut Depth:</strong> <span>0.1 mm</span></li>
-                    <li><strong>Max Depth:</strong> <span>0.1 mm</span></li>
-                    <li><strong>Offset Number:</strong> <span>4</span></li>
-                    <li><strong>Speed:</strong> <span>3 mm/s</span></li>
+                    <li><strong>Broca / Herramienta:</strong> <span>0.40mm flat</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.1016 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>0.1016 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>2</span></li>
+                    <li><strong>Speed:</strong> <span>4 mm/s</span></li>
                 </ul>
             </div>
 
@@ -273,23 +273,23 @@
             <div class="config-card">
                 <h3>3. Etiquetas</h3>
                 <ul>
-                    <li><strong>Broca / Herramienta:</strong> <span>1/64"</span></li>
-                    <li><strong>Cut Depth:</strong> <span>0.1 mm</span></li>
-                    <li><strong>Max Depth:</strong> <span>0.1 mm</span></li>
-                    <li><strong>Offset Number:</strong> <span>1</span></li>
+                    <li><strong>Broca / Herramienta:</strong> <span>0.40mm flat</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.1016 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>0.1016 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>2</span></li>
                     <li><strong>Speed:</strong> <span>4 mm/s</span></li>
                 </ul>
             </div>
 
             <!-- Tarjeta 4 -->
             <div class="config-card">
-                <h3>4. Contorno (Outline)</h3>
+                <h3>4. Contorno </h3>
                 <ul>
-                    <li><strong>Broca / Herramienta:</strong> <span>1/32"</span></li>
-                    <li><strong>Cut Depth:</strong> <span>0.6 mm</span></li>
-                    <li><strong>Max Depth:</strong> <span>1.8 mm</span></li>
+                    <li><strong>Broca / Herramienta:</strong> <span>1.59(Pero después escribimos 1.9)</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.254 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>1.7018 mm</span></li>
                     <li><strong>Offset Number:</strong> <span>1</span></li>
-                    <li><strong>Speed:</strong> <span>2 mm/s</span></li>
+                    <li><strong>Speed:</strong> <span>4 mm/s</span></li>
                 </ul>
             </div>
         </div>
@@ -303,66 +303,51 @@
         <div class="carrusel-contenedor">
             
             <div class="carrusel-slide activo">
-                <img src="imgs/VPanel_1.png" alt="Panel de Movimiento">
+                <img src="imgs/VPanel1.png" alt="Panel de Movimiento">
                 <div class="carrusel-texto">
                     <h3>Flechas de Movimiento (X, Y, Z)</h3>
-                    <p>Controles direccionales para mover manualmente el cabezal de la fresadora y ubicar el punto inicial sobre el bloque de cobre.</p>
+                    <p>Son controles para mover manualmente la punta de la fresadora y ubicar el punto inicial sobre la placa de cobre.</p>
                 </div>
             </div>
 
             <div class="carrusel-slide">
-                <img src="imgs/VPanel_2.png" alt="Ajuste X/Y">
+                <img src="imgs/VPanel2.png" alt="Ajuste X/Y">
                 <div class="carrusel-texto">
                     <h3>Set Origin Point (X/Y)</h3>
-                    <p>Una vez posicionado el cabezal en la esquina inferior izquierda deseada de la placa, pulsamos aquí para marcar el Origen X/Y a cero.</p>
+                    <p>Una vez posicionada la punta en la posición deseada de la placa, pulsamos aquí para marcar el Origen X/Y a cero.</p>
                 </div>
             </div>
 
             <div class="carrusel-slide">
-                <img src="imgs/VPanel_3.png" alt="Ajuste Z">
+                <img src="imgs/VPanel3.png" alt="Ajuste Z">
                 <div class="carrusel-texto">
                     <h3>Set Origin Point (Z)</h3>
-                    <p>Bajamos la broca con cuidado hasta que toque suavemente la superficie de cobre, y marcamos el Origen Z a cero.</p>
+                    <p>Bajamos la broca con cuidado hasta que toque suavemente la superficie de cobre, y marcamos el Origen Z.</p>
                 </div>
             </div>
 
             <div class="carrusel-slide">
-                <img src="imgs/VPanel_4.png" alt="Velocidades">
+                <img src="imgs/VPanel4.png" alt="Velocidades">
                 <div class="carrusel-texto">
-                    <h3>Spindle Speed & Feed Rate</h3>
-                    <p>Deslizadores para controlar la velocidad de rotación del motor y la velocidad de desplazamiento en tiempo real.</p>
+                    <h3>Spindle Speed</h3>
+                    <p>Deslizador para controlar la velocidad de rotación del motor.</p>
                 </div>
             </div>
 
             <div class="carrusel-slide">
-                <img src="imgs/VPanel_5.png" alt="Botón Cut">
+                <img src="imgs/VPanel5.png" alt="Botón Cut">
                 <div class="carrusel-texto">
                     <h3>Botón "Cut"</h3>
                     <p>Abre el menú de operaciones para agregar y gestionar los archivos de corte .rml que mandaremos a la máquina.</p>
+                    <p>Para agregar archivos sleccionamos Add, escogemos el archivo deseado y ya solo seleccionamos Output para que empiece a cortar nuestra placa</p>
                 </div>
             </div>
 
             <div class="carrusel-slide">
-                <img src="imgs/VPanel_6.png" alt="Menú Add">
-                <div class="carrusel-texto">
-                    <h3>Botón "Add" (Añadir Archivo)</h3>
-                    <p>Aquí buscamos en nuestra computadora el archivo .rml generado por Mods y lo colocamos en la lista de espera.</p>
-                </div>
-            </div>
-
-            <div class="carrusel-slide">
-                <img src="imgs/VPanel_7.png" alt="Botón Output">
-                <div class="carrusel-texto">
-                    <h3>Botón "Output"</h3>
-                    <p>El comando final. Al presionarlo, la máquina comenzará el proceso físico de corte de la placa base.</p>
-                </div>
-            </div>
-
-            <div class="carrusel-slide">
-                <img src="imgs/VPanel_8.png" alt="Pausar / Cancelar">
+                <img src="imgs/VPanel6.png" alt="Pausar / Cancelar">
                 <div class="carrusel-texto">
                     <h3>Pause / Cancel</h3>
-                    <p>Botones de emergencia o revisión. Sirven para detener la máquina instantáneamente si la broca raspa muy profundo o si hay peligro de ruptura.</p>
+                    <p>Sirven para detener la máquina instantáneamente si la broca raspa muy profundo o si hay algo que no debería estar pasando.</p>
                 </div>
             </div>
 
@@ -373,16 +358,16 @@
 
     <!-- SECCIÓN: EVIDENCIAS (FOTOS Y VIDEOS) -->
     <section id="evidencias">
-        <h2 class="section-title"><span class="texto-amarillo">Evidencias Físicas</span> del Proceso</h2>
+        <h2 class="section-title"><span class="texto-amarillo">Evidencias</span> del proceso</h2>
         <p style="text-align: center; margin-bottom: 50px; color: #a1a1a6;">
-            Galería de la fabricación física de nuestra placa en la Roland monoFab SRM-20.
+           Aquí se pueden observar fotos y vídeo del proceso
         </p>
 
         <div class="galeria-evidencias">
             
             <!-- Ejemplo de Foto -->
             <div class="media-item">
-                <img src="imgs/Evidencia_Maquina.jpg" alt="Máquina cortando">
+                <img src="imgs/Cortandopistas.jpeg" alt="Máquina cortando">
                 <div class="media-caption">Fresadora en acción cortando las pistas</div>
             </div>
 
@@ -392,15 +377,9 @@
                 <div class="media-caption">Video: Pasada final de contorno</div>
             </div>
 
-            <!-- Ejemplo de Foto -->
-            <div class="media-item">
-                <img src="imgs/Evidencia_PlacaPolvo.jpg" alt="Placa con polvo">
-                <div class="media-caption">Placa con residuo de fibra de vidrio antes de limpiar</div>
-            </div>
-
             <!-- Ejemplo de Foto Final -->
             <div class="media-item">
-                <img src="imgs/Evidencia_Final.jpg" alt="Resultado Final">
+                <img src="imgs/PlacaFinal.jpg" alt="Resultado Final">
                 <div class="media-caption">Resultado: Pistas limpias y perforaciones listas</div>
             </div>
 
