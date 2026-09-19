@@ -135,10 +135,99 @@
             .screenshot-info { width: 100%; text-align: center; }
             .config-grid { grid-template-columns: 1fr; }
         }
+        /* 1. SCROLL SUAVE PARA TODA LA PÁGINA */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. ESTILOS DEL ZOOM (Fondo y elemento ampliado) */
+        #fondo-oscuro-zoom {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); z-index: 99998;
+        }
+        .media-item img, .media-item video {
+            cursor: zoom-in; 
+            transition: transform 0.3s ease;
+        }
+        .media-item img.ampliada, .media-item video.ampliada {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw !important; height: auto !important; max-height: 90vh;
+            z-index: 99999 !important; box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            border: 3px solid #D4AC0D; cursor: zoom-out; border-radius: 15px; 
+            background-color: #000;
+        }
+
+        /* 3. MENÚ Y BUSCADOR FLOTANTES */
+        .herramientas-flotantes {
+            position: fixed; top: 80px; right: 20px; z-index: 1001;
+            display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+        }
+
+        /* Buscador */
+        .buscador-contenedor {
+            display: flex; background: #151516; border: 2px solid #D4AC0D;
+            border-radius: 30px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .buscador-contenedor input {
+            background: transparent; border: none; color: #fff; padding: 10px 15px;
+            outline: none; width: 200px; font-size: 1rem;
+        }
+        .buscador-contenedor button {
+            background: #D4AC0D; color: #000; border: none; padding: 0 15px;
+            cursor: pointer; font-weight: bold; font-size: 1.1rem;
+        }
+        .buscador-contenedor button:hover { background: #F7E596; }
+
+        /* Menú Desplegable (Índice) */
+        .btn-indice {
+            background: #D4AC0D; color: #000; border: none; padding: 10px 20px;
+            border-radius: 8px; font-weight: bold; cursor: pointer; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 1.1rem; transition: 0.3s;
+        }
+        .btn-indice:hover { background: #F7E596; transform: scale(1.05); }
+        
+        .menu-desplegable {
+            display: none; background: #151516; border: 2px solid #D4AC0D;
+            border-radius: 8px; flex-direction: column; overflow: hidden;
+            width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .menu-desplegable.mostrar {
+            display: flex; animation: aparecerMenu 0.3s ease;
+        }
+        @keyframes aparecerMenu { from{ opacity: 0; transform: translateY(-10px); } to{ opacity: 1; transform: translateY(0); } }
+        
+        .menu-desplegable a {
+            color: #f5f5f7; text-decoration: none; padding: 15px 20px;
+            border-bottom: 1px solid #333; transition: background 0.2s;
+        }
+        .menu-desplegable a:hover { background: #D4AC0D; color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
+    <!-- FONDO PARA EL ZOOM -->
+    <div id="fondo-oscuro-zoom"></div>
 
+    <!-- HERRAMIENTAS FLOTANTES (Arriba a la derecha) -->
+    <div class="herramientas-flotantes">
+        
+        <!-- Buscador -->
+        <div class="buscador-contenedor">
+            <input type="text" id="inputBuscar" placeholder="Buscar palabra..." onkeypress="buscarConEnter(event)">
+            <button onclick="ejecutarBusqueda()">🔍</button>
+        </div>
+
+        <!-- Botón Índice -->
+        <button class="btn-indice" onclick="toggleIndice()">📑 Índice de Contenido</button>
+        
+        <!-- Lista de Secciones -->
+        <div class="menu-desplegable" id="menuIndice">
+            <a href="#introduccion" onclick="toggleIndice()">1. ¿Qué es Mods?</a>
+            <a href="#modulos" onclick="toggleIndice()">2. Los 7 Módulos</a>
+            <a href="#configuraciones" onclick="toggleIndice()">3. Configuraciones</a>
+            <a href="#vpanel" onclick="toggleIndice()">4. Interfaz VPanel</a>
+            <a href="#evidencias" onclick="toggleIndice()">5. Evidencias Físicas</a>
+        </div>
+    </div>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="KiCad.html">KiCad</a>
@@ -406,6 +495,56 @@
 
             slides[nuevoIndex].classList.add('activo');
         }
+    </script>
+    <!-- ================= SCRIPTS NUEVOS ================= -->
+    <script>
+        // --- 1. LÓGICA DEL MENÚ DESPLEGABLE ---
+        function toggleIndice() {
+            const menu = document.getElementById('menuIndice');
+            menu.classList.toggle('mostrar');
+        }
+
+        // --- 2. LÓGICA DEL BUSCADOR (Usa el motor nativo del navegador) ---
+        function ejecutarBusqueda() {
+            const texto = document.getElementById('inputBuscar').value;
+            if (texto.trim() !== "") {
+                // window.find busca la palabra, la subraya y scrollea hacia ella automáticamente
+                const encontrado = window.find(texto, false, false, true, false, true, false);
+                if (!encontrado) {
+                    alert("No se encontró la palabra: '" + texto + "' en esta página.");
+                }
+            }
+        }
+        // Permite buscar presionando la tecla "Enter"
+        function buscarConEnter(event) {
+            if (event.key === "Enter") {
+                ejecutarBusqueda();
+            }
+        }
+
+        // --- 3. LÓGICA DEL ZOOM PARA EVIDENCIAS (Imágenes y Videos) ---
+        const fondoZoom = document.getElementById('fondo-oscuro-zoom');
+        
+        // Seleccionamos todas las imágenes y videos dentro de evidencias
+        document.querySelectorAll('.media-item img, .media-item video').forEach(elemento => {
+            elemento.addEventListener('click', function() {
+                this.classList.toggle('ampliada');
+                
+                if(this.classList.contains('ampliada')) {
+                    fondoZoom.style.display = 'block';
+                } else {
+                    fondoZoom.style.display = 'none';
+                }
+            });
+        });
+
+        // Si damos clic en el fondo negro, se cierra el zoom
+        fondoZoom.addEventListener('click', function() {
+            document.querySelectorAll('.media-item img.ampliada, .media-item video.ampliada').forEach(el => {
+                el.classList.remove('ampliada');
+            });
+            fondoZoom.style.display = 'none';
+        });
     </script>
 </body>
 </html>
