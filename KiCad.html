@@ -762,19 +762,20 @@
         <h2 class="section-title"> <span class="texto-amarillo">Paso 3</span></h2>
 
         <div class="tarjeta-destacada">
-            <img src="imgs/Mesa_Placa.png" alt="Botón para cambiar entre editores">
-            <div class="tarjeta-destacada-texto">
-                <p>Así es cómo se ve la mesa de trabajo de Editor de Placas</p>
-            </div>
-        </div>
-
-        <div class="tarjeta-destacada">
             <img src="imgs/CambioEd.png" alt="Botón para cambiar entre editores">
             <div class="tarjeta-destacada-texto">
                 <h3><span class="texto-amarillo">Botón para cambiar entre editores</span></h3>
                 <p>Este botón se encuentra en la parte superior derecha del Editor de esquemas. Una vez que acabemos todo lo necesario en el esquemático, le damos clic para que nos mande al Editor de placas.</p>
             </div>
         </div>
+
+        <div class="tarjeta-destacada">
+            <img src="imgs/Mesa_Placa.png" alt="Botón para cambiar entre editores">
+            <div class="tarjeta-destacada-texto">
+                <p>Así es cómo se ve la mesa de trabajo de Editor de Placas</p>
+            </div>
+        </div>
+
 
         <div class="screenshot-container reverse">
             <!-- Carrusel adaptado -->
@@ -793,6 +794,25 @@
                 <p>Establecimos una distancia mínima entre los conductores de 0.4 mm, este parámetro asegura un diseño conforme al material utilizado de la placa.
                     Igualmente agregamos el ancho de 2.0 mm para las lineas que representan el corte del borde de nuestra placa.
                 </p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/Restriccion1.png" class="mini-slide activo" alt="Restricciones de la fresadora">
+                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
+                <img src="imgs/Restriccion2.png" class="mini-slide" alt="Segunda captura de restricciones">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Confirmación de restricciones</span></h3>
+                <p>Restricción 1: Margen Mínimo</p>
+                <p>La primera restricción es para poner la separecación mínima que querramos entre pistas, como se puede ver en la primera imagen</p>
+                <p>Restrcción 2: Ancho mínimo de pista</p>
+                <p>La segunda restricción nos indica el ancho mínimo para las pistas que conectan los componentes</p>
             </div>
         </div>
 
