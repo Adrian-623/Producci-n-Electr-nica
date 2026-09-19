@@ -599,7 +599,23 @@
         <p style="text-align: center; margin-bottom: 20px;">
             Para el siguiente paso en la producción de nuestra PCB debemos ir a la herramienta <span class="texto-amarillo"> Editor de esquemas </span>, ahí nos aparecerá lo siguiente:
         </p>
-        <img src="imgs/Inicio_esquema.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen">
+        
+        <div class="carrusel-contenedor">
+            <div class="carrusel-slide activo">
+                <img src="imgs/Inicio_esquema.png" alt="Pantalla de Inicio de KiCad">
+            </div>
+            <div class="carrusel-slide">
+                <img src="imgs/Herramientas_esquema.jpeg" alt="Editor de esquemas">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Herramientas principales</span></h3>
+                    <p>Las herramientas señaladas son las que usamos principalmente a la hora de conectar nuestro circuito</p>
+                </div>
+            </div>
+            </div>
+            <button class="carrusel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1)">&#10095;</button>
+        </div>
+
         <p style="text-align: center; margin-top: 20px;">
             Una vez que estabamos ahí para formar nuestro esquema del circuito usamos los siguientes instrumentos y componentes:
         </p>
@@ -797,25 +813,6 @@
             </div>
         </div>
 
-        <div class="screenshot-container reverse">
-            <!-- Carrusel adaptado -->
-            <div class="mini-carrusel carrusel-captura">
-                <img src="imgs/Restriccion1.png" class="mini-slide activo" alt="Restricciones de la fresadora">
-                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
-                <img src="imgs/Restriccion2.png" class="mini-slide" alt="Segunda captura de restricciones">
-                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
-                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
-            </div>
-
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Confirmación de restricciones</span></h3>
-                <p>Restricción 1: Margen Mínimo</p>
-                <p>La primera restricción es para poner la separecación mínima que querramos entre pistas, como se puede ver en la primera imagen</p>
-                <p>Restrcción 2: Ancho mínimo de pista</p>
-                <p>La segunda restricción nos indica el ancho mínimo para las pistas que conectan los componentes</p>
-            </div>
-        </div>
-
         <p style="text-align: center; margin-top: 30px;">
             Cuando ya configuramos todas las restricciones ahora debemos acomodar nuestros componentes procurando que las lineas de conexion no se crucen.
         </p>
@@ -885,6 +882,25 @@
                 <p style="text-align: center; margin-top: 30px;">Como paso final antes de que guardemos nuestra placa en archivos Gerber o SVG para cortarlo en la MonoFab debemos seleccionar el botón "Comprobar reglas de diseño" que esta en la barra de herramientas de la parte superior.</p>
                 <p>Esto nos srive para que el programa nos diga si no hay ningun tipo error en nuestra placa y podamos continuar; solo hay que dar click en "Ejecutar DRC" y comprobar (Hay algunos avisos que se pueden ignorar)
                 </p>
+            </div>
+        </div>
+
+         <div class="screenshot-container reverse">
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/Restriccion1.png" class="mini-slide activo" alt="Restricciones de la fresadora">
+                <!-- Cambia 'Restricciones2.png' por el nombre de tu segunda imagen -->
+                <img src="imgs/Restriccion2.png" class="mini-slide" alt="Segunda captura de restricciones">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Confirmación de restricciones</span></h3>
+                <p>Restricción 1: Margen Mínimo</p>
+                <p>La primera restricción es para poner la separecación mínima que querramos entre pistas, como se puede ver en la primera imagen</p>
+                <p>Restrcción 2: Ancho mínimo de pista</p>
+                <p>La segunda restricción nos indica el ancho mínimo para las pistas que conectan los componentes</p>
             </div>
         </div>
     </section> 
