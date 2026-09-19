@@ -142,7 +142,6 @@
     <nav>
         <a href="index.html">Inicio</a>
         <a href="KiCad.html">KiCad</a>
-        <a href="#">Mods</a>
         <a href="Proyecto_Final.html">Proyecto Final</a>
     </nav>
 
@@ -150,7 +149,7 @@
     <header class="hero">
         <div class="logo-nodos">&#10044; <!-- Icono representativo (estrella/nodo) --></div>
         <h1>Proyecto Mods</h1>
-        <p>Software de generación de trayectorias (Toolpaths) para circuitos impresos en la fresadora Roland monoFab SRM-20.</p>
+        <p>Software para generación de trayectorias para circuitos impresos en la fresadora Roland monoFab SRM-20.</p>
         <a href="https://modsproject.org/" target="_blank" class="btn-mods">Visitar Mods Project</a>
     </header>
 
@@ -158,21 +157,21 @@
     <section id="introduccion">
         <h2 class="section-title"><span class="texto-amarillo">¿Qué es Mods?</span></h2>
         <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; font-size: 1.2rem; color: #a1a1a6;">
-            Mods (creado por el MIT Center for Bits and Atoms) es una plataforma basada en la web que permite transformar nuestros diseños 2D (archivos .svg o .png exportados de KiCad) en instrucciones de movimiento 3D reales. <br><br>
-            A través de una interfaz de "nodos" o bloques de programación visual, calculamos exactamente por dónde pasará la broca para perforar o cortar el cobre de nuestra placa.
+            Mods una plataforma basada en la web que permite transformar nuestros diseños 2D (archivos .svg o .png exportados de KiCad) en instrucciones de movimiento 3D. <br><br>
+            A través de una interfaz de "módulos" calculamos exactamente por dónde pasará la broca para perforar o cortar el cobre de nuestra placa.
         </p>
 
         <!-- Buscar el programa adecuado -->
         <h3 style="text-align: center; margin-bottom: 20px; font-size: 2rem; color: #fff;">1. Selección de Máquina</h3>
         <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Dentro de la página, damos clic derecho, elegimos <em>Programs > Open server program</em>, en el buscador escribimos "SRM" y seleccionamos <strong class="texto-amarillo">mill 2d pcb</strong>.</p>
         
-        <img src="imgs/Mods_Buscar.png" alt="Buscador de Mods" class="imagen-borde-amarillo">
+        <img src="imgs/Mods_buscar.png" alt="Buscador de Mods" class="imagen-borde-amarillo">
 
         <!-- Interfaz General -->
         <h3 style="text-align: center; margin: 50px 0 20px 0; font-size: 2rem; color: #fff;">Interfaz General</h3>
         <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Al cargar el programa, se desplegará una red de nodos conectados automáticamente. Así es como se ve el área de trabajo completa:</p>
         
-        <img src="imgs/Mods_General.png" alt="Vista General de Mods" class="imagen-borde-amarillo" style="max-width: 95%;">
+        <img src="imgs/SRM_interfaz.png" alt="Vista General de Mods" class="imagen-borde-amarillo" style="max-width: 95%;">
     </section>
 
     <!-- SECCIÓN: LOS 7 MÓDULOS DE EDICIÓN -->
@@ -180,58 +179,60 @@
         <h2 class="section-title">Los <span class="texto-amarillo">7 Módulos</span> de Edición</h2>
 
         <div class="screenshot-container">
-            <img src="imgs/Mods_Modulo1.png" alt="Módulo 1">
+            <img src="imgs/Modulo1.png" alt="Módulo 1">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">1. Subir el Archivo</span></h3>
-                <p>En el nodo <em>Read SVG</em> (o PNG), cargamos el archivo que exportamos previamente de KiCad. Aquí confirmamos las dimensiones físicas de la imagen y los DPI para que la máquina no corte la placa más grande o pequeña de lo que es.</p>
+                <p>En el módulo <em>Read SVG</em>, cargamos el archivo que exportamos previamente de KiCad. Aquí confirmamos las dimensiones físicas de la imagen</p>
             </div>
         </div>
 
         <div class="screenshot-container reverse">
-            <img src="imgs/Mods_Modulo2.png" alt="Módulo 2">
+            <img src="imgs/Modulo2.png" alt="Módulo 2">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">2. Invertir el Corte</span></h3>
-                <p>La máquina corta las zonas oscuras (negras) y deja intactas las claras (blancas). Si nuestro archivo viene en negativo, utilizamos el nodo <em>Invert Image</em> para asegurarnos de que la fresadora corte alrededor de las pistas y no sobre ellas.</p>
+                <p>La máquina corta las zonas oscuras y deja intactas las blancas. Si nuestro archivo no viene con la zona de la placa rellena, utilizamos la opción <em>Invert Image</em> para asegurarnos de que la fresadora corte alrededor de las pistas y no sobre ellas.</p>
             </div>
         </div>
 
         <div class="screenshot-container">
-            <img src="imgs/Mods_Modulo3.png" alt="Módulo 3">
+            <img src="imgs/Modulo3.png" alt="Módulo 3">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">3. Selección de Herramienta</span></h3>
-                <p>Este nodo nos permite pre-seleccionar cálculos base dependiendo si vamos a raspar el cobre (<em>mill traces 1/64</em>) o si vamos a cortar por completo la placa para separarla (<em>mill outline 1/32</em>).</p>
+                <p>Este módulo nos permite seleccionar si vamos a raspar el cobre (<em>0.40mm flat</em>) o si vamos a perforar por completo la placa (<em>0.79mm drill</em>).</p>
             </div>
         </div>
 
         <div class="screenshot-container reverse">
-            <img src="imgs/Mods_Modulo4.png" alt="Módulo 4">
+            <img src="imgs/Modulo4.png" alt="Módulo 4">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">4. Medidas y Pasadas</span></h3>
-                <p>Aquí configuramos el diámetro exacto de la broca, la profundidad de cada pasada (Cut depth), la profundidad máxima total (Max depth) y el número de contornos (Offset number) que la máquina limpiará alrededor de las pistas.</p>
+                <p>Aquí configuramos el diámetro exacto de la broca, la profundidad de cada pasada (Cut depth), la profundidad máxima total (Max depth) y el número de pasadas (Offset number) que la máquina hará.</p>
             </div>
         </div>
 
         <div class="screenshot-container">
-            <img src="imgs/Mods_Modulo5.png" alt="Módulo 5">
+            <img src="imgs/Modulo5.png" alt="Módulo 5">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">5. Visualización de Trayectoria</span></h3>
-                <p>Al darle al botón "Calculate", este nodo genera una vista 2D y 3D (View Toolpath). Las líneas rojas y azules nos permiten comprobar visualmente la ruta que seguirá el motor antes de mandarlo a la vida real.</p>
+                <p>Al darle al botón "Calculate", este genera una vista 2D y 3D. La primera vista que nos genera es la 3D en la que podemos ver l aplaca con lostrazos de la máquina ya realizados.</p>
+                <p>Y cuando seleccionamos "View" podemos ver la vista 2D que se ve en el recuadro inferior en una pestaña nueva, las negras indica el camino que seguira la fresadora y las rojas nos muestra que la fresadora se elevaría y se movería a otro lugar de la placa</p>
             </div>
         </div>
 
         <div class="screenshot-container reverse">
-            <img src="imgs/Mods_Modulo6.png" alt="Módulo 6">
+            <img src="imgs/Modulo6.png" alt="Módulo 6">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">6. Origen y Velocidad</span></h3>
-                <p>En el nodo de la máquina SRM-20, debemos ajustar el Origen X, Y y Z estrictamente a <strong>0 mm</strong>. También aquí establecemos la velocidad de la máquina (Speed mm/s), clave para no romper la broca fina.</p>
+                <p>Aquí debemos ajustar el origen en X, Y y Z preferiblemente a <strong>0 mm</strong>. También aquí establecemos la velocidad de la máquina (mm/s), clave para no romper la broca fina.</p>
+                <p>(Si desean hacer 2 placas al mismo tiempo en la MonoFab pueden mover las coordenadas del origen a otro lugar de la placa fenolica donde puedan realizar la otra PCB)</p>
             </div>
         </div>
 
         <div class="screenshot-container">
-            <img src="imgs/Mods_Modulo7.png" alt="Módulo 7">
+            <img src="imgs/Modulo7.png" alt="Módulo 7">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">7. Guardar el Archivo</span></h3>
-                <p>Por defecto, Mods envía los datos por servidor local. Debemos eliminar ese nodo y conectar el nodo principal a un módulo <em>Save File</em>. Así, al calcular la ruta, automáticamente se descargará el archivo <strong>.rml</strong> en nuestra computadora.</p>
+                <p>Seleccionamos <em>Save File</em> y automáticamente se descargará el archivo <strong>.rml</strong></p>
             </div>
         </div>
     </section>
