@@ -577,8 +577,9 @@
                     <p>Administración de bibliotecas, plugins y paquetes adicionales descargables de KiCad para expandir los componentes</p>
                 </div>
             </div>
-            <button class="carrusel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
-            <button class="carrusel-btn next" onclick="moverSlide(1)">&#10095;</button>
+            <!-- CORRECCIÓN AQUÍ: Se añadió "this" a los botones -->
+            <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1, this)">&#10095;</button>
         </div>
     </section>
     
@@ -612,8 +613,9 @@
                 </div>
             </div>
             
-            <button class="carrusel-btn prev" onclick="moverSlide(-1)">&#10094;</button>
-            <button class="carrusel-btn next" onclick="moverSlide(1)">&#10095;</button>
+            <!-- CORRECCIÓN AQUÍ: Se añadió "this" a los botones -->
+            <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1, this)">&#10095;</button>
         </div>
 
         <p style="text-align: center; margin-top: 20px;">
@@ -932,18 +934,37 @@
 
     <div id="fondo-oscuro-zoom"></div>
 
+    <!-- CORRECCIÓN AQUÍ: Script del carrusel mejorado y completamente independiente -->
     <script>
-        let slideActual = 0;
-        const slides = document.querySelectorAll('.carrusel-slide');
+        function moverSlide(direccion, boton) {
+            // Encuentra el carrusel específico donde está el botón que presionaste
+            const contenedor = boton.closest('.carrusel-contenedor');
+            const slides = contenedor.querySelectorAll('.carrusel-slide');
+            
+            // Si por alguna razón está vacío, no hacemos nada
+            if (slides.length === 0) return;
 
-        function moverSlide(direccion) {
-            slides[slideActual].classList.remove('activo');
-            slideActual = slideActual + direccion;
-            
-            if (slideActual >= slides.length) slideActual = 0;
-            else if (slideActual < 0) slideActual = slides.length - 1;
-            
-            slides[slideActual].classList.add('activo');
+            // Busca qué imagen está activa actualmente solo en ESTE carrusel
+            let indexActual = 0;
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('activo')) {
+                    indexActual = index;
+                }
+            });
+
+            // Oculta la imagen actual
+            slides[indexActual].classList.remove('activo');
+
+            // Calcula la siguiente imagen (para el ciclo infinito)
+            let nuevoIndex = indexActual + direccion;
+            if (nuevoIndex >= slides.length) {
+                nuevoIndex = 0;
+            } else if (nuevoIndex < 0) {
+                nuevoIndex = slides.length - 1;
+            }
+
+            // Muestra la nueva imagen
+            slides[nuevoIndex].classList.add('activo');
         }
     </script>
     
