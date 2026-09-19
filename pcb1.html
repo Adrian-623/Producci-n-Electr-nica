@@ -1,1 +1,431 @@
-afafefdsafs
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mods & SRM-20 - Documentación</title>
+    <style>
+        /* Estilos generales idénticos a KiCad para mantener consistencia */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #000000; color: #f5f5f7; line-height: 1.5; overflow-x: hidden; }
+
+        /* Barra de navegación */
+        nav {
+            position: fixed; top: 0; width: 100%; background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: center; padding: 15px 0; z-index: 1000;
+            border-bottom: 1px solid #333333;
+        }
+        nav a { color: #f5f5f7; text-decoration: none; margin: 0 25px; font-size: 1rem; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: #D4AC0D; } 
+
+        .texto-amarillo { color: #F7E596; } 
+
+        /* ================= HERO SECTION MODS ================= */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
+            /* Aquí puedes poner una foto de la fresadora de fondo oscurecida */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,1)), url('imgs/Fondo_SRM20.jpg') center/cover no-repeat;
+        }
+
+        /* "Logo" inventado para Mods (Nodos conectados) */
+        .logo-nodos {
+            font-size: 5rem; color: #D4AC0D; margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(212, 172, 13, 0.6));
+            animation: latido 3s infinite alternate;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(212, 172, 13, 0.4)); }
+            100% { transform: scale(1.05); filter: drop-shadow(0 0 50px rgba(212, 172, 13, 0.8)); }
+        }
+
+        .hero h1 { font-size: 4.5rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+        .hero p { font-size: 1.5rem; color: #a1a1a6; max-width: 700px; margin-bottom: 40px; }
+
+        /* Botón de Enlace */
+        .btn-mods {
+            display: inline-block; padding: 15px 40px; font-size: 1.2rem; font-weight: bold;
+            color: #000; background-color: #D4AC0D; border-radius: 30px;
+            text-decoration: none; transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 172, 13, 0.4);
+        }
+        .btn-mods:hover { background-color: #F7E596; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 172, 13, 0.6); }
+
+        section { padding: 100px 10vw; border-bottom: 1px solid #333333; }
+        .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
+
+        /* Contenedores de capturas (Reutilizados de KiCad) */
+        .screenshot-container {
+            display: flex; align-items: center; background-color: #151516; 
+            padding: 40px; border-radius: 20px; max-width: 1000px; margin: 0 auto 40px auto;
+            border: 2px solid #D4AC0D; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .screenshot-container img { width: 55%; border-radius: 10px; margin-right: 40px; border: 1px solid #333; }
+        .screenshot-info { width: 45%; text-align: left; }
+        .screenshot-info h3 { font-size: 2rem; color: #ffffff; margin-bottom: 15px; }
+        .screenshot-info p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 15px; }
+
+        .reverse { flex-direction: row-reverse; }
+        .reverse img { margin-right: 0; margin-left: 40px; }
+
+        /* Imagenes sueltas con contorno */
+        .imagen-borde-amarillo { border: 3px solid #D4AC0D; border-radius: 20px; display: block; margin: 0 auto 30px auto; max-width: 80%; }
+
+        /* ================= 4 TARJETAS DE CONFIGURACIÓN ================= */
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .config-card {
+            background-color: #151516; border: 2px solid #D4AC0D; border-radius: 15px;
+            padding: 30px; text-align: left; position: relative; overflow: hidden;
+            transition: transform 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .config-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(212, 172, 13, 0.3); }
+        .config-card h3 { font-size: 1.8rem; color: #F7E596; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .config-card ul { list-style: none; }
+        .config-card li { margin-bottom: 15px; font-size: 1.1rem; display: flex; justify-content: space-between; }
+        .config-card li span { color: #fff; font-weight: bold; }
+        .config-card li strong { color: #a1a1a6; font-weight: normal; }
+
+        /* ================= CARRUSEL VPANEL ================= */
+        .carrusel-contenedor {
+            position: relative; max-width: 1000px; margin: 0 auto; border-radius: 20px;
+            border: 3px solid #D4AC0D; background-color: #151516; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .carrusel-slide { display: none; animation: aparecer 0.5s; }
+        .carrusel-slide.activo { display: block; }
+        @keyframes aparecer { from { opacity: 0.4; } to { opacity: 1; } }
+        .carrusel-slide img { width: 100%; height: auto; display: block; border-bottom: 2px solid #333333; }
+        .carrusel-texto { padding: 30px 40px; text-align: center; }
+        .carrusel-texto h3 { font-size: 1.8rem; margin-bottom: 10px; color: #F7E596; }
+        .carrusel-texto p { font-size: 1.1rem; color: #a1a1a6; }
+        .carrusel-btn {
+            position: absolute; top: 40%; transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.8); color: #D4AC0D; border: 2px solid #D4AC0D;
+            font-size: 24px; padding: 10px 18px; cursor: pointer; border-radius: 50%; transition: all 0.3s;
+        }
+        .carrusel-btn:hover { background-color: #D4AC0D; color: #000; }
+        .prev { left: 15px; } .next { right: 15px; }
+
+        /* ================= GALERÍA MULTIMEDIA DE EVIDENCIAS ================= */
+        .galeria-evidencias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; max-width: 1200px; margin: 0 auto;
+        }
+        .media-item {
+            border: 2px solid #333333; border-radius: 15px; overflow: hidden;
+            background-color: #151516; transition: all 0.3s ease; position: relative;
+        }
+        .media-item:hover { border-color: #D4AC0D; box-shadow: 0 0 25px rgba(212, 172, 13, 0.4); transform: scale(1.02); }
+        .media-item img, .media-item video {
+            width: 100%; height: 250px; object-fit: cover; display: block;
+        }
+        .media-caption { padding: 15px; text-align: center; color: #a1a1a6; font-size: 1rem; border-top: 1px solid #333; }
+
+        @media (max-width: 900px) {
+            .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
+            .screenshot-container img, .screenshot-container.reverse img { width: 100%; margin: 0 0 25px 0; }
+            .screenshot-info { width: 100%; text-align: center; }
+            .config-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="KiCad.html">KiCad</a>
+        <a href="#">Mods</a>
+        <a href="Proyecto_Final.html">Proyecto Final</a>
+    </nav>
+
+    <!-- INICIO (HERO) -->
+    <header class="hero">
+        <div class="logo-nodos">&#10044; <!-- Icono representativo (estrella/nodo) --></div>
+        <h1>Proyecto Mods</h1>
+        <p>Software de generación de trayectorias (Toolpaths) para circuitos impresos en la fresadora Roland monoFab SRM-20.</p>
+        <a href="https://modsproject.org/" target="_blank" class="btn-mods">Visitar Mods Project</a>
+    </header>
+
+    <!-- SECCIÓN: QUÉ ES MODS -->
+    <section id="introduccion">
+        <h2 class="section-title"><span class="texto-amarillo">¿Qué es Mods?</span></h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; font-size: 1.2rem; color: #a1a1a6;">
+            Mods (creado por el MIT Center for Bits and Atoms) es una plataforma basada en la web que permite transformar nuestros diseños 2D (archivos .svg o .png exportados de KiCad) en instrucciones de movimiento 3D reales. <br><br>
+            A través de una interfaz de "nodos" o bloques de programación visual, calculamos exactamente por dónde pasará la broca para perforar o cortar el cobre de nuestra placa.
+        </p>
+
+        <!-- Buscar el programa adecuado -->
+        <h3 style="text-align: center; margin-bottom: 20px; font-size: 2rem; color: #fff;">1. Selección de Máquina</h3>
+        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Dentro de la página, damos clic derecho, elegimos <em>Programs > Open server program</em>, en el buscador escribimos "SRM" y seleccionamos <strong class="texto-amarillo">mill 2d pcb</strong>.</p>
+        
+        <img src="imgs/Mods_Buscar.png" alt="Buscador de Mods" class="imagen-borde-amarillo">
+
+        <!-- Interfaz General -->
+        <h3 style="text-align: center; margin: 50px 0 20px 0; font-size: 2rem; color: #fff;">Interfaz General</h3>
+        <p style="text-align: center; margin-bottom: 30px; color: #a1a1a6;">Al cargar el programa, se desplegará una red de nodos conectados automáticamente. Así es como se ve el área de trabajo completa:</p>
+        
+        <img src="imgs/Mods_General.png" alt="Vista General de Mods" class="imagen-borde-amarillo" style="max-width: 95%;">
+    </section>
+
+    <!-- SECCIÓN: LOS 7 MÓDULOS DE EDICIÓN -->
+    <section id="modulos">
+        <h2 class="section-title">Los <span class="texto-amarillo">7 Módulos</span> de Edición</h2>
+
+        <div class="screenshot-container">
+            <img src="imgs/Mods_Modulo1.png" alt="Módulo 1">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">1. Subir el Archivo</span></h3>
+                <p>En el nodo <em>Read SVG</em> (o PNG), cargamos el archivo que exportamos previamente de KiCad. Aquí confirmamos las dimensiones físicas de la imagen y los DPI para que la máquina no corte la placa más grande o pequeña de lo que es.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <img src="imgs/Mods_Modulo2.png" alt="Módulo 2">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">2. Invertir el Corte</span></h3>
+                <p>La máquina corta las zonas oscuras (negras) y deja intactas las claras (blancas). Si nuestro archivo viene en negativo, utilizamos el nodo <em>Invert Image</em> para asegurarnos de que la fresadora corte alrededor de las pistas y no sobre ellas.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container">
+            <img src="imgs/Mods_Modulo3.png" alt="Módulo 3">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">3. Selección de Herramienta</span></h3>
+                <p>Este nodo nos permite pre-seleccionar cálculos base dependiendo si vamos a raspar el cobre (<em>mill traces 1/64</em>) o si vamos a cortar por completo la placa para separarla (<em>mill outline 1/32</em>).</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <img src="imgs/Mods_Modulo4.png" alt="Módulo 4">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">4. Medidas y Pasadas</span></h3>
+                <p>Aquí configuramos el diámetro exacto de la broca, la profundidad de cada pasada (Cut depth), la profundidad máxima total (Max depth) y el número de contornos (Offset number) que la máquina limpiará alrededor de las pistas.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container">
+            <img src="imgs/Mods_Modulo5.png" alt="Módulo 5">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">5. Visualización de Trayectoria</span></h3>
+                <p>Al darle al botón "Calculate", este nodo genera una vista 2D y 3D (View Toolpath). Las líneas rojas y azules nos permiten comprobar visualmente la ruta que seguirá el motor antes de mandarlo a la vida real.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <img src="imgs/Mods_Modulo6.png" alt="Módulo 6">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">6. Origen y Velocidad</span></h3>
+                <p>En el nodo de la máquina SRM-20, debemos ajustar el Origen X, Y y Z estrictamente a <strong>0 mm</strong>. También aquí establecemos la velocidad de la máquina (Speed mm/s), clave para no romper la broca fina.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container">
+            <img src="imgs/Mods_Modulo7.png" alt="Módulo 7">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">7. Guardar el Archivo</span></h3>
+                <p>Por defecto, Mods envía los datos por servidor local. Debemos eliminar ese nodo y conectar el nodo principal a un módulo <em>Save File</em>. Así, al calcular la ruta, automáticamente se descargará el archivo <strong>.rml</strong> en nuestra computadora.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: TABLAS DE CONFIGURACIÓN (DATA CARDS) -->
+    <section id="configuraciones">
+        <h2 class="section-title"><span class="texto-amarillo">Configuraciones de Corte</span></h2>
+        <p style="text-align: center; margin-bottom: 40px; color: #a1a1a6;">
+            A continuación, los parámetros exactos que introducimos en Mods para exportar nuestros 4 archivos SVG específicos.
+        </p>
+
+        <div class="config-grid">
+            <!-- Tarjeta 1 -->
+            <div class="config-card">
+                <h3>1. Perforaciones (Drill)</h3>
+                <ul>
+                    <li><strong>Broca / Herramienta:</strong> <span>1/32"</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.6 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>1.8 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>1</span></li>
+                    <li><strong>Speed:</strong> <span>1.5 mm/s</span></li>
+                </ul>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="config-card">
+                <h3>2. Pistas (Traces)</h3>
+                <ul>
+                    <li><strong>Broca / Herramienta:</strong> <span>1/64"</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.1 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>0.1 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>4</span></li>
+                    <li><strong>Speed:</strong> <span>3 mm/s</span></li>
+                </ul>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="config-card">
+                <h3>3. Etiquetas</h3>
+                <ul>
+                    <li><strong>Broca / Herramienta:</strong> <span>1/64"</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.1 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>0.1 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>1</span></li>
+                    <li><strong>Speed:</strong> <span>4 mm/s</span></li>
+                </ul>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="config-card">
+                <h3>4. Contorno (Outline)</h3>
+                <ul>
+                    <li><strong>Broca / Herramienta:</strong> <span>1/32"</span></li>
+                    <li><strong>Cut Depth:</strong> <span>0.6 mm</span></li>
+                    <li><strong>Max Depth:</strong> <span>1.8 mm</span></li>
+                    <li><strong>Offset Number:</strong> <span>1</span></li>
+                    <li><strong>Speed:</strong> <span>2 mm/s</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: VPANEL -->
+    <section id="vpanel">
+        <h2 class="section-title">Interfaz <span class="texto-amarillo">VPanel for SRM-20</span></h2>
+        <p style="text-align: center; margin-bottom: 40px; color: #a1a1a6;">Este es el software nativo de Roland donde cargamos el archivo .rml y operamos físicamente la máquina.</p>
+
+        <div class="carrusel-contenedor">
+            
+            <div class="carrusel-slide activo">
+                <img src="imgs/VPanel_1.png" alt="Panel de Movimiento">
+                <div class="carrusel-texto">
+                    <h3>Flechas de Movimiento (X, Y, Z)</h3>
+                    <p>Controles direccionales para mover manualmente el cabezal de la fresadora y ubicar el punto inicial sobre el bloque de cobre.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_2.png" alt="Ajuste X/Y">
+                <div class="carrusel-texto">
+                    <h3>Set Origin Point (X/Y)</h3>
+                    <p>Una vez posicionado el cabezal en la esquina inferior izquierda deseada de la placa, pulsamos aquí para marcar el Origen X/Y a cero.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_3.png" alt="Ajuste Z">
+                <div class="carrusel-texto">
+                    <h3>Set Origin Point (Z)</h3>
+                    <p>Bajamos la broca con cuidado hasta que toque suavemente la superficie de cobre, y marcamos el Origen Z a cero.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_4.png" alt="Velocidades">
+                <div class="carrusel-texto">
+                    <h3>Spindle Speed & Feed Rate</h3>
+                    <p>Deslizadores para controlar la velocidad de rotación del motor y la velocidad de desplazamiento en tiempo real.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_5.png" alt="Botón Cut">
+                <div class="carrusel-texto">
+                    <h3>Botón "Cut"</h3>
+                    <p>Abre el menú de operaciones para agregar y gestionar los archivos de corte .rml que mandaremos a la máquina.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_6.png" alt="Menú Add">
+                <div class="carrusel-texto">
+                    <h3>Botón "Add" (Añadir Archivo)</h3>
+                    <p>Aquí buscamos en nuestra computadora el archivo .rml generado por Mods y lo colocamos en la lista de espera.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_7.png" alt="Botón Output">
+                <div class="carrusel-texto">
+                    <h3>Botón "Output"</h3>
+                    <p>El comando final. Al presionarlo, la máquina comenzará el proceso físico de corte de la placa base.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-slide">
+                <img src="imgs/VPanel_8.png" alt="Pausar / Cancelar">
+                <div class="carrusel-texto">
+                    <h3>Pause / Cancel</h3>
+                    <p>Botones de emergencia o revisión. Sirven para detener la máquina instantáneamente si la broca raspa muy profundo o si hay peligro de ruptura.</p>
+                </div>
+            </div>
+
+            <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1, this)">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: EVIDENCIAS (FOTOS Y VIDEOS) -->
+    <section id="evidencias">
+        <h2 class="section-title"><span class="texto-amarillo">Evidencias Físicas</span> del Proceso</h2>
+        <p style="text-align: center; margin-bottom: 50px; color: #a1a1a6;">
+            Galería de la fabricación física de nuestra placa en la Roland monoFab SRM-20.
+        </p>
+
+        <div class="galeria-evidencias">
+            
+            <!-- Ejemplo de Foto -->
+            <div class="media-item">
+                <img src="imgs/Evidencia_Maquina.jpg" alt="Máquina cortando">
+                <div class="media-caption">Fresadora en acción cortando las pistas</div>
+            </div>
+
+            <!-- Ejemplo de Video -->
+            <div class="media-item">
+                <video src="imgs/Video_Corte.mp4" controls loop muted poster="imgs/Poster_Video.jpg"></video>
+                <div class="media-caption">Video: Pasada final de contorno</div>
+            </div>
+
+            <!-- Ejemplo de Foto -->
+            <div class="media-item">
+                <img src="imgs/Evidencia_PlacaPolvo.jpg" alt="Placa con polvo">
+                <div class="media-caption">Placa con residuo de fibra de vidrio antes de limpiar</div>
+            </div>
+
+            <!-- Ejemplo de Foto Final -->
+            <div class="media-item">
+                <img src="imgs/Evidencia_Final.jpg" alt="Resultado Final">
+                <div class="media-caption">Resultado: Pistas limpias y perforaciones listas</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SCRIPT CARRUSEL (Reutilizable e Independiente) -->
+    <script>
+        function moverSlide(direccion, boton) {
+            const contenedor = boton.closest('.carrusel-contenedor');
+            const slides = contenedor.querySelectorAll('.carrusel-slide');
+            if (slides.length === 0) return;
+
+            let indexActual = 0;
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('activo')) { indexActual = index; }
+            });
+
+            slides[indexActual].classList.remove('activo');
+
+            let nuevoIndex = indexActual + direccion;
+            if (nuevoIndex >= slides.length) nuevoIndex = 0;
+            else if (nuevoIndex < 0) nuevoIndex = slides.length - 1;
+
+            slides[nuevoIndex].classList.add('activo');
+        }
+    </script>
+</body>
+</html>
