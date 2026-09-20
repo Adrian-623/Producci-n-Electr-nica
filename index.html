@@ -54,46 +54,71 @@
             background-color: #151516;
             border: 2px solid #D4AC0D;
             border-radius: 20px;
-            width: 340px;
+            width: 450px; /* Tarjetas más anchas para acomodar el texto */
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(212, 172, 13, 0.15);
             text-align: left;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Pequeño efecto al pasar el mouse (opcional pero elegante) */
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 172, 13, 0.3);
         }
 
         .team-card img {
             width: 100%;
-            height: 280px;
-            object-fit: cover; /* Evita que las fotos se deformen */
+            height: 300px;
+            object-fit: cover; 
+            object-position: center top; /* Asegura que no les corte la cabeza en las fotos */
             border-bottom: 2px solid #333333;
         }
 
         .team-info {
-            padding: 25px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            justify-content: space-between;
         }
 
         .team-info h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .team-info h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #D4AC0D;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .team-info p {
-            font-size: 0.9rem;
+        /* Nuevo estilo para la descripción personal */
+        .team-bio {
+            font-size: 1rem;
             color: #a1a1a6;
-            word-break: break-all; /* Evita que los correos largos desborden la tarjeta */
+            margin-bottom: 25px;
+            border-left: 3px solid #D4AC0D;
+            padding-left: 15px;
+            font-style: italic;
+            line-height: 1.6;
+            flex-grow: 1; /* Empuja el contacto hacia abajo si los textos tienen diferente tamaño */
+        }
+
+        .team-contacto {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+            background-color: #1a1a1a;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            word-break: break-all;
+            text-align: center;
         }
         /* =================================================================== */
 
@@ -116,6 +141,7 @@
 
         @media (max-width: 768px) {
             .team-container { flex-direction: column; align-items: center; }
+            .team-card { width: 100%; max-width: 450px; }
         }
     </style>
 </head>
@@ -135,28 +161,45 @@
     </header>
 
     <section id="presentacion">
-        <h2 class="section-title"><span class="texto-amarillo">Equipo</span></h2>
+        <h2 class="section-title"><span class="texto-amarillo">Equipo de Trabajo</span></h2>
         <div class="team-container">
+            
+            <!-- TARJETA JORGE -->
             <div class="team-card">
                 <img src="Jorge.jpg" alt="Foto de Jorge">
                 <div class="team-info">
                     <div>
                         <h3>Jorge Adrián Pérez</h3>
-                        <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
+                        <h4>Ingeniería Mecatrónica</h4>
                     </div>
-                    <p>Contacto: 204560@iberopuebla.mx</p>
+                    
+                    <!-- Descripción personalizada -->
+                    <p class="team-bio">
+                        "Decidí estudiar Mecatrónica por la fascinación de integrar diseño 3D, programación de sistemas embebidos y hardware para darle vida a los mecanismos. Me apasiona el diseño de PCBs, la configuración de microcontroladores y el desarrollo de proyectos tecnológicos enfocados en soluciones reales."
+                    </p>
+                    
+                    <p class="team-contacto">✉ 204560@iberopuebla.mx</p>
                 </div>
             </div>
+
+            <!-- TARJETA ANA PAULA -->
             <div class="team-card">
-                <img src="Ana.jpeg" alt="Foto de compañera">
+                <img src="Ana.jpeg" alt="Foto de Ana Paula">
                 <div class="team-info">
                     <div>
                         <h3>Ana Paula Mendoza Linares</h3>
-                        <h4>Ingeniería Mecatrónica - Universidad IBERO Puebla</h4>
+                        <h4>Ingeniería Mecatrónica</h4>
                     </div>
-                    <p>Contacto: 203339@iberopuebla.mx</p>
+                    
+                    <!-- Descripción compañera -->
+                    <p class="team-bio">
+                        "Elegí esta carrera por el increíble reto que supone conectar el mundo físico con el digital. Disfruto mucho el diseño 3D, la electrónica de precisión y la innovación tecnológica orientada a crear proyectos que tengan un impacto real y funcional."
+                    </p>
+                    
+                    <p class="team-contacto">✉ 203339@iberopuebla.mx</p>
                 </div>
             </div>
+
         </div>
     </section>
     
