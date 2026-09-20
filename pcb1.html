@@ -222,7 +222,29 @@
             border-bottom: 1px solid #333; transition: background 0.2s;
         }
         .menu-desplegable a:hover { background: #D4AC0D; color: #000; font-weight: bold; }
+
+        .personaje-animado {
+            position: fixed;
+            bottom: 0;
+            right: -150px; 
+            z-index: 9999;
+            width: 100px; 
+            animation: caminar-izquierda 12s linear infinite; 
+            pointer-events: none;
+            transform: scaleX(-1); 
+        }
+
+        @keyframes caminar-izquierda {
+            0% { left: -150px; }
+            100% { left: 100vw; }
+        }
+
+        @media (max-width: 768px) {
+            .team-container { flex-direction: column; align-items: center; }
+            .team-card { width: 100%; max-width: 450px; }
+        }
     </style>
+    
 </head>
 <body>
     <!-- FONDO PARA EL ZOOM -->
@@ -577,5 +599,6 @@
 
         fondoOscuro.addEventListener('click', cerrarZoom);
     </script>
+    <img src="red.gif" alt="Personaje corriendo" class="personaje-animado">
 </body>
 </html>
