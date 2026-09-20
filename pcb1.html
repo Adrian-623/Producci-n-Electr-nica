@@ -119,15 +119,38 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px; max-width: 1200px; margin: 0 auto;
         }
+        
         .media-item {
             border: 2px solid #333333; border-radius: 15px; overflow: hidden;
-            background-color: #151516; transition: all 0.3s ease; position: relative;
+            background-color: #000000; /* Fondo negro puro para que combine con los espacios vacíos */
+            transition: all 0.3s ease; position: relative;
         }
         .media-item:hover { border-color: #D4AC0D; box-shadow: 0 0 25px rgba(212, 172, 13, 0.4); transform: scale(1.02); }
+        
+        /* CORRECCIÓN 1: Miniaturas completas sin desbordar el recuadro */
         .media-item img, .media-item video {
-            width: 100%; height: 250px; object-fit: cover; display: block;
+            width: 100%; 
+            height: 250px; /* Límite de altura para que los recuadros no crezcan de más */
+            object-fit: contain; /* Muestra la imagen COMPLETA sin recortes */
+            display: block;
+            cursor: zoom-in; 
+            transition: transform 0.3s ease;
         }
+        
         .media-caption { padding: 15px; text-align: center; color: #a1a1a6; font-size: 1rem; border-top: 1px solid #333; }
+
+        /* CORRECCIÓN 2: Zoom inteligente que se adapta al tamaño sin cortarse */
+        .media-item img.ampliada, .media-item video.ampliada {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: auto !important;       /* Permite que el ancho fluya natural */
+            height: auto !important;      /* Permite que el alto fluya natural */
+            max-width: 90vw !important;   /* No puede ser más ancha que el 90% de tu pantalla */
+            max-height: 90vh !important;  /* No puede ser más alta que el 90% de tu pantalla */
+            object-fit: contain !important; /* Garantiza que el 100% de la foto sea visible */
+            z-index: 99999 !important; box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            border: 3px solid #D4AC0D; cursor: zoom-out; border-radius: 15px; 
+            background-color: #000000;
+        }
 
         @media (max-width: 900px) {
             .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
@@ -163,7 +186,7 @@
             display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
         }
 
-        /* Buscador */
+        /* Buscador Mejorado */
         .buscador-contenedor {
             display: flex; background: #151516; border: 2px solid #D4AC0D;
             border-radius: 30px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
@@ -172,11 +195,12 @@
             background: transparent; border: none; color: #fff; padding: 10px 15px;
             outline: none; width: 200px; font-size: 1rem;
         }
-        .buscador-contenedor button {
-            background: #D4AC0D; color: #000; border: none; padding: 0 15px;
-            cursor: pointer; font-weight: bold; font-size: 1.1rem;
+        .buscador-contenedor .btn-buscar {
+            background: #D4AC0D; color: #000; border: none; padding: 0 12px;
+            cursor: pointer; font-weight: bold; font-size: 1.1rem; 
+            border-left: 1px solid #151516; transition: background 0.2s;
         }
-        .buscador-contenedor button:hover { background: #F7E596; }
+        .buscador-contenedor .btn-buscar:hover { background: #F7E596; }
 
         /* Menú Desplegable (Índice) */
         .btn-indice {
@@ -210,10 +234,11 @@
     <!-- HERRAMIENTAS FLOTANTES (Arriba a la derecha) -->
     <div class="herramientas-flotantes">
         
-        <!-- Buscador -->
+        <!-- Buscador Mejorado -->
         <div class="buscador-contenedor">
             <input type="text" id="inputBuscar" placeholder="Buscar palabra..." onkeypress="buscarConEnter(event)">
-            <button onclick="ejecutarBusqueda()">🔍</button>
+            <button class="btn-buscar" onclick="ejecutarBusqueda(true)" title="Anterior">🔼</button>
+            <button class="btn-buscar" onclick="ejecutarBusqueda(false)" title="Siguiente">🔽</button>
         </div>
 
         <!-- Botón Índice -->
@@ -504,21 +529,26 @@
             menu.classList.toggle('mostrar');
         }
 
-        // --- 2. LÓGICA DEL BUSCADOR (Usa el motor nativo del navegador) ---
-        function ejecutarBusqueda() {
+        // --- 2. LÓGICA DEL BUSCADOR MEJORADO ---
+        function ejecutarBusqueda(haciaAtras = false) {
             const texto = document.getElementById('inputBuscar').value;
+            
             if (texto.trim() !== "") {
-                // window.find busca la palabra, la subraya y scrollea hacia ella automáticamente
-                const encontrado = window.find(texto, false, false, true, false, true, false);
+                // window.find(texto, mayusculas, haciaAtras, cicloInfinito, palabraCompleta, buscarEnFrames, dialogo)
+                const encontrado = window.find(texto, false, haciaAtras, true, false, true, false);
+                
                 if (!encontrado) {
-                    alert("No se encontró la palabra: '" + texto + "' en esta página.");
+                    alert("No se encontraron resultados para: '" + texto + "'.");
                 }
             }
         }
+
         // Permite buscar presionando la tecla "Enter"
         function buscarConEnter(event) {
             if (event.key === "Enter") {
-                ejecutarBusqueda();
+                // Si el usuario mantiene presionado "Shift" + "Enter", busca hacia atrás (como en Chrome)
+                // Si presiona solo "Enter", busca hacia adelante
+                ejecutarBusqueda(event.shiftKey);
             }
         }
 
