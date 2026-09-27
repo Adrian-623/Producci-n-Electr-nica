@@ -243,6 +243,53 @@
             .team-container { flex-direction: column; align-items: center; }
             .team-card { width: 100%; max-width: 450px; }
         }
+
+        /* ================= TIMELINE DE PREPARACIÓN FÍSICA (PRO) ================= */
+        .prep-paso {
+            display: flex; align-items: center; background: linear-gradient(145deg, #151516, #0a0a0a);
+            border: 1px solid #333333; border-left: 5px solid #D4AC0D; border-radius: 15px;
+            padding: 40px; margin-bottom: 40px; position: relative; overflow: hidden;
+            transition: all 0.4s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 1050px; margin-left: auto; margin-right: auto;
+        }
+        .prep-paso:hover {
+            transform: translateY(-5px) scale(1.01); border-color: #D4AC0D;
+            box-shadow: 0 15px 40px rgba(212, 172, 13, 0.25);
+        }
+        /* Número gigante de fondo */
+        .prep-numero {
+            position: absolute; top: -15px; right: 20px; font-size: 10rem; font-weight: 900;
+            color: rgba(212, 172, 13, 0.04); z-index: 0; line-height: 1; user-select: none;
+            transition: color 0.4s ease;
+        }
+        .prep-paso:hover .prep-numero { color: rgba(212, 172, 13, 0.12); }
+        
+        .prep-imagen { width: 45%; z-index: 1; position: relative; }
+        .prep-imagen img { width: 100%; border-radius: 10px; border: 2px solid #333; transition: border 0.3s ease; display: block; cursor: zoom-in;}
+        .prep-paso:hover .prep-imagen img { border-color: #D4AC0D; }
+        
+        .prep-texto { width: 55%; padding-left: 40px; z-index: 1; text-align: left; }
+        .prep-texto h3 { font-size: 2.2rem; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;}
+        .prep-texto h3 span { background: #D4AC0D; color: #000; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1.5rem; font-weight: bold; box-shadow: 0 0 15px rgba(212, 172, 13, 0.5); }
+        .prep-texto p { color: #a1a1a6; font-size: 1.15rem; margin-bottom: 15px; line-height: 1.6; }
+        
+        /* Caja de alerta o TIP */
+        .alerta-tip { background: rgba(212, 172, 13, 0.1); border-left: 4px solid #D4AC0D; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: 20px; display: flex; gap: 15px; align-items: center;}
+        .alerta-tip-icono { font-size: 1.8rem; }
+        .alerta-tip p { margin: 0; color: #F7E596; font-size: 1.05rem; }
+        
+        /* Diseño intercalado */
+        .prep-paso.reversa { flex-direction: row-reverse; border-left: 1px solid #333333; border-right: 5px solid #D4AC0D; }
+        .prep-paso.reversa .prep-numero { left: 20px; right: auto; }
+        .prep-paso.reversa .prep-texto { padding-left: 0; padding-right: 40px; }
+
+        @media (max-width: 900px) {
+            .prep-paso, .prep-paso.reversa { flex-direction: column; text-align: center; padding: 30px; }
+            .prep-texto, .prep-paso.reversa .prep-texto { width: 100%; padding: 0; margin-top: 25px; }
+            .prep-imagen { width: 100%; }
+            .prep-texto h3 { justify-content: center; }
+            .alerta-tip { text-align: left; }
+        }
     </style>
     
 </head>
@@ -424,6 +471,99 @@
                     <li><strong>Offset Number:</strong> <span>1</span></li>
                     <li><strong>Speed:</strong> <span>4 mm/s</span></li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+  <!-- SECCIÓN: PREPARACIÓN FÍSICA DE LA MONOFAB SRM-20 -->
+    <section id="preparacion-fisica">
+        <h2 class="section-title">Preparación Física de la <span class="texto-amarillo">MonoFab SRM-20</span></h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; font-size: 1.2rem; color: #a1a1a6;">
+            El maquinado de precisión exige una preparación física rigurosa. A continuación, el protocolo de 10 pasos para configurar la fresadora, asegurar la placa fenólica y calibrar las herramientas.
+        </p>
+
+        <!-- FASE 1: Arranque y Herramientas -->
+        <div class="prep-paso">
+            <div class="prep-numero">01</div>
+            
+            <!-- Contenedor para 2 imágenes juntas -->
+            <div class="prep-imagen" style="display: flex; gap: 10px;">
+                <img src="imgs/Paso1_USB.jpg" alt="Conexión USB" class="mini-slide" style="width: 50%;">
+                <img src="imgs/Paso2_Boton.jpg" alt="Botón de encendido" class="mini-slide" style="width: 50%;">
+            </div>
+            
+            <div class="prep-texto">
+                <h3><span>1</span> Conexión y Encendido</h3>
+                <p><strong>Paso 1:</strong> Enchufamos el cable USB de la fresadora a un puerto de la computadora para habilitar la transferencia de datos (VPanel).</p>
+                <p><strong>Paso 2:</strong> Presionamos el botón de encendido principal. La máquina emitirá un sonido confirmando la activación de los ejes.</p>
+                <p><strong>Paso 3:</strong> Abrimos el cajón frontal de la MonoFab para extraer las herramientas de trabajo mecánico: la <strong>llave Allen</strong> y los tornillos de fijación.</p>
+            </div>
+        </div>
+
+        <!-- FASE 2: Sujeción del Material (Reversa) -->
+        <div class="prep-paso reversa">
+            <div class="prep-numero">02</div>
+            
+            <div class="prep-imagen" style="display: flex; gap: 10px;">
+                <img src="imgs/Paso4_Cinta.jpg" alt="Cinta doble cara" class="mini-slide" style="width: 50%;">
+                <img src="imgs/Paso5_Atornillar.jpg" alt="Tabla de sacrificio" class="mini-slide" style="width: 50%;">
+            </div>
+
+            <div class="prep-texto">
+                <h3><span>2</span> Sujeción del Material</h3>
+                <p><strong>Paso 4:</strong> Aplicamos cinta de doble cara en la parte posterior de la placa de cobre. Esto evita desniveles y vibraciones que podrían romper brocas de 1/64".</p>
+                <p><strong>Paso 5:</strong> Colocamos la placa sobre la tabla de sacrificio. Con la llave Allen, atornillamos firmemente la tabla a la base ranurada de la máquina.</p>
+            </div>
+        </div>
+
+        <!-- FASE 3: Ubicación Estratégica y Calibración -->
+        <div class="prep-paso">
+            <div class="prep-numero">03</div>
+            
+            <div class="prep-imagen" style="display: flex; gap: 10px;">
+                <img src="imgs/Paso6_Borde.jpg" alt="Ajuste al borde" class="mini-slide" style="width: 50%;">
+                <img src="imgs/Paso8_Postit.jpg" alt="Calibración Post-it" class="mini-slide" style="width: 50%;">
+            </div>
+
+            <div class="prep-texto">
+                <h3><span>3</span> Posicionamiento y Calibración Z</h3>
+                <p><strong>Paso 6:</strong> Movemos el cabezal para fijar el Origen X/Y. Es vital calcular esto antes de bajar la broca.</p>
+                <div class="alerta-tip">
+                    <div class="alerta-tip-icono">💡</div>
+                    <p><strong>Advertencia de optimización:</strong> Ajusta el origen de la fresadora lo más cercano al borde de la placa posible. Esto evita el desperdicio en el centro y conserva área de cobre útil para proyectos futuros.</p>
+                </div>
+                <p style="margin-top: 15px;"><strong>Paso 8 (Calibración):</strong> Para fijar el Origen Z, colocamos un Post-it sobre la placa. Bajamos el husillo lentamente hasta que la broca raspe ligeramente el papel al intentar deslizarlo. Ahí marcamos el cero.</p>
+            </div>
+        </div>
+
+        <!-- FASE 4: Fresado de Pistas y Perforaciones (Reversa) -->
+        <div class="prep-paso reversa">
+            <div class="prep-numero">04</div>
+            
+            <div class="prep-imagen" style="display: flex; gap: 10px;">
+                <img src="imgs/Paso7_BrocaPistas.jpg" alt="Broca para pistas" class="mini-slide" style="width: 50%;">
+                <img src="imgs/Paso9_BrocaPerf.jpg" alt="Broca para perforaciones" class="mini-slide" style="width: 50%;">
+            </div>
+
+            <div class="prep-texto">
+                <h3><span>4</span> Pistas y Perforaciones</h3>
+                <p><strong>Paso 7 (Pistas):</strong> Instalamos la broca plana de grabado (ej. 0.40mm). Esta herramienta raspará el cobre superficial aislando nuestros trazados sin perforar la placa fenólica.</p>
+                <p><strong>Paso 9 (Perforaciones):</strong> Al terminar las pistas, el cabezal regresará al origen. Pausamos, cambiamos la herramienta por una broca de perforación (drill de 0.79mm) para taladrar los agujeros de los componentes through-hole. <em>Nota: Es necesario recalibrar Z con el Post-it tras cada cambio de broca.</em></p>
+            </div>
+        </div>
+
+        <!-- FASE 5: Contorno Final -->
+        <div class="prep-paso">
+            <div class="prep-numero">05</div>
+            
+            <div class="prep-imagen">
+                <img src="imgs/Paso10_BrocaBordes.jpg" alt="Broca para bordes" class="mini-slide" style="width: 100%; height: 250px; object-fit: cover;">
+            </div>
+
+            <div class="prep-texto">
+                <h3><span>5</span> Corte de Contorno</h3>
+                <p><strong>Paso 10:</strong> El último paso mecánico. Cambiamos la broca por la de mayor diámetro (1/32" o más) diseñada para cortes profundos. Volvemos a calibrar el eje Z y mandamos el archivo de contorno.</p>
+                <p>Esta pasada atravesará todo el grosor del material, separando nuestra PCB terminada de la tabla restante de manera limpia.</p>
             </div>
         </div>
     </section>
