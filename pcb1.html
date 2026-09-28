@@ -265,7 +265,17 @@
         .prep-paso:hover .prep-numero { color: rgba(212, 172, 13, 0.12); }
         
         .prep-imagen { width: 45%; z-index: 1; position: relative; }
-        .prep-imagen img { width: 100%; border-radius: 10px; border: 2px solid #333; transition: border 0.3s ease; display: block; cursor: zoom-in;}
+        .prep-imagen img { 
+            width: 100%; 
+            height: 260px; /* Forzamos a que tenga altura de rectángulo acostado */
+            object-fit: cover; /* ¡LA MAGIA! Recorta la foto sin aplastarla */
+            object-position: center; /* Centra el enfoque del recorte */
+            border-radius: 10px; 
+            border: 2px solid #333; 
+            transition: border 0.3s ease; 
+            display: block; 
+            cursor: zoom-in;
+        }
         .prep-paso:hover .prep-imagen img { border-color: #D4AC0D; }
         
         .prep-texto { width: 55%; padding-left: 40px; z-index: 1; text-align: left; }
