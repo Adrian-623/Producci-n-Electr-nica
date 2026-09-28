@@ -510,17 +510,20 @@
 
         /* ================= REPRODUCTOR DE VIDEO CINEMÁTICO (PRO) ================= */
         .video-wrapper {
-            position: relative; max-width: 900px; margin: 0 auto 60px auto;
+            position: relative; max-width: 900px; 
+            margin: 50px auto 60px auto; /* <-- CAMBIO: 50px de margen superior agregado */
             border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a);
             border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             transition: all 0.4s ease;
         }
         .video-wrapper:hover {
-            border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3);
+           border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3);
             transform: scale(1.02);
         }
         .video-wrapper video {
-            width: 100%; border-radius: 8px; display: block; background: #000; cursor: pointer;
+            width: 100%; border-radius: 8px; display: block; background: #000000; cursor: pointer;
+            min-height: 400px; /* <-- CAMBIO: Forzamos la altura para que no se colapse */
+            object-fit: contain;
         }
         .video-tag {
             position: absolute; top: -15px; left: 30px; background: #D4AC0D; color: #000;
@@ -1006,6 +1009,13 @@
                 </tr>
                </tbody>
         </table>
+               <!-- VIDEO TUTORIAL: PLACAS -->
+    <div class="video-wrapper">
+        <div class="video-tag">▶ Tutorial Placa (PCB)</div>
+        <video src="imgs/Video_Placas.mp4" controls loop muted poster="imgs/Poster_Placa.jpg" class="mini-slide"></video>
+        <div class="video-caption-pro">
+            Demostración del ruteo físico de las pistas evitando cruces, creación de zonas rellenas y delimitación de los bordes.
+        </div>
         <p style="text-align: center; margin-top: 30px;">
             Así es cómo nos quedó una vez que acomodamos todo y las pistas quedaron conectadas de manera correcta:
         </p>
@@ -1051,6 +1061,8 @@
                 <p>(El instrumento de medida no es demasiado preciso en medidas inferiores a un milímetro y por eso hay variación de 0.1mm en las imágenes mostradas con anterioridad)</p>
             </div>
         </div>
+
+        
     </section> 
 
     <section id="Paso_4">
@@ -1077,13 +1089,7 @@
             </div>
         </div>
 
-        <!-- VIDEO TUTORIAL: PLACAS -->
-    <div class="video-wrapper">
-        <div class="video-tag">▶ Tutorial Placa (PCB)</div>
-        <video src="imgs/Video_Placas.mp4" controls loop muted poster="imgs/Poster_Placa.jpg" class="mini-slide"></video>
-        <div class="video-caption-pro">
-            Demostración del ruteo físico de las pistas evitando cruces, creación de zonas rellenas y delimitación de los bordes.
-        </div>
+ 
     </div>
     </section>
 
