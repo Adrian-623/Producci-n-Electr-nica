@@ -511,26 +511,34 @@
         /* ================= REPRODUCTOR DE VIDEO CINEMÁTICO (PRO) ================= */
         .video-wrapper {
             position: relative; max-width: 900px; 
-            margin: 50px auto 60px auto; /* <-- CAMBIO: 50px de margen superior agregado */
+            margin: 50px auto 60px auto; 
             border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a);
             border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             transition: all 0.4s ease;
         }
+
         .video-wrapper:hover {
-           border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3);
+            border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3);
             transform: scale(1.02);
         }
-        .video-wrapper video {
-            width: 100%; border-radius: 8px; display: block; background: #000000; cursor: pointer;
-            min-height: 400px; /* <-- CAMBIO: Forzamos la altura para que no se colapse */
-            object-fit: contain;
+
+        /* NUEVO: Estilo adaptado para el iframe de YouTube */
+        .video-wrapper iframe {
+            width: 100%; 
+            aspect-ratio: 16 / 9; /* Mantiene la proporción perfecta de YouTube */
+            border-radius: 8px; 
+            display: block; 
+            background: #000000; 
+            border: none; /* Quita el borde feo por defecto de los iframes */
         }
+
         .video-tag {
             position: absolute; top: -15px; left: 30px; background: #D4AC0D; color: #000;
             padding: 6px 20px; font-weight: 800; border-radius: 20px; font-size: 0.9rem;
             box-shadow: 0 5px 15px rgba(212, 172, 13, 0.4); text-transform: uppercase; letter-spacing: 1px;
             z-index: 10;
         }
+
         .video-caption-pro {
             text-align: center; color: #a1a1a6; padding-top: 15px; font-size: 1.1rem;
             border-top: 1px solid #333; margin-top: 15px; font-style: italic;
@@ -906,6 +914,21 @@
             Proceso de conexión de componentes, cableado de pistas y uso de etiquetas en el Editor de Esquemas.
         </div>
     </div>
+    <!-- VIDEO TUTORIAL: ESQUEMAS (YOUTUBE) -->
+    <div class="video-wrapper">
+        <div class="video-tag">▶ Tutorial Esquemas</div>
+        
+        <!-- Pega el link de YouTube en el src dentro de las comillas -->
+        <iframe src="https://youtu.be/TuvM66Fgi80?feature=shared" 
+                title="Tutorial de Esquemas KiCad" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+        
+        <div class="video-caption-pro">
+            Proceso de conexión de componentes, cableado de pistas y uso de etiquetas en el Editor de Esquemas.
+        </div>
+    </div>
 
         <img src="imgs/Esquema_final.png" alt="Inicio del esquema" class="imagen-borde-amarillo centrar-imagen">
 
@@ -1009,13 +1032,21 @@
                 </tr>
                </tbody>
         </table>
-               <!-- VIDEO TUTORIAL: PLACAS -->
+        <!-- VIDEO TUTORIAL: PLACAS (YOUTUBE) -->
     <div class="video-wrapper">
         <div class="video-tag">▶ Tutorial Placa (PCB)</div>
-        <video src="imgs/Video_Placas.mp4" controls loop muted poster="imgs/Poster_Placa.jpg" class="mini-slide"></video>
+        
+        <!-- Pega el link de YouTube en el src dentro de las comillas -->
+        <iframe src="https://youtu.be/UWQgpA3_j1w?feature=shared" 
+                title="Tutorial de Placas KiCad" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+        
         <div class="video-caption-pro">
             Demostración del ruteo de las pistas evitando cruces, creación de zonas rellenas y delimitación de los bordes.
         </div>
+    </div>
         <p style="text-align: center; margin-top: 30px;">
             Así es cómo nos quedó una vez que acomodamos todo y las pistas quedaron conectadas de manera correcta:
         </p>
