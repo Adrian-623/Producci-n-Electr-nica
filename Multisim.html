@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación en Multisim</title>
+    <title>Documentación - Multisim</title>
     <style>
-        /* ================= ESTILOS GENERALES ================= */
+        /* ================= ESTILOS GENERALES BASE ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #000000; color: #f5f5f7; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: #000000; color: #f5f5f7; line-height: 1.5; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Navegación */
+        /* Barra de navegación */
         nav {
             position: fixed; top: 0; width: 100%; background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -20,154 +20,242 @@
         nav a:hover { color: #D4AC0D; } 
 
         .texto-amarillo { color: #F7E596; } 
-        .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
 
         /* ================= HERO SECTION ================= */
-        .multisim-hero {
-            text-align: center; padding: 120px 20px 60px 20px; 
-            background: linear-gradient(to bottom, #000000, #151516);
-            border-bottom: 1px solid #333; min-height: 40vh; display: flex; flex-direction: column; justify-content: center;
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
         }
-        .multisim-hero h1 { font-size: 4rem; color: #ffffff; margin-bottom: 20px; }
-        .multisim-hero p { font-size: 1.25rem; color: #a1a1a6; max-width: 900px; margin: 0 auto; line-height: 1.6; }
+        .hero-logo {
+            width: 250px; max-width: 80%; height: auto; margin-bottom: 40px;
+            filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); 
+            animation: flotar 4s ease-in-out infinite;
+        }
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+        .hero p { font-size: 1.5rem; color: #a1a1a6; max-width: 800px; }
 
-        /* ================= CARRUSEL DE INTERFAZ ================= */
+        section { padding: 100px 10vw; border-bottom: 1px solid #333333; }
+        .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
+        .section-subtitle { font-size: 2rem; font-weight: 600; margin-bottom: 30px; color: #ffffff; }
+
+        /* ================= CONTENEDORES Y TARJETAS ================= */
+        .screenshot-container {
+            display: flex; align-items: center; background-color: #151516; 
+            padding: 40px; border-radius: 20px; max-width: 1200px; margin: 0 auto 40px auto;
+            border: 2px solid #D4AC0D; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .screenshot-container img:not(.mini-slide) {
+            width: 55%; border-radius: 10px; margin-right: 40px; 
+            border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .screenshot-info { width: 45%; text-align: left; }
+        .screenshot-info h3 { font-size: 2rem; color: #ffffff; margin-bottom: 15px; }
+        .screenshot-info p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 15px; line-height: 1.6; }
+        .screenshot-info ul { color: #a1a1a6; margin-left: 20px; margin-bottom: 15px; font-size: 1.1rem; }
+        .screenshot-info li { margin-bottom: 8px; }
+
+        .reverse { flex-direction: row-reverse; }
+        .reverse img:not(.mini-slide) { margin-right: 0; margin-left: 40px; }
+
+        .tarjeta-destacada {
+            width: fit-content; max-width: 900px; margin: 0 auto 40px auto;
+            border-radius: 20px; border: 3px solid #D4AC0D; background-color: #151516;
+            overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .tarjeta-destacada img { width: 100%; height: auto; max-height: 600px; display: block; object-fit: contain; border-bottom: 2px solid #333333; background-color: #000; }
+        .tarjeta-destacada-texto { padding: 25px 35px; text-align: left; }
+        .tarjeta-destacada-texto h3 { font-size: 2rem; margin-bottom: 10px; color: #F7E596;}
+        .tarjeta-destacada-texto p { font-size: 1.2rem; color: #a1a1a6; }
+
+        /* ================= CARRUSEL PRINCIPAL ================= */
         .carrusel-contenedor {
-            position: relative; max-width: 1000px; margin: 0 auto; border-radius: 20px;
-            border: 3px solid #D4AC0D; background-color: #151516; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: relative; max-width: 1000px; margin: 0 auto 60px auto;
+            border-radius: 20px; border: 3px solid #D4AC0D; background-color: #151516;
+            overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .carrusel-slide { display: none; animation: aparecer 0.5s; }
         .carrusel-slide.activo { display: block; }
         @keyframes aparecer { from { opacity: 0.4; } to { opacity: 1; } }
-        .carrusel-slide img { width: 100%; height: auto; display: block; border-bottom: 2px solid #333333; cursor: zoom-in; }
-        .carrusel-texto { padding: 30px 40px; text-align: left; }
-        .carrusel-texto h3 { font-size: 1.8rem; margin-bottom: 10px; color: #F7E596; }
-        .carrusel-texto p { font-size: 1.1rem; color: #a1a1a6; }
+        .carrusel-slide img { width: 100%; height: auto; display: block; border-bottom: 2px solid #333333; }
+        .carrusel-texto { padding: 30px 40px; text-align: center; }
+        .carrusel-texto h3 { font-size: 2rem; margin-bottom: 10px; color: #F7E596;}
+        .carrusel-texto p { font-size: 1.2rem; color: #a1a1a6; }
         
         .carrusel-btn {
             position: absolute; top: 40%; transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.8); color: #D4AC0D; border: 2px solid #D4AC0D;
-            font-size: 24px; padding: 10px 18px; cursor: pointer; border-radius: 50%; transition: all 0.3s;
+            background-color: rgba(0, 0, 0, 0.7); color: #D4AC0D; border: 2px solid #D4AC0D;
+            font-size: 24px; padding: 10px 18px; cursor: pointer; border-radius: 50%; transition: all 0.3s ease; z-index: 10;
         }
         .carrusel-btn:hover { background-color: #D4AC0D; color: #000; }
         .prev { left: 15px; } .next { right: 15px; }
 
-        /* ================= STEP CARDS DETALLADAS ================= */
-        .prep-paso {
-            display: flex; align-items: center; background: linear-gradient(145deg, #151516, #0a0a0a);
-            border: 1px solid #333333; border-left: 5px solid #D4AC0D; border-radius: 15px;
-            padding: 40px; margin-bottom: 40px; position: relative; overflow: hidden;
-            transition: all 0.4s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            max-width: 1100px; margin-left: auto; margin-right: auto;
+        /* ================= TABLAS COMPARATIVAS OSCURAS ================= */
+        .contenedor-tablas { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1400px; margin: 50px auto; }
+        .tabla-comparativa {
+            flex: 1; min-width: 400px; border-collapse: collapse; background-color: #151516; 
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(212, 172, 13, 0.15); border: 2px solid #D4AC0D;
         }
-        .prep-paso:hover {
-            transform: translateY(-5px) scale(1.01); border-color: #D4AC0D;
-            box-shadow: 0 15px 40px rgba(212, 172, 13, 0.25);
+        .tabla-comparativa th, .tabla-comparativa td {
+            border: 1px solid #D4AC0D; padding: 15px; text-align: left; vertical-align: middle; color: #ffffff; font-size: 1.1rem;
         }
-        .prep-numero {
-            position: absolute; top: -15px; right: 20px; font-size: 10rem; font-weight: 900;
-            color: rgba(212, 172, 13, 0.04); z-index: 0; line-height: 1; user-select: none;
+        .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) { background-color: rgba(212, 172, 13, 0.1); font-weight: bold; text-align: center; }
+        .tabla-centrada { flex: 0 0 100%; max-width: 1000px; margin: 20px auto 0 auto; }
+        
+        .img-sencilla { max-width: 180px; height: auto; border-radius: 8px; display: block; margin: 0 auto; }
+        
+        /* ================= MINI CARRUSEL (DENTRO DE TABLAS/CAJAS) ================= */
+        .mini-carrusel {
+            position: relative; width: 100%; max-width: 300px; height: 180px; margin: 0 auto;
+            border-radius: 8px; overflow: hidden; background-color: #000; border: 1px solid #D4AC0D;
         }
-        .prep-imagen { width: 45%; z-index: 1; position: relative; }
-        .prep-imagen img { width: 100%; height: auto; border-radius: 10px; border: 2px solid #333; display: block; cursor: zoom-in; }
+        .mini-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.3s ease; cursor: zoom-in; }
+        .mini-slide.activo { opacity: 1; z-index: 1; }
         
-        .prep-texto { width: 55%; padding-left: 40px; z-index: 1; text-align: left; }
-        .prep-texto h3 { font-size: 2.2rem; color: #ffffff; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;}
-        .prep-texto h3 span { background: #D4AC0D; color: #000; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1.5rem; font-weight: bold; }
-        .prep-texto p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 15px; }
-        .prep-texto ul { color: #a1a1a6; margin-left: 20px; margin-bottom: 15px; font-size: 1.1rem; }
-        .prep-texto li { margin-bottom: 5px; }
-        
-        .alerta-tip { background: rgba(212, 172, 13, 0.1); border-left: 4px solid #D4AC0D; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: 20px; display: flex; gap: 15px; align-items: center;}
-        .alerta-tip-icono { font-size: 1.8rem; }
-        .alerta-tip p { margin: 0; color: #F7E596; font-size: 1.05rem; }
-        
-        .prep-paso.reversa { flex-direction: row-reverse; border-left: 1px solid #333333; border-right: 5px solid #D4AC0D; }
-        .prep-paso.reversa .prep-numero { left: 20px; right: auto; }
-        .prep-paso.reversa .prep-texto { padding-left: 0; padding-right: 40px; }
+        .mini-btn {
+            position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.8); color: #D4AC0D;
+            border: 1px solid #D4AC0D; font-size: 14px; padding: 6px 10px; cursor: pointer; border-radius: 50%; z-index: 2; transition: background-color 0.2s;
+        }
+        .mini-btn:hover { background-color: #D4AC0D; color: #000; }
+        .mini-btn.prev { left: 5px; } .mini-btn.next { right: 5px; }
 
-        /* ================= GRID DE ANÁLISIS AVANZADO ================= */
-        .analisis-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px; max-width: 1100px; margin: 0 auto 50px auto;
-        }
-        .analisis-card {
-            background: #151516; border: 1px solid #333; border-top: 4px solid #D4AC0D;
-            border-radius: 10px; padding: 30px; transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .analisis-card:hover { transform: translateY(-8px); border-color: #D4AC0D; box-shadow: 0 15px 30px rgba(212, 172, 13, 0.2); }
-        .analisis-card h3 { color: #F7E596; font-size: 1.5rem; margin-bottom: 15px; }
-        .analisis-card p { color: #a1a1a6; font-size: 1.05rem; margin-bottom: 15px; }
-        .analisis-card img { width: 100%; border-radius: 8px; border: 1px solid #333; cursor: zoom-in; display: block; margin-top: 15px;}
+        .carrusel-captura { width: 55% !important; max-width: 100% !important; height: 350px !important; border: 1px solid #333 !important; border-radius: 10px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; background-color: #000 !important; }
+        .screenshot-container.reverse .carrusel-captura { margin-left: 40px !important; margin-right: 0 !important; }
 
-        /* ================= REPRODUCTOR DE VIDEO ================= */
-        .video-wrapper {
-            position: relative; max-width: 900px; margin: 50px auto 60px auto;
-            border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a);
-            border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-        .video-wrapper video { width: 100%; border-radius: 8px; display: block; background: #000; }
-        .video-tag {
-            position: absolute; top: -15px; left: 30px; background: #D4AC0D; color: #000;
-            padding: 6px 20px; font-weight: 800; border-radius: 20px; font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(212, 172, 13, 0.4); text-transform: uppercase; z-index: 10;
-        }
+        /* ================= ZOOM Y FONDOS ================= */
+        #fondo-oscuro-zoom { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); z-index: 99998; cursor: zoom-out; }
+        .mini-slide.ampliada, img.ampliada { position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) scale(1) !important; width: auto !important; height: auto !important; max-width: 90vw !important; max-height: 90vh !important; object-fit: contain !important; z-index: 99999 !important; box-shadow: 0 0 50px rgba(0, 0, 0, 1) !important; border: 3px solid #D4AC0D !important; opacity: 1 !important; cursor: zoom-out !important; border-radius: 15px !important; background-color: #000000 !important; }
+
+        /* ================= ACORDEÓN ================= */
+        .accordion { width: 100%; max-width: 1000px; margin: 0 auto 50px auto; border-radius: 15px; overflow: hidden; border: 2px solid #D4AC0D; background-color: #151516; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .accordion-item { border-bottom: 1px solid #333333; }
+        .accordion-item:last-child { border-bottom: none; }
+        .accordion-button { width: 100%; text-align: left; background-color: #1a1a1a; color: #D4AC0D; padding: 20px 30px; font-size: 1.3rem; font-weight: bold; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease; }
+        .accordion-button:hover { background-color: #2a2a2a; }
+        .accordion-button::after { content: '+'; font-size: 1.8rem; color: #D4AC0D; transition: transform 0.3s ease; }
+        .accordion-button:not(.collapsed)::after { content: '−'; transform: rotate(180deg); }
+        .accordion-collapse { display: grid !important; grid-template-rows: 0fr !important; overflow: hidden !important; transition: grid-template-rows 0.4s ease-out !important; background-color: #151516; }
+        .accordion-collapse.abierto { grid-template-rows: 1fr !important; }
+        .accordion-body { min-height: 0 !important; overflow: hidden !important; padding: 0 30px !important; border-top: 0px solid transparent !important; color: #a1a1a6; font-size: 1.1rem; transition: padding 0.4s ease-out !important; }
+        .accordion-collapse.abierto .accordion-body { padding: 25px 30px !important; border-top: 1px solid #333333 !important; }
+        
+        .img-acordeon { max-width: 600px !important; width: 100% !important; height: auto !important; display: block !important; margin: 30px auto 20px auto !important; border-radius: 10px; border: 2px solid #D4AC0D; }
+
+        /* ================= REPRODUCTOR DE VIDEO CINEMÁTICO ================= */
+        .video-wrapper { position: relative; max-width: 1000px; margin: 50px auto 60px auto; border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a); border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: all 0.4s ease; }
+        .video-wrapper:hover { border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3); transform: scale(1.02); }
+        .video-wrapper iframe { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; display: block; background: #000000; border: none; }
+        .video-tag { position: absolute; top: -15px; left: 30px; background: #D4AC0D; color: #000; padding: 6px 20px; font-weight: 800; border-radius: 20px; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(212, 172, 13, 0.4); text-transform: uppercase; letter-spacing: 1px; z-index: 10; }
         .video-caption-pro { text-align: center; color: #a1a1a6; padding-top: 15px; font-size: 1.1rem; border-top: 1px solid #333; margin-top: 15px; font-style: italic; }
 
-        /* ================= ZOOM ================= */
-        #fondo-oscuro-zoom {
-            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); z-index: 99998; cursor: zoom-out; 
-        }
-        img.ampliada {
-            position: fixed !important; top: 50% !important; left: 50% !important; 
-            transform: translate(-50%, -50%) scale(1) !important;
-            width: auto !important; height: auto !important; max-width: 90vw !important; max-height: 90vh !important;
-            object-fit: contain !important; z-index: 99999 !important; box-shadow: 0 0 50px rgba(0, 0, 0, 1) !important;
-            border: 3px solid #D4AC0D !important; cursor: zoom-out !important; border-radius: 15px !important; background-color: #000 !important;
+        /* ================= HERRAMIENTAS FLOTANTES ================= */
+        .herramientas-flotantes { position: fixed; top: 80px; right: 20px; z-index: 1001; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .buscador-contenedor { display: flex; background: #151516; border: 2px solid #D4AC0D; border-radius: 30px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .buscador-contenedor input { background: transparent; border: none; color: #fff; padding: 10px 15px; outline: none; width: 200px; font-size: 1rem; }
+        .buscador-contenedor .btn-buscar { background: #D4AC0D; color: #000; border: none; padding: 0 12px; cursor: pointer; font-weight: bold; font-size: 1.1rem; border-left: 1px solid #151516; transition: background 0.2s; }
+        .buscador-contenedor .btn-buscar:hover { background: #F7E596; }
+        
+        .btn-indice { background: #D4AC0D; color: #000; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 1.1rem; transition: 0.3s; }
+        .btn-indice:hover { background: #F7E596; transform: scale(1.05); }
+        
+        .menu-desplegable { display: none; background: #151516; border: 2px solid #D4AC0D; border-radius: 8px; flex-direction: column; overflow: hidden; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .menu-desplegable.mostrar { display: flex; animation: aparecerMenu 0.3s ease; }
+        @keyframes aparecerMenu { from{ opacity: 0; transform: translateY(-10px); } to{ opacity: 1; transform: translateY(0); } }
+        .menu-desplegable a { color: #f5f5f7; text-decoration: none; padding: 15px 20px; border-bottom: 1px solid #333; transition: background 0.2s; font-size: 0.95rem; }
+        .menu-desplegable a:hover { background: #D4AC0D; color: #000; font-weight: bold; }
+
+        .personaje-animado { position: fixed; bottom: 0; right: -150px; z-index: 9999; width: 100px; animation: caminar-izquierda 12s linear infinite; pointer-events: none; transform: scaleX(-1); }
+        @keyframes caminar-izquierda { 0% { left: -150px; } 100% { left: 100vw; } }
+
+        @media (max-width: 900px) {
+            .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
+            .screenshot-container img:not(.mini-slide), .screenshot-container.reverse img:not(.mini-slide) { width: 100%; margin: 0 0 25px 0; }
+            .carrusel-captura { width: 100% !important; margin: 0 0 25px 0 !important; height: 250px !important; }
+            .screenshot-info { width: 100%; text-align: center; }
+            .hero-logo { width: 180px; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- FONDO PARA EL ZOOM -->
     <div id="fondo-oscuro-zoom"></div>
 
+    <!-- HERRAMIENTAS FLOTANTES -->
+    <div class="herramientas-flotantes">
+        <div class="buscador-contenedor">
+            <input type="text" id="inputBuscar" placeholder="Buscar concepto..." onkeypress="buscarConEnter(event)">
+            <button class="btn-buscar" onclick="ejecutarBusqueda(true)" title="Anterior">🔼</button>
+            <button class="btn-buscar" onclick="ejecutarBusqueda(false)" title="Siguiente">🔽</button>
+        </div>
+        <button class="btn-indice" onclick="toggleIndice()">Índice de Contenido</button>
+        <div class="menu-desplegable" id="menuIndice">
+            <a href="#introduccion" onclick="toggleIndice()">1. ¿Qué es Multisim? y Entorno</a>
+            <a href="#paso1" onclick="toggleIndice()">2. Paso 1 y 2: Circuito DC y Conexiones</a>
+            <a href="#paso3" onclick="toggleIndice()">3. Paso 3: Mediciones Eléctricas</a>
+            <a href="#paso4" onclick="toggleIndice()">4. Paso 4 y 5: AC y Osciloscopios</a>
+            <a href="#paso6" onclick="toggleIndice()">5. Paso 6 al 8: Lógica Digital y Logic Converter</a>
+            <a href="#paso9" onclick="toggleIndice()">6. Paso 9 al 12: Análisis Avanzados (Transitorio, BJT, Diodo)</a>
+            <a href="#resultados" onclick="toggleIndice()">7. Resultados y Documentación</a>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
     <nav>
         <a href="index.html">Inicio</a>
         <a href="KiCad.html">KiCad</a>
-        <a href="mods.html">Mods</a>
+        <a href="pcb1.html">Mods y MonoFab</a>
         <a href="Proyecto_Final.html">Proyecto Final</a>
     </nav>
 
-    <header class="multisim-hero">
-        <h1>Tutorial <span class="texto-amarillo">Multisim</span></h1>
-        <p>Documentación detallada sobre la construcción de circuitos, simulación de componentes, extracción de mediciones eléctricas y configuración de análisis avanzados en el entorno de Multisim.</p>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="imgs/Multisim_Logo.png" alt="Logo de Multisim" class="hero-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/National_Instruments_logo.svg/512px-National_Instruments_logo.svg.png'">
+        <h1>Simulación en Multisim</h1>
+        <p>Software estándar de la industria utilizado para construir circuitos interactivos, simular funcionamiento, probar valores matemáticos y realizar medición mediante instrumentación virtual avanzada.</p>
     </header>
 
-    <!-- ================= INTERFAZ ================= -->
-    <section id="interfaz" style="padding: 60px 20px; background-color: #000;">
-        <h2 class="section-title">Interfaz y <span class="texto-amarillo">Área de Trabajo</span></h2>
+    <!-- ================= SECCIÓN 1: INTRODUCCIÓN E INTERFAZ ================= -->
+    <section id="introduccion">
+        <h2 class="section-title"><span class="texto-amarillo">¿Qué es Multisim?</span></h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #a1a1a6; margin-bottom: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+            Multisim es un programa que se utiliza para construir circuitos y simular su funcionamiento. Podremos modificar componentes, probar valores y observar el comportamiento del circuito mediante instrumentos virtuales. La simulación nos ayudará a detectar errores y revisar los cambios que realicemos antes de pasar al ensamble físico.
+        </p>
+
+        <h3 class="section-subtitle" style="text-align: center; margin-top: 60px;">Interfaz Principal</h3>
+        
         <div class="carrusel-contenedor">
             <div class="carrusel-slide activo">
-                <img src="imgs/Multisim_Componentes.jpg" alt="Selección de componentes" class="mini-slide">
+                <img src="imgs/M_Seleccion.png" alt="Selección de Componentes" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Componentes'">
                 <div class="carrusel-texto">
-                    <h3>Selección de Componentes</h3>
-                    <p>Al seleccionar una herramienta, se abre una ventana con elementos organizados en Grupos y Familias. Desde aquí podemos alternar rápidamente entre <em>Sources</em>, <em>Basic</em> (Resistencias) o <em>Diodes</em> sin cerrar la pestaña.</p>
+                    <h3><span class="texto-amarillo">Selección de componentes</span></h3>
+                    <p>Primero identificamos las herramientas para colocar componentes. Al seleccionar una, abrimos una ventana donde encontramos los elementos organizados en grupos y familias. Desde esa misma ventana podemos cambiar de grupo sin cerrarla (pasar de diodos a básicos).</p>
                 </div>
             </div>
             <div class="carrusel-slide">
-                <img src="imgs/Multisim_Simulacion.jpg" alt="Controles" class="mini-slide">
+                <img src="imgs/M_Controles.png" alt="Controles de simulación" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Controles'">
                 <div class="carrusel-texto">
-                    <h3>Controles de Simulación</h3>
-                    <p>El botón de ejecución (triángulo verde) inicia el análisis. <strong>Ojo:</strong> Mientras la simulación corre, las herramientas de edición se deshabilitan. Siempre debemos detenerla (Stop) para modificar conexiones o valores.</p>
+                    <h3><span class="texto-amarillo">Controles de simulación</span></h3>
+                    <p>Identificamos el botón para iniciar la simulación (triángulo verde). Cuando ejecutamos el circuito, varias herramientas de edición aparecen deshabilitadas. Para modificar componentes o conexiones, siempre debemos detener la simulación.</p>
                 </div>
             </div>
             <div class="carrusel-slide">
-                <img src="imgs/Multisim_Instrumentos.jpg" alt="Instrumentos" class="mini-slide">
+                <img src="imgs/M_Puntas.png" alt="Mediciones puntuales" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Puntas'">
                 <div class="carrusel-texto">
-                    <h3>Instrumentos y Mediciones</h3>
-                    <p>En la barra lateral derecha tenemos multímetros, osciloscopios, generadores de funciones y el <em>Logic Converter</em>. Además, podemos usar herramientas puntuales de medición directa (Corriente, Voltaje, Potencia) que se actualizan en vivo.</p>
+                    <h3><span class="texto-amarillo">Mediciones puntuales</span></h3>
+                    <p>Tenemos herramientas para consultar voltaje, corriente y potencia directamente sobre las líneas del circuito. Estas lecturas permanecen disponibles y se actualizan dinámicamente mientras estamos simulando.</p>
+                </div>
+            </div>
+            <div class="carrusel-slide">
+                <img src="imgs/M_Instrumentos.png" alt="Instrumentos" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Instrumentos'">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Instrumentos Virtuales</span></h3>
+                    <p>En la barra lateral derecha encontramos instrumentos como multímetros, osciloscopios, Logic Converter y generadores de funciones. Los seleccionamos, los colocamos en la hoja de trabajo y hacemos doble clic para abrir su panel de configuración frontal.</p>
                 </div>
             </div>
             <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
@@ -175,75 +263,330 @@
         </div>
     </section>
 
-    <!-- ================= CIRCUITOS DC Y CONEXIÓN ================= -->
-    <section id="circuitos-dc" style="padding: 60px 20px; background-color: #151516; border-top: 1px solid #333;">
-        <h2 class="section-title">Circuitos DC: <span class="texto-amarillo">Colocación y Conexión</span></h2>
-        
-        <!-- Paso 1 -->
-        <div class="prep-paso">
-            <div class="prep-numero">01</div>
-            <div class="prep-imagen">
-                <img src="imgs/Multisim_Paso1.jpg" alt="Colocación de componentes" class="mini-slide">
+    <!-- ================= SECCIÓN 2: PASO 1 Y 2 (CIRCUITO DC) ================= -->
+    <section id="paso1">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 1:</span> Colocación y edición de componentes</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">
+            Vamos a colocar una fuente DC, tierra, una resistencia, un LED y un interruptor para armar un circuito básico funcional.
+        </p>
+
+        <div class="screenshot-container">
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/M_Fuente.png" class="mini-slide activo" alt="Fuente DC" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Fuente+DC'">
+                <img src="imgs/M_Resistencia.png" class="mini-slide" alt="Resistencia" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Resistencia'">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
             </div>
-            <div class="prep-texto">
-                <h3><span>1</span> Colocación de Componentes</h3>
-                <p>Para ensamblar nuestro primer circuito de prueba, colocamos estratégicamente:</p>
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Búsqueda en Familias</span></h3>
                 <ul>
-                    <li><strong>Fuente DC:</strong> (Power Sources -> DC Power). El positivo es la línea larga.</li>
-                    <li><strong>Tierra (GND):</strong> Esencial como punto de referencia para cualquier simulación.</li>
-                    <li><strong>Resistencia:</strong> Modificamos sus propiedades con doble clic para fijarla en <strong>1 kΩ</strong>.</li>
-                    <li><strong>LED:</strong> (Diodes -> LEDs). Seleccionamos un color individual.</li>
-                    <li><strong>Interruptor:</strong> (Basic -> Switch). Le asignamos la tecla "A" para operarlo.</li>
+                    <li><strong>Fuente DC:</strong> (Power Sources > DC Power). La línea larga del símbolo representa el polo positivo.</li>
+                    <li><strong>Tierra (GND):</strong> (Power Sources > Ground). Fundamental para simular; se usa como punto de referencia universal (0V).</li>
+                    <li><strong>Resistencia:</strong> (Basic > Resistor). Hacemos doble clic para cambiar su valor a <strong>1 kΩ</strong> (y posteriormente 220 Ω).</li>
+                    <li><strong>LED:</strong> (Diodes > LEDs). Elegimos el color deseado.</li>
+                    <li><strong>Interruptor:</strong> (Basic > Switch > SPST). Se le asigna una tecla, como la <strong>A</strong>, para cambiar su estado (abierto/cerrado) durante la simulación.</li>
                 </ul>
-                <p><em>Para rotar:</em> Seleccionamos el componente, clic derecho y elegimos rotar 90 grados en el sentido necesario.</p>
+                <p><em>Rotación:</em> Seleccionamos el componente, clic derecho y elegimos rotación de 90 grados en el sentido necesario.</p>
             </div>
         </div>
 
-        <!-- Paso 2 -->
-        <div class="prep-paso reversa">
-            <div class="prep-numero">02</div>
-            <div class="prep-imagen">
-                <img src="imgs/Multisim_Paso2.jpg" alt="Conexiones" class="mini-slide">
+        <h2 class="section-title" style="margin-top: 80px;"><span class="texto-amarillo">Paso 2:</span> Conexión y Simulación del LED</h2>
+
+        <div class="screenshot-container reverse">
+            <img src="imgs/M_Conexion.png" alt="Conexión de pistas" onerror="this.src='https://via.placeholder.com/800x600/151516/D4AC0D?text=Circuito+Conectado'">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Ruteo e interactividad</span></h3>
+                <p>Acercamos el cursor a la terminal de un componente hasta que el puntero cambie. Hacemos clic para iniciar el cable y lo llevamos hasta la siguiente terminal. Para unir la tierra a una línea existente, siempre iniciamos el cable <strong>desde el componente que queremos agregar</strong> hacia la línea.</p>
+                <p><strong>Ejecución:</strong> Presionamos el triángulo verde. Cambiamos el estado del interruptor con la tecla A y revisamos el comportamiento del LED.</p>
+                <p><strong>Cálculo Real de Resistencia:</strong> Si el LED necesita 2V para operar, y la fuente es de 10V, la resistencia debe absorber los 8V restantes. Ajustamos los valores teóricos a 5V de fuente y 220 Ω en resistencia para evitar quemar el LED.</p>
             </div>
-            <div class="prep-texto">
-                <h3><span>2</span> Conexión y Simulación</h3>
-                <p>Acercamos el cursor a la terminal hasta que el puntero cambie, y hacemos clic para tirar el cable hacia el siguiente componente. Si necesitamos unir GND a una línea existente, siempre debemos <strong>iniciar el cable desde GND</strong> hacia la línea (no al revés) para evitar alterar trazados previos.</p>
-                <div class="alerta-tip">
-                    <div class="alerta-tip-icono">⚙️</div>
-                    <p><strong>Cálculo Real:</strong> Si usamos una fuente de 10V y el LED consume 2V, la resistencia debe absorber los 8V restantes. Ajustamos el circuito final a 5V con resistencia de 220Ω para un brillo seguro.</p>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 3: MEDICIONES ELÉCTRICAS ================= -->
+    <section id="paso3">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 3:</span> Mediciones Eléctricas</h2>
+        
+        <table class="tabla-comparativa tabla-centrada">
+            <tbody>
+                <tr>
+                    <td colspan="2"><h3 class="texto-amarillo">Puntas de Prueba y Multímetro</h3></td>
+                </tr>
+                <tr>
+                    <td style="width: 250px;">Medición</td>
+                    <td>Procedimiento y Resultados en Simulación</td>
+                </tr>
+                <tr>
+                    <td><img src="imgs/M_Corriente.png" class="img-sencilla" alt="Corriente" onerror="this.src='https://via.placeholder.com/200x100/151516/FFF?text=Punta+A'"></td>
+                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Corriente (A)</span></h2>
+                        Seleccionamos la herramienta de corriente y la colocamos en el cable. 
+                        Con el interruptor <strong>Abierto</strong> leemos -34 pA (picamperios, virtualmente cero). 
+                        Con el interruptor <strong>Cerrado</strong> leemos 8.62 mA fluyendo por el circuito.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="imgs/M_Voltaje.png" class="img-sencilla" alt="Voltaje" onerror="this.src='https://via.placeholder.com/200x100/151516/FFF?text=Punta+V'"></td>
+                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Voltaje (V) y Potencia (W)</span></h2>
+                        La punta de Voltaje compara un punto respecto a tierra (lee 12V en la fuente o un valor pV en circuito abierto). La herramienta de Potencia (W) <strong>debe colocarse directamente sobre el componente</strong>, no en el cable, para medir disipación.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="imgs/M_Multimetro.png" class="img-sencilla" alt="Multímetro" onerror="this.src='https://via.placeholder.com/200x200/151516/FFF?text=Multímetro'"></td>
+                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Multímetro Virtual</span></h2>
+                        Se saca de la barra lateral. Hacemos doble clic para abrirlo, seleccionamos <strong>Voltaje (V) en Directa (DC)</strong>. A diferencia de las puntas (que miden vs Tierra), el multímetro se conecta en paralelo a las dos patas del LED para medir su caída de tensión exacta (Obtuvimos aprox. 3.4 V).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ================= SECCIÓN 4: AC, OFFSET Y OSCILOSCOPIOS ================= -->
+    <section id="paso4">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 4 y 5:</span> Fuente AC y Osciloscopios</h2>
+
+        <div class="tarjeta-destacada">
+            <img src="imgs/M_Offset.png" alt="Configuración AC" onerror="this.src='https://via.placeholder.com/800x400/000/FFF?text=Onda+AC+con+Offset'">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Fuente AC y Offset</span></h3>
+                <p>Abrimos una nueva pestaña y colocamos una fuente AC y Tierra. Modificamos los parámetros: <strong>Voltaje = 120</strong>, <strong>Frecuencia = 60 Hz</strong>, y agregamos un <strong>Offset = 60</strong>.</p>
+                <p>El Offset consiste en sumar una señal DC continua a la señal AC pura, lo que provoca que toda la gráfica sinusoidal se desplace verticalmente hacia arriba en el osciloscopio, útil para simular sensores industriales.</p>
+            </div>
+        </div>
+
+        <div class="screenshot-container reverse">
+            <div class="mini-carrusel carrusel-captura">
+                <img src="imgs/M_Osciloscopio.png" class="mini-slide activo" alt="Osciloscopio 2 canales" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Osciloscopio'">
+                <img src="imgs/M_Tektronix.png" class="mini-slide" alt="Tektronix" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Tektronix'">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Análisis en Osciloscopios</span></h3>
+                <p>Conectamos el Canal A a la fuente y la terminal negativa a tierra. Los ajustes principales en cualquier osciloscopio son:</p>
+                <ul>
+                    <li><strong>Escala Vertical:</strong> Voltaje por división (Ej. 200 V/div) para que la onda quepa en pantalla.</li>
+                    <li><strong>Escala Horizontal:</strong> Tiempo por base (Ej. 2 ms/div) para observar la frecuencia.</li>
+                    <li><strong>Osciloscopio 4 Canales:</strong> Este instrumento utiliza internamente la referencia a tierra del circuito. Seleccionamos el canal a editar con el dial A, B, C, D.</li>
+                    <li><strong>Tektronix:</strong> Simula el hardware real. Lo encendemos, probamos el botón mágico <em>Autoset</em>, y usamos el menú "Measure" para medir la frecuencia directamente sobre la gráfica digital.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 5: CIRCUITOS LÓGICOS Y CONVERTER ================= -->
+    <section id="paso6">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 6 al 8:</span> Lógica Digital</h2>
+        
+        <p style="text-align: center; font-size: 1.2rem; color: #a1a1a6; margin-bottom: 50px;">
+            Diseño de funciones booleanas utilizando circuitos integrados comerciales, etiquetas de ruteo inteligente y el Logic Converter para deducción automática.
+        </p>
+
+        <div class="accordion" id="accordionDigital">
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button abierto" type="button">Paso 6: Construcción de circuitos lógicos</button></h2>
+                <div class="accordion-collapse abierto">
+                    <div class="accordion-body">
+                        <p>Del grupo TTL y la familia 74LS sacamos las compuertas físicas (terminación <strong>08 para AND</strong>, <strong>04 para NOT</strong>, <strong>32 para OR</strong>). Colocamos cuatro AND, un inversor y tres OR.</p>
+                        <p>Para controlarlas, usamos "Fuentes Digitales > Constante Digital". Colocamos cuatro variables de entrada (A, B, C, D) y asignamos a cada una su respectiva tecla del teclado para alternar entre 0 y 1 lógico dinámicamente.</p>
+                        <p>Finalmente, colocamos una Punta de Prueba Digital a la salida que nos indicará visualmente (encendido) cuándo el estado final del sistema es 1.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 7: Conexiones mediante nombres de red</button></h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        <p>Para evitar cruzar decenas de cables físicos en todo el esquema, sacamos un cable corto, hacemos doble clic sobre él y le escribimos un <strong>Nombre de Referencia</strong> (ej. "Variable_A") activando "Mostrar nomenclatura".</p>
+                        <p>Si usamos un nombre que ya existe, Multisim preguntará si se trata de la misma red. Al confirmar, el software "conecta" invisiblemente todos los cables que tengan el mismo nombre en la misma pista, simplificando radicalmente el dibujo. También cambiamos el color de los cables según la entrada lógica para mayor claridad gráfica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 8: Uso de Logic Converter</button></h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        <p>Instrumento súper avanzado ubicado en la barra derecha.</p>
+                        <p><strong>Configuración Manual:</strong> Nos permite crear Tablas de Verdad seleccionando variables, editando las salidas (0, 1 o estado de no importa 'X') y obtener inmediatamente la forma canónica y simplificada del problema.</p>
+                        <p><strong>Análisis de Circuito:</strong> Detenemos la simulación, eliminamos las entradas manuales y conectamos las líneas de red del circuito a las entradas del conversor (manteniendo el orden A, B, C, D) y la terminal de salida final del sistema.</p>
+                        <p>Le pedimos al instrumento extraer la tabla, simplificarla (obteniendo <em>A·C' + B·C</em> y deduciendo que D no afecta) y como acto final, pedimos generar un circuito equivalente usando <strong>únicamente compuertas NAND</strong>. Multisim estampará este nuevo circuito óptimo automáticamente en la pantalla de trabajo.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- VIDEO: CABLEADO Y SIMULACIÓN -->
-        <div class="video-wrapper">
-            <div class="video-tag">▶ Video: Cableado y Ejecución</div>
-            <video src="imgs/Video_Multisim_Cableado.mp4" controls preload="metadata"></video>
-            <div class="video-caption-pro">Demostración de trazado de cables, uso de la tecla 'A' para el switch y ejecución de la simulación interactiva.</div>
+        <!-- VIDEO: Lógica Digital (Enlace) -->
+        <div class="video-wrapper" style="text-align: center; padding: 45px 20px;">
+            <div class="video-tag">▶ Video Tutorial</div>
+            <p style="color: #a1a1a6; font-size: 1.2rem; margin-bottom: 25px;">Demostración de Logic Converter y Nombres de Red.</p>
+            <a href="https://youtu.be/PON_TU_VIDEO" target="_blank" style="display: inline-block; padding: 15px 40px; font-size: 1.2rem; font-weight: bold; color: #000; background-color: #D4AC0D; border-radius: 30px; text-decoration: none; box-shadow: 0 5px 20px rgba(212, 172, 13, 0.4);">
+                Ver en YouTube ↗
+            </a>
         </div>
     </section>
 
-    <!-- ================= MEDICIONES Y AC ================= -->
-    <section id="mediciones-ac" style="padding: 60px 20px; background-color: #000; border-top: 1px solid #333;">
-        <h2 class="section-title">Análisis AC y <span class="texto-amarillo">Mediciones</span></h2>
+    <!-- ================= SECCIÓN 6: ANÁLISIS AVANZADOS (TRANSIENT, DC, AC) ================= -->
+    <section id="paso9">
+        <h2 class="section-title">Análisis Avanzados: <span class="texto-amarillo">El Grapher View</span></h2>
 
-        <!-- Paso 3 -->
-        <div class="prep-paso">
-            <div class="prep-numero">03</div>
-            <div class="prep-imagen">
-                <img src="imgs/Multisim_Paso3.jpg" alt="Mediciones" class="mini-slide">
-            </div>
-            <div class="prep-texto">
-                <h3><span>3</span> Herramientas de Medición</h3>
-                <p>Con la simulación activa, colocamos puntas de prueba directas en los cables:</p>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 50px;">
+            En el <strong>Paso 9</strong>, dejamos el modo de Simulación Interactiva y entramos al menú superior "Simulación > Análisis y Simulación" para realizar estudios paramétricos.
+        </p>
+
+        <div class="screenshot-container">
+            <img src="imgs/M_RC.png" alt="Carga RC" onerror="this.src='https://via.placeholder.com/600x400/151516/D4AC0D?text=Gráfica+Carga+RC'">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Paso 10: Análisis Transitorio (Curva RC)</span></h3>
+                <p>Observa el comportamiento eléctrico <strong>respecto al tiempo</strong>.</p>
                 <ul>
-                    <li><strong>Corriente:</strong> Registramos <em>8.62 mA</em> con el switch cerrado y <em>-34 pA</em> al abrirlo.</li>
-                    <li><strong>Voltaje:</strong> Mide respecto a tierra (detectamos 12V directos de la fuente).</li>
-                    <li><strong>Potencia (W):</strong> Debe colocarse directamente sobre el componente.</li>
+                    <li>Colocamos fuente 5V, resistencia 1 kΩ y capacitor 1 µF referenciado a GND. Nombramos el nodo intermedio como "Voltaje del Capacitor".</li>
+                    <li>Configuramos el análisis transitorio: Tiempo inicial en 0, Tiempo final en <strong>1 ms</strong>.</li>
+                    <li>En pestaña de Salida añadimos "Voltaje del Capacitor" a la vista y ejecutamos.</li>
+                    <li>Para ver la curva exponencial hasta su estabilización a 5V, ampliamos el tiempo final a <strong>5 ms</strong>. <em>Nota: Si queremos correr otra prueba, debemos regresar al modo Simulación Interactiva desde el menú.</em></li>
                 </ul>
-                <p>Para mediciones entre dos puntos específicos (como la caída de 3.4V en el LED), sacamos el <strong>Multímetro</strong>, hacemos doble clic y lo configuramos en DC.</p>
             </div>
         </div>
 
-        <!-- Paso 4 y 5 -->
-        <div class="prep-paso reversa">
+        <div class="screenshot-container reverse">
+            <img src="imgs/M_BJT.png" alt="Barrido BJT" onerror="this.src='https://via.placeholder.com/600x400/151516/D4AC0D?text=Curvas+BJT'">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Paso 11: Barrido DC (Transistor BJT)</span></h3>
+                <p>Estudio de variación de fuentes DC (Curvas características de un Transistor).</p>
+                <ul>
+                    <li>Colocamos un BJT NPN modelo <strong>2N2222A</strong> con fuente de corriente en la Base y voltaje en el Colector.</li>
+                    <li>Seleccionamos Análisis DC. Configuramos la <strong>Fuente 1 (VCE)</strong> iniciando en 0V y terminando en 5V, con incrementos de 0.5V.</li>
+                    <li>Configuramos la <strong>Fuente 2 (Corriente Base)</strong> para trazar líneas paramétricas. En Salida agregamos "Corriente de Colector".</li>
+                    <li>Al ejecutar, el Grapher genera la icónica familia de curvas (IC vs VCE), vital para definir el punto de trabajo del transistor en un diseño de hardware.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tarjeta-destacada" style="margin-top: 60px;">
+            <img src="imgs/M_Diodo.png" alt="Generador y Diodo" onerror="this.src='https://via.placeholder.com/800x400/000/FFF?text=Recorte+de+Diodo'">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Paso 12: Generador de Funciones y Diodo AC</span></h3>
+                <p>Conectamos un Generador de Funciones (60 Hz, Amplitud 120), un diodo rectificador y una carga resistiva a tierra.</p>
+                <p>Usando cables de colores distintos (para que el osciloscopio separe los trazos) conectamos un osciloscopio o Tektronix midiendo la señal antes del diodo (Canal A) y después del diodo (Canal B). Al presionar Autoset, comparamos visualmente cómo la onda senoidal completa de entrada es amputada (rectificada en media onda) por la polarización directa del semiconductor, bloqueando el semiciclo inverso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 7: RESULTADOS Y DOCUMENTACIÓN ================= -->
+    <section id="resultados" style="padding: 100px 10vw 50px 10vw;">
+        <h2 class="section-title">Resultados y <span class="texto-amarillo">Documentación Final</span></h2>
+        
+        <table class="tabla-comparativa tabla-centrada" style="max-width: 1200px;">
+            <tbody>
+                <tr>
+                    <th>Práctica Ejecutada</th>
+                    <th>Conocimiento y Resultado Validado</th>
+                </tr>
+                <tr>
+                    <td>Circuito DC Básico (LED)</td>
+                    <td>Interacción con switches, comprobación teórica de resistencia y leyes de voltaje.</td>
+                </tr>
+                <tr>
+                    <td>Uso de Multímetro</td>
+                    <td>Conexión en paralelo y lectura de caída de tensión en semiconductores (DC).</td>
+                </tr>
+                <tr>
+                    <td>Osciloscopios y Tektronix</td>
+                    <td>Ajustes V/Div y T/Div. Simulación de equipo real. Inserción de Offset en AC.</td>
+                </tr>
+                <tr>
+                    <td>Compuertas TTL / Logic Converter</td>
+                    <td>Extracción inversa: De circuito a Tabla de Verdad, y síntesis optimizada usando NANDs.</td>
+                </tr>
+                <tr>
+                    <td>Grapher View: Análisis Transitorio</td>
+                    <td>Extracción gráfica de la respuesta natural exponencial de un circuito RC en milisegundos.</td>
+                </tr>
+                <tr>
+                    <td>Grapher View: Barrido DC</td>
+                    <td>Levantamiento de la familia paramétrica de curvas operativas del transistor NPN 2N2222A.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: 50px;">
+            <strong>Nota de Documentación:</strong> Para guardar evidencias (como lo hacemos en esta bitácora), se debe usar la función de impresión a PDF o capturas de ventana completa si se explica la interfaz de software. Si el objetivo es documentar mediciones, basta recortar exclusivamente el circuito y la pantalla del Grapher View para mantener legibilidad y calidad.
+        </p>
+    </section>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        // --- BUSCADOR ---
+        function toggleIndice() { document.getElementById('menuIndice').classList.toggle('mostrar'); }
+        function ejecutarBusqueda(haciaAtras = false) {
+            const texto = document.getElementById('inputBuscar').value;
+            if (texto.trim() !== "") {
+                const encontrado = window.find(texto, false, haciaAtras, true, false, true, false);
+                if (!encontrado) alert("No se encontraron resultados para: '" + texto + "'.");
+            }
+        }
+        function buscarConEnter(event) { if (event.key === "Enter") ejecutarBusqueda(event.shiftKey); }
+
+        // --- CARRUSEL PRINCIPAL ---
+        function moverSlide(direccion, boton) {
+            const contenedor = boton.closest('.carrusel-contenedor');
+            const slides = contenedor.querySelectorAll('.carrusel-slide');
+            if (slides.length === 0) return;
+            let indexActual = 0;
+            slides.forEach((slide, index) => { if (slide.classList.contains('activo')) indexActual = index; });
+            slides[indexActual].classList.remove('activo');
+            let nuevoIndex = indexActual + direccion;
+            if (nuevoIndex >= slides.length) nuevoIndex = 0;
+            else if (nuevoIndex < 0) nuevoIndex = slides.length - 1;
+            slides[nuevoIndex].classList.add('activo');
+        }
+
+        // --- MINI CARRUSELES ---
+        function moverMini(boton, direccion) {
+            const carrusel = boton.closest('.mini-carrusel');
+            const slides = carrusel.querySelectorAll('.mini-slide');
+            let indexActivo = Array.from(slides).findIndex(slide => slide.classList.contains('activo'));
+            slides[indexActivo].classList.remove('activo');
+            indexActivo += direccion;
+            if (indexActivo >= slides.length) indexActivo = 0;
+            if (indexActivo < 0) indexActivo = slides.length - 1;
+            slides[indexActivo].classList.add('activo');
+        }
+
+        // --- ZOOM ---
+        const fondoOscuro = document.getElementById('fondo-oscuro-zoom');
+        document.querySelectorAll('img').forEach(img => {
+            if(!img.classList.contains('hero-logo') && !img.classList.contains('img-sencilla') && !img.classList.contains('personaje-animado')){
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('ampliada');
+                    fondoOscuro.style.display = this.classList.contains('ampliada') ? 'block' : 'none';
+                });
+            }
+        });
+        fondoOscuro.addEventListener('click', function() {
+            document.querySelectorAll('.ampliada').forEach(img => img.classList.remove('ampliada'));
+            fondoOscuro.style.display = 'none';
+        });
+
+        // --- ACORDEÓN ---
+        const botonesAcordeon = document.querySelectorAll('.accordion-button');
+        botonesAcordeon.forEach(boton => {
+            boton.addEventListener('click', function() {
+                const item = this.closest('.accordion-item');
+                const contenido = item.querySelector('.accordion-collapse');
+                const estaAbierto = contenido.classList.contains('abierto');
+                document.querySelectorAll('.accordion-collapse').forEach(panel => panel.classList.remove('abierto'));
+                botonesAcordeon.forEach(b => b.classList.add('collapsed'));
+                if (!estaAbierto) {
+                    this.classList.remove('collapsed');
+                    contenido.classList.add('abierto');
+                }
+            });
+        });
+    </script>
+    <img src="red.gif" alt="Personaje" class="personaje-animado" onerror="this.style.display='none'">
+</body>
+</html>
