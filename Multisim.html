@@ -27,23 +27,30 @@
             align-items: center; text-align: center; padding: 20px;
             background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
         }
+        
         .hero-logo {
-            width: 250px; max-width: 80%; height: auto; margin-bottom: 40px;
+            width: 250px; 
+            max-width: 80%; 
+            height: auto; 
+            margin-bottom: 40px;
             filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); 
             animation: flotar 4s ease-in-out infinite;
         }
+
         @keyframes flotar {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+
         .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
         .hero p { font-size: 1.5rem; color: #a1a1a6; max-width: 800px; }
+        .texto-grande { font-size: 17px; }
 
         section { padding: 100px 10vw; border-bottom: 1px solid #333333; }
         .section-title { font-size: 3rem; font-weight: 600; margin-bottom: 60px; text-align: center; color: #ffffff; }
-        .section-subtitle { font-size: 2rem; font-weight: 600; margin-bottom: 30px; color: #ffffff; }
+        .section-subtitle { font-size: 2rem; font-weight: 600; margin-bottom: 30px; color: #ffffff; text-align: center;}
 
-        /* ================= CONTENEDORES Y TARJETAS ================= */
+        /* ================= CONTENEDORES DE CAPTURAS ================= */
         .screenshot-container {
             display: flex; align-items: center; background-color: #151516; 
             padding: 40px; border-radius: 20px; max-width: 1200px; margin: 0 auto 40px auto;
@@ -51,7 +58,7 @@
         }
         .screenshot-container img:not(.mini-slide) {
             width: 55%; border-radius: 10px; margin-right: 40px; 
-            border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5); cursor: zoom-in;
         }
         .screenshot-info { width: 45%; text-align: left; }
         .screenshot-info h3 { font-size: 2rem; color: #ffffff; margin-bottom: 15px; }
@@ -67,28 +74,31 @@
             border-radius: 20px; border: 3px solid #D4AC0D; background-color: #151516;
             overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
-        .tarjeta-destacada img { width: 100%; height: auto; max-height: 600px; display: block; object-fit: contain; border-bottom: 2px solid #333333; background-color: #000; }
+        .tarjeta-destacada img { width: 100%; height: auto; max-height: 600px; display: block; object-fit: contain; border-bottom: 2px solid #333333; background-color: #000; cursor: zoom-in; }
         .tarjeta-destacada-texto { padding: 25px 35px; text-align: left; }
         .tarjeta-destacada-texto h3 { font-size: 2rem; margin-bottom: 10px; color: #F7E596;}
         .tarjeta-destacada-texto p { font-size: 1.2rem; color: #a1a1a6; }
 
+        .imagen-borde-amarillo { border: 3px solid #D4AC0D; border-radius: 20px; cursor: zoom-in; }
+        .centrar-imagen { display: block; margin: 0 auto; max-width: 55%; height: auto; } 
+
         /* ================= CARRUSEL PRINCIPAL ================= */
         .carrusel-contenedor {
-            position: relative; max-width: 1000px; margin: 0 auto 60px auto;
+            position: relative; max-width: 950px; margin: 0 auto 60px auto;
             border-radius: 20px; border: 3px solid #D4AC0D; background-color: #151516;
             overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .carrusel-slide { display: none; animation: aparecer 0.5s; }
         .carrusel-slide.activo { display: block; }
         @keyframes aparecer { from { opacity: 0.4; } to { opacity: 1; } }
-        .carrusel-slide img { width: 100%; height: auto; display: block; border-bottom: 2px solid #333333; }
+        .carrusel-slide img { width: 100%; height: auto; display: block; border-bottom: 2px solid #333333; cursor: zoom-in; }
         .carrusel-texto { padding: 30px 40px; text-align: center; }
         .carrusel-texto h3 { font-size: 2rem; margin-bottom: 10px; color: #F7E596;}
         .carrusel-texto p { font-size: 1.2rem; color: #a1a1a6; }
         
         .carrusel-btn {
             position: absolute; top: 40%; transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7); color: #D4AC0D; border: 2px solid #D4AC0D;
+            background-color: rgba(0, 0, 0, 0.8); color: #D4AC0D; border: 2px solid #D4AC0D;
             font-size: 24px; padding: 10px 18px; cursor: pointer; border-radius: 50%; transition: all 0.3s ease; z-index: 10;
         }
         .carrusel-btn:hover { background-color: #D4AC0D; color: #000; }
@@ -106,11 +116,12 @@
         .tabla-comparativa tr:nth-child(1), .tabla-comparativa tr:nth-child(2) { background-color: rgba(212, 172, 13, 0.1); font-weight: bold; text-align: center; }
         .tabla-centrada { flex: 0 0 100%; max-width: 1000px; margin: 20px auto 0 auto; }
         
-        .img-sencilla { max-width: 180px; height: auto; border-radius: 8px; display: block; margin: 0 auto; }
-        
-        /* ================= MINI CARRUSEL (DENTRO DE TABLAS/CAJAS) ================= */
+        .img-sencilla { max-width: 180px; height: auto; border-radius: 8px; display: block; margin: 0 auto; cursor: zoom-in;}
+        .fondo-blanco { background-color: #ffffff !important; padding: 5px; }
+
+        /* ================= MINI CARRUSEL (DENTRO DE CAJAS/TABLAS) ================= */
         .mini-carrusel {
-            position: relative; width: 100%; max-width: 300px; height: 180px; margin: 0 auto;
+            position: relative; width: 100%; max-width: 250px; height: 180px; margin: 0 auto;
             border-radius: 8px; overflow: hidden; background-color: #000; border: 1px solid #D4AC0D;
         }
         .mini-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.3s ease; cursor: zoom-in; }
@@ -126,9 +137,11 @@
         .carrusel-captura { width: 55% !important; max-width: 100% !important; height: 350px !important; border: 1px solid #333 !important; border-radius: 10px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; background-color: #000 !important; }
         .screenshot-container.reverse .carrusel-captura { margin-left: 40px !important; margin-right: 0 !important; }
 
-        /* ================= ZOOM Y FONDOS ================= */
+        /* ================= ZOOM OSCURO Y ANIMACIONES ================= */
         #fondo-oscuro-zoom { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); z-index: 99998; cursor: zoom-out; }
         .mini-slide.ampliada, img.ampliada { position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) scale(1) !important; width: auto !important; height: auto !important; max-width: 90vw !important; max-height: 90vh !important; object-fit: contain !important; z-index: 99999 !important; box-shadow: 0 0 50px rgba(0, 0, 0, 1) !important; border: 3px solid #D4AC0D !important; opacity: 1 !important; cursor: zoom-out !important; border-radius: 15px !important; background-color: #000000 !important; }
+
+        .numero-contador { font-size: 2.8rem; font-weight: 800; color: #ffffff; text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); }
 
         /* ================= ACORDEÓN ================= */
         .accordion { width: 100%; max-width: 1000px; margin: 0 auto 50px auto; border-radius: 15px; overflow: hidden; border: 2px solid #D4AC0D; background-color: #151516; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
@@ -142,11 +155,12 @@
         .accordion-collapse.abierto { grid-template-rows: 1fr !important; }
         .accordion-body { min-height: 0 !important; overflow: hidden !important; padding: 0 30px !important; border-top: 0px solid transparent !important; color: #a1a1a6; font-size: 1.1rem; transition: padding 0.4s ease-out !important; }
         .accordion-collapse.abierto .accordion-body { padding: 25px 30px !important; border-top: 1px solid #333333 !important; }
-        
-        .img-acordeon { max-width: 600px !important; width: 100% !important; height: auto !important; display: block !important; margin: 30px auto 20px auto !important; border-radius: 10px; border: 2px solid #D4AC0D; }
+        .accordion-body a { color: #ffffff; text-decoration: underline; text-decoration-color: #D4AC0D; font-weight: 600; }
+        .accordion-body a:hover { color: #D4AC0D; }
+        .img-acordeon { max-width: 600px !important; width: 100% !important; height: auto !important; display: block !important; margin: 30px auto 20px auto !important; border-radius: 10px; border: 2px solid #D4AC0D; cursor: zoom-in;}
 
         /* ================= REPRODUCTOR DE VIDEO CINEMÁTICO ================= */
-        .video-wrapper { position: relative; max-width: 1000px; margin: 50px auto 60px auto; border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a); border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: all 0.4s ease; }
+        .video-wrapper { position: relative; max-width: 900px; margin: 50px auto 60px auto; border-radius: 15px; padding: 12px; background: linear-gradient(145deg, #151516, #0a0a0a); border: 2px solid #333333; box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: all 0.4s ease; }
         .video-wrapper:hover { border-color: #D4AC0D; box-shadow: 0 15px 50px rgba(212, 172, 13, 0.3); transform: scale(1.02); }
         .video-wrapper iframe { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; display: block; background: #000000; border: none; }
         .video-tag { position: absolute; top: -15px; left: 30px; background: #D4AC0D; color: #000; padding: 6px 20px; font-weight: 800; border-radius: 20px; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(212, 172, 13, 0.4); text-transform: uppercase; letter-spacing: 1px; z-index: 10; }
@@ -195,13 +209,14 @@
         </div>
         <button class="btn-indice" onclick="toggleIndice()">Índice de Contenido</button>
         <div class="menu-desplegable" id="menuIndice">
-            <a href="#introduccion" onclick="toggleIndice()">1. ¿Qué es Multisim? y Entorno</a>
-            <a href="#paso1" onclick="toggleIndice()">2. Paso 1 y 2: Circuito DC y Conexiones</a>
-            <a href="#paso3" onclick="toggleIndice()">3. Paso 3: Mediciones Eléctricas</a>
-            <a href="#paso4" onclick="toggleIndice()">4. Paso 4 y 5: AC y Osciloscopios</a>
-            <a href="#paso6" onclick="toggleIndice()">5. Paso 6 al 8: Lógica Digital y Logic Converter</a>
-            <a href="#paso9" onclick="toggleIndice()">6. Paso 9 al 12: Análisis Avanzados (Transitorio, BJT, Diodo)</a>
-            <a href="#resultados" onclick="toggleIndice()">7. Resultados y Documentación</a>
+            <a href="#Creacion_Archivos" onclick="toggleIndice()">1. Creación y Guardado de Archivos</a>
+            <a href="#interfaz" onclick="toggleIndice()">2. Interfaz Principal</a>
+            <a href="#Paso_1" onclick="toggleIndice()">3. Paso 1: Selección de Componentes</a>
+            <a href="#Paso_2" onclick="toggleIndice()">4. Paso 2: Conexión y Simulación</a>
+            <a href="#Paso_3" onclick="toggleIndice()">5. Paso 3: Mediciones Eléctricas</a>
+            <a href="#Paso_4" onclick="toggleIndice()">6. Paso 4 y 5: AC y Osciloscopios</a>
+            <a href="#Paso_6" onclick="toggleIndice()">7. Paso 6 al 8: Lógica Digital</a>
+            <a href="#Paso_9" onclick="toggleIndice()">8. Paso 9 al 12: Análisis Grapher View</a>
         </div>
     </div>
 
@@ -215,47 +230,109 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
+        <!-- CAPTURA AQUÍ: Necesitas guardar el logo oficial de NI Multisim y nombrarlo "Multisim_Logo.png" en tu carpeta "imgs". -->
         <img src="imgs/Multisim_Logo.png" alt="Logo de Multisim" class="hero-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/National_Instruments_logo.svg/512px-National_Instruments_logo.svg.png'">
-        <h1>Simulación en Multisim</h1>
-        <p>Software estándar de la industria utilizado para construir circuitos interactivos, simular funcionamiento, probar valores matemáticos y realizar medición mediante instrumentación virtual avanzada.</p>
+        <h1>Diseño y Simulación en Multisim</h1>
+        <p class="texto-grande">Programa industrial utilizado para construir circuitos, validar componentes mediante instrumentación virtual y predecir el comportamiento físico antes del maquinado de la PCB.</p>
     </header>
 
-    <!-- ================= SECCIÓN 1: INTRODUCCIÓN E INTERFAZ ================= -->
-    <section id="introduccion">
-        <h2 class="section-title"><span class="texto-amarillo">¿Qué es Multisim?</span></h2>
+    <!-- ================= SECCIÓN 1: CREACIÓN DE ARCHIVOS ================= -->
+    <section id="Creacion_Archivos">
+        <h2 class="section-title"><span class="texto-amarillo">Creación, Guardado y Extracción de Archivos</span></h2>
+        
         <p style="text-align: center; font-size: 1.2rem; color: #a1a1a6; margin-bottom: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
-            Multisim es un programa que se utiliza para construir circuitos y simular su funcionamiento. Podremos modificar componentes, probar valores y observar el comportamiento del circuito mediante instrumentos virtuales. La simulación nos ayudará a detectar errores y revisar los cambios que realicemos antes de pasar al ensamble físico.
+            Antes de comenzar a cablear, es vital conocer cómo manejar el espacio de trabajo. A continuación, el procedimiento para crear un nuevo esquemático y asegurar nuestra información.
         </p>
 
-        <h3 class="section-subtitle" style="text-align: center; margin-top: 60px;">Interfaz Principal</h3>
+        <div class="accordion" id="accordionArchivos">
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button abierto" type="button">1. Crear un Nuevo Archivo de Simulación</button></h2>
+                <div class="accordion-collapse abierto">
+                    <div class="accordion-body">
+                        <p>Para iniciar un proyecto desde cero en Multisim, debes dirigirte a la <strong>Barra de Menús Superior (esquina superior izquierda)</strong>.</p>
+                        <ul>
+                            <li>Haz clic en la pestaña <strong>File (Archivo)</strong>.</li>
+                            <li>En el menú desplegable, selecciona <strong>New (Nuevo)</strong>. Se abrirá una ventana.</li>
+                            <li>Elige la opción <strong>Design (Diseño en blanco)</strong> y presiona el botón "Create".</li>
+                        </ul>
+                        <p>Alternativamente, puedes usar el atajo de teclado presionando <strong>Ctrl + N</strong> o dando clic en el ícono de la "Hoja Blanca" en la barra de herramientas estándar, justo debajo del menú File.</p>
+                        
+                        <!-- CAPTURA AQUÍ: Toma una captura de pantalla de la parte superior izquierda de Multisim con el menú "File" desplegado mostrando la opción "New". -->
+                        <img src="imgs/M_NuevoArchivo.png" alt="Creación de archivo" class="img-acordeon fondo-blanco">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">2. Guardar el Proyecto Localmente</button></h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        <p>Es indispensable guardar el progreso para evitar pérdidas. Los archivos de Multisim se guardan con extensiones como <em>.ms14</em> (dependiendo de la versión que estés usando).</p>
+                        <ul>
+                            <li>Dirígete nuevamente a la barra superior y haz clic en <strong>File (Archivo)</strong>.</li>
+                            <li>Selecciona <strong>Save As... (Guardar como...)</strong>.</li>
+                            <li>Aparecerá el explorador de Windows. Navega hasta la carpeta de tu materia o portafolio, asigna un nombre (Ej. <em>Practica_Osciloscopio</em>) y presiona Guardar.</li>
+                        </ul>
+                        <p>Una vez guardado por primera vez, puedes simplemente presionar el ícono del "Disquete" en la barra superior o usar <strong>Ctrl + S</strong> para actualizaciones rápidas.</p>
+                        
+                        <!-- CAPTURA AQUÍ: Toma una captura mostrando la ventana de "Guardar Como" (Save As) típica de Windows dentro de Multisim. -->
+                        <img src="imgs/M_GuardarArchivo.png" alt="Guardar archivo" class="img-acordeon fondo-blanco">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">3. Extraer e Imprimir Documentación</button></h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        <p>Tal como indicó el profesor en clase, para documentar correctamente los osciloscopios o esquemas y subirlos a nuestro portafolio sin perder calidad, no tomamos foto con el celular. Usamos la función interna de impresión:</p>
+                        <ul>
+                            <li>Si queremos la señal del Osciloscopio: Abrimos el panel del instrumento y buscamos el botón <strong>Print (Imprimir)</strong> o el icono de impresora directamente en la ventana de gráfica.</li>
+                            <li>Al darle clic, elegimos <strong>Microsoft Print to PDF</strong> (o Adobe PDF) en lugar de una impresora física.</li>
+                            <li>Esto "descargará" o exportará nuestra señal perfecta, con los colores de los canales de lectura intactos sobre un fondo blanco (o negro, según tu configuración), listo para nuestra página web.</li>
+                        </ul>
+                        
+                        <!-- CAPTURA AQUÍ: Toma una captura del panel del osciloscopio señalando el botoncito de "Print" o de la pestaña File > Print. -->
+                        <img src="imgs/M_ImprimirPDF.png" alt="Exportar a PDF" class="img-acordeon fondo-blanco">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 2: INTERFAZ Y HERRAMIENTAS ================= -->
+    <section id="interfaz">
+        <h2 class="section-title"><span class="texto-amarillo">La Interfaz y Herramientas</span></h2>
         
+        <p style="text-align: center; margin-bottom: 30px;">
+            En esta sección identificamos todas las barras principales que conforman la zona de trabajo (Workspace) antes de construir un circuito.
+        </p>
+
         <div class="carrusel-contenedor">
             <div class="carrusel-slide activo">
-                <img src="imgs/M_Seleccion.png" alt="Selección de Componentes" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Componentes'">
+                <!-- CAPTURA AQUÍ: Captura de la BARRA SUPERIOR (Place Component, Sources, Basic...). Preferiblemente donde se vean los íconos de Resistencias y Diodos. -->
+                <img src="imgs/M_BarraComponentes.png" alt="Selección de Componentes" class="fondo-blanco">
                 <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Selección de componentes</span></h3>
-                    <p>Primero identificamos las herramientas para colocar componentes. Al seleccionar una, abrimos una ventana donde encontramos los elementos organizados en grupos y familias. Desde esa misma ventana podemos cambiar de grupo sin cerrarla (pasar de diodos a básicos).</p>
+                    <h3><span class="texto-amarillo">Menú de Componentes (Arriba)</span></h3>
+                    <p>Ubicado en la barra superior. Contiene accesos directos por Familias. Al presionar el botón de "Place Component" se abre el buscador principal. Desde esa misma ventana podemos saltar entre <em>Sources</em> (Fuentes), <em>Basic</em> (Resistencias) o <em>Diodes</em> sin cerrarla.</p>
                 </div>
             </div>
             <div class="carrusel-slide">
-                <img src="imgs/M_Controles.png" alt="Controles de simulación" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Controles'">
+                <!-- CAPTURA AQUÍ: Captura del centro-arriba, donde está el Play Verde, Stop rojo y Pausa. -->
+                <img src="imgs/M_BarraSimulacion.png" alt="Controles de simulación" class="fondo-blanco">
                 <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Controles de simulación</span></h3>
-                    <p>Identificamos el botón para iniciar la simulación (triángulo verde). Cuando ejecutamos el circuito, varias herramientas de edición aparecen deshabilitadas. Para modificar componentes o conexiones, siempre debemos detener la simulación.</p>
+                    <h3><span class="texto-amarillo">Controles de Simulación (Centro Arriba)</span></h3>
+                    <p>Aquí se encuentra el icónico botón de <strong>Ejecución (Triángulo verde)</strong>. Es vital recordar que cuando la simulación está activa, Multisim bloquea las modificaciones. Siempre hay que dar clic en <strong>Stop (Cuadrado rojo)</strong> para reconectar piezas.</p>
                 </div>
             </div>
             <div class="carrusel-slide">
-                <img src="imgs/M_Puntas.png" alt="Mediciones puntuales" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Puntas'">
+                <!-- CAPTURA AQUÍ: Captura VERTICAL de la barra lateral DERECHA completa (donde salen los multímetros, osciloscopios, etc). -->
+                <img src="imgs/M_BarraInstrumentos.png" alt="Instrumentos Virtuales" class="fondo-blanco">
                 <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Mediciones puntuales</span></h3>
-                    <p>Tenemos herramientas para consultar voltaje, corriente y potencia directamente sobre las líneas del circuito. Estas lecturas permanecen disponibles y se actualizan dinámicamente mientras estamos simulando.</p>
-                </div>
-            </div>
-            <div class="carrusel-slide">
-                <img src="imgs/M_Instrumentos.png" alt="Instrumentos" onerror="this.src='https://via.placeholder.com/1000x500/151516/D4AC0D?text=Placeholder+Instrumentos'">
-                <div class="carrusel-texto">
-                    <h3><span class="texto-amarillo">Instrumentos Virtuales</span></h3>
-                    <p>En la barra lateral derecha encontramos instrumentos como multímetros, osciloscopios, Logic Converter y generadores de funciones. Los seleccionamos, los colocamos en la hoja de trabajo y hacemos doble clic para abrir su panel de configuración frontal.</p>
+                    <h3><span class="texto-amarillo">Barra de Instrumentación (Lateral Derecha)</span></h3>
+                    <p>El arsenal del laboratorio virtual. Esta barra vertical a la derecha de tu pantalla contiene el Multímetro (arriba del todo), el Osciloscopio normal, el Tektronix, el Logic Converter y el Generador de Funciones.</p>
                 </div>
             </div>
             <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
@@ -263,256 +340,312 @@
         </div>
     </section>
 
-    <!-- ================= SECCIÓN 2: PASO 1 Y 2 (CIRCUITO DC) ================= -->
-    <section id="paso1">
-        <h2 class="section-title"><span class="texto-amarillo">Paso 1:</span> Colocación y edición de componentes</h2>
-        <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">
-            Vamos a colocar una fuente DC, tierra, una resistencia, un LED y un interruptor para armar un circuito básico funcional.
+    <!-- ================= SECCIÓN 3: PASO 1 (COMPONENTES) ================= -->
+    <section id="Paso_1">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 1:</span> Selección de Componentes</h2>
+        <div class="screenshot-container">
+            <!-- CAPTURA AQUÍ: La ventana emergente de "Select a Component", mostrando la familia "Power Sources" y el elemento "DC Power". -->
+            <img src="imgs/M_VentanaComponentes.png" alt="Buscador de componentes" class="fondo-blanco">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Construcción Inicial DC</span></h3>
+                <p>Para ensamblar nuestro primer circuito funcional abrimos la ventana de selección de componentes. Cada pieza tiene su ruta exacta:</p>
+                <ul>
+                    <li><strong>Fuente DC:</strong> (Group: Sources > Family: Power Sources > Component: DC_POWER). Identificamos el polo positivo como la línea más larga.</li>
+                    <li><strong>Tierra (GND):</strong> (Group: Sources > Power Sources > GROUND). Si no pones esta referencia, la simulación lanzará un error matemático.</li>
+                    <li><strong>Resistencia:</strong> (Group: Basic > Resistor). Al colocarla en la hoja de trabajo, hacemos <em>doble clic</em> sobre ella para cambiar su valor a <strong>1 kΩ</strong>.</li>
+                    <li><strong>LED:</strong> (Group: Diodes > LEDs). Elegimos el color de preferencia de la lista.</li>
+                    <li><strong>Interruptor:</strong> (Group: Basic > Switch > SPDT/SPST). Damos doble clic sobre él y le asignamos la letra <strong>A</strong> en la pestaña "Value" para operarlo con el teclado.</li>
+                </ul>
+                <div class="tarjeta-destacada-texto" style="padding:0; margin-top: 15px;">
+                    <p><span class="texto-amarillo">💡 Clic Derecho > Rotar 90 Grados:</span> Para organizar los componentes vertical u horizontalmente antes de cablear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 4: PASO 2 (CONEXIONES Y TEORÍA) ================= -->
+    <section id="Paso_2">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 2:</span> Conexión y Simulación</h2>
+        <p style="text-align: center; margin-bottom: 20px;">
+            Una vez ubicados los 5 componentes, procedemos a realizar el trazado inteligente de las líneas.
         </p>
 
-        <div class="screenshot-container">
-            <div class="mini-carrusel carrusel-captura">
-                <img src="imgs/M_Fuente.png" class="mini-slide activo" alt="Fuente DC" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Fuente+DC'">
-                <img src="imgs/M_Resistencia.png" class="mini-slide" alt="Resistencia" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Resistencia'">
-                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
-                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
-            </div>
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Búsqueda en Familias</span></h3>
-                <ul>
-                    <li><strong>Fuente DC:</strong> (Power Sources > DC Power). La línea larga del símbolo representa el polo positivo.</li>
-                    <li><strong>Tierra (GND):</strong> (Power Sources > Ground). Fundamental para simular; se usa como punto de referencia universal (0V).</li>
-                    <li><strong>Resistencia:</strong> (Basic > Resistor). Hacemos doble clic para cambiar su valor a <strong>1 kΩ</strong> (y posteriormente 220 Ω).</li>
-                    <li><strong>LED:</strong> (Diodes > LEDs). Elegimos el color deseado.</li>
-                    <li><strong>Interruptor:</strong> (Basic > Switch > SPST). Se le asigna una tecla, como la <strong>A</strong>, para cambiar su estado (abierto/cerrado) durante la simulación.</li>
-                </ul>
-                <p><em>Rotación:</em> Seleccionamos el componente, clic derecho y elegimos rotación de 90 grados en el sentido necesario.</p>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 80px;"><span class="texto-amarillo">Paso 2:</span> Conexión y Simulación del LED</h2>
-
         <div class="screenshot-container reverse">
-            <img src="imgs/M_Conexion.png" alt="Conexión de pistas" onerror="this.src='https://via.placeholder.com/800x600/151516/D4AC0D?text=Circuito+Conectado'">
+            <!-- CAPTURA AQUÍ: El circuito ya armado con la fuente, switch, resistencia y LED. -->
+            <img src="imgs/M_CircuitoConectado.png" alt="Circuito Conectado" class="fondo-blanco">
             <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Ruteo e interactividad</span></h3>
-                <p>Acercamos el cursor a la terminal de un componente hasta que el puntero cambie. Hacemos clic para iniciar el cable y lo llevamos hasta la siguiente terminal. Para unir la tierra a una línea existente, siempre iniciamos el cable <strong>desde el componente que queremos agregar</strong> hacia la línea.</p>
-                <p><strong>Ejecución:</strong> Presionamos el triángulo verde. Cambiamos el estado del interruptor con la tecla A y revisamos el comportamiento del LED.</p>
-                <p><strong>Cálculo Real de Resistencia:</strong> Si el LED necesita 2V para operar, y la fuente es de 10V, la resistencia debe absorber los 8V restantes. Ajustamos los valores teóricos a 5V de fuente y 220 Ω en resistencia para evitar quemar el LED.</p>
+                <h3><span class="texto-amarillo">Cableado Inteligente</span></h3>
+                <p>Acercamos el cursor al pin de un componente. Cuando aparezca un pequeño punto o cruz negra, damos clic y arrastramos el ratón hacia el siguiente componente. Un clic intermedio ancla la línea para hacer dobleces en 90 grados.</p>
+                <p><strong class="texto-amarillo">Regla de Oro para el Nodo de Tierra:</strong> Cuando queremos unir la Tierra (GND) a una línea de circuito que ya existe, <strong>SIEMPRE</strong> empezamos el clic desde la flecha de la Tierra hacia el cable. Si lo haces al revés, Multisim destruirá tu cable original.</p>
+                <p>Para probar el circuito, damos clic en el botón Verde de <strong>Play</strong> arriba. Si todo es correcto, al presionar la tecla <strong>A</strong> de tu teclado físico, el switch se cerrará y el LED iluminará.</p>
             </div>
         </div>
-    </section>
-
-    <!-- ================= SECCIÓN 3: MEDICIONES ELÉCTRICAS ================= -->
-    <section id="paso3">
-        <h2 class="section-title"><span class="texto-amarillo">Paso 3:</span> Mediciones Eléctricas</h2>
-        
-        <table class="tabla-comparativa tabla-centrada">
-            <tbody>
-                <tr>
-                    <td colspan="2"><h3 class="texto-amarillo">Puntas de Prueba y Multímetro</h3></td>
-                </tr>
-                <tr>
-                    <td style="width: 250px;">Medición</td>
-                    <td>Procedimiento y Resultados en Simulación</td>
-                </tr>
-                <tr>
-                    <td><img src="imgs/M_Corriente.png" class="img-sencilla" alt="Corriente" onerror="this.src='https://via.placeholder.com/200x100/151516/FFF?text=Punta+A'"></td>
-                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Corriente (A)</span></h2>
-                        Seleccionamos la herramienta de corriente y la colocamos en el cable. 
-                        Con el interruptor <strong>Abierto</strong> leemos -34 pA (picamperios, virtualmente cero). 
-                        Con el interruptor <strong>Cerrado</strong> leemos 8.62 mA fluyendo por el circuito.
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="imgs/M_Voltaje.png" class="img-sencilla" alt="Voltaje" onerror="this.src='https://via.placeholder.com/200x100/151516/FFF?text=Punta+V'"></td>
-                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Voltaje (V) y Potencia (W)</span></h2>
-                        La punta de Voltaje compara un punto respecto a tierra (lee 12V en la fuente o un valor pV en circuito abierto). La herramienta de Potencia (W) <strong>debe colocarse directamente sobre el componente</strong>, no en el cable, para medir disipación.
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="imgs/M_Multimetro.png" class="img-sencilla" alt="Multímetro" onerror="this.src='https://via.placeholder.com/200x200/151516/FFF?text=Multímetro'"></td>
-                    <td><h2 class="section-subtitle" style="font-size: 1.5rem;"><span class="texto-amarillo">Multímetro Virtual</span></h2>
-                        Se saca de la barra lateral. Hacemos doble clic para abrirlo, seleccionamos <strong>Voltaje (V) en Directa (DC)</strong>. A diferencia de las puntas (que miden vs Tierra), el multímetro se conecta en paralelo a las dos patas del LED para medir su caída de tensión exacta (Obtuvimos aprox. 3.4 V).
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- ================= SECCIÓN 4: AC, OFFSET Y OSCILOSCOPIOS ================= -->
-    <section id="paso4">
-        <h2 class="section-title"><span class="texto-amarillo">Paso 4 y 5:</span> Fuente AC y Osciloscopios</h2>
 
         <div class="tarjeta-destacada">
-            <img src="imgs/M_Offset.png" alt="Configuración AC" onerror="this.src='https://via.placeholder.com/800x400/000/FFF?text=Onda+AC+con+Offset'">
+            <!-- CAPTURA AQUÍ: Doble clic en la fuente DC para mostrar el cambio a 5V, y doble clic en la resistencia mostrando 220 o 200 ohms. Puedes unir ambas capturas. -->
+            <img src="imgs/M_CalculosDC.png" alt="Cálculos DC" class="fondo-blanco">
             <div class="tarjeta-destacada-texto">
-                <h3><span class="texto-amarillo">Fuente AC y Offset</span></h3>
-                <p>Abrimos una nueva pestaña y colocamos una fuente AC y Tierra. Modificamos los parámetros: <strong>Voltaje = 120</strong>, <strong>Frecuencia = 60 Hz</strong>, y agregamos un <strong>Offset = 60</strong>.</p>
-                <p>El Offset consiste en sumar una señal DC continua a la señal AC pura, lo que provoca que toda la gráfica sinusoidal se desplace verticalmente hacia arriba en el osciloscopio, útil para simular sensores industriales.</p>
-            </div>
-        </div>
-
-        <div class="screenshot-container reverse">
-            <div class="mini-carrusel carrusel-captura">
-                <img src="imgs/M_Osciloscopio.png" class="mini-slide activo" alt="Osciloscopio 2 canales" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Osciloscopio'">
-                <img src="imgs/M_Tektronix.png" class="mini-slide" alt="Tektronix" onerror="this.src='https://via.placeholder.com/600x400/000/FFF?text=Tektronix'">
-                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
-                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
-            </div>
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Análisis en Osciloscopios</span></h3>
-                <p>Conectamos el Canal A a la fuente y la terminal negativa a tierra. Los ajustes principales en cualquier osciloscopio son:</p>
-                <ul>
-                    <li><strong>Escala Vertical:</strong> Voltaje por división (Ej. 200 V/div) para que la onda quepa en pantalla.</li>
-                    <li><strong>Escala Horizontal:</strong> Tiempo por base (Ej. 2 ms/div) para observar la frecuencia.</li>
-                    <li><strong>Osciloscopio 4 Canales:</strong> Este instrumento utiliza internamente la referencia a tierra del circuito. Seleccionamos el canal a editar con el dial A, B, C, D.</li>
-                    <li><strong>Tektronix:</strong> Simula el hardware real. Lo encendemos, probamos el botón mágico <em>Autoset</em>, y usamos el menú "Measure" para medir la frecuencia directamente sobre la gráfica digital.</li>
-                </ul>
+                <h3><span class="texto-amarillo">Corrección Teórica: Ley de Ohm</span></h3>
+                <p>En el primer intento el LED puede no encender o marcar alerta por exceso de voltaje. Consultamos el Datasheet: si el LED opera a 2V, y nuestra fuente envía 10V, necesitamos que la resistencia consuma 8V. </p>
+                <p>Para fines prácticos y valores comerciales de la clase, modificamos el circuito dando doble clic: Ajustamos la fuente a <strong>5 V</strong> y bajamos la resistencia de 1kΩ a <strong>220 Ω</strong> o 200 Ω. Al dar Play otra vez, funciona perfecto.</p>
             </div>
         </div>
     </section>
 
-    <!-- ================= SECCIÓN 5: CIRCUITOS LÓGICOS Y CONVERTER ================= -->
-    <section id="paso6">
-        <h2 class="section-title"><span class="texto-amarillo">Paso 6 al 8:</span> Lógica Digital</h2>
+    <!-- ================= SECCIÓN 5: PASO 3 (MEDICIONES) ================= -->
+    <section id="Paso_3">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 3:</span> Mediciones Eléctricas</h2>
+        
+        <div class="contenedor-tablas">
+            <table class="tabla-comparativa">
+                <tbody>
+                    <tr>
+                        <td colspan="2"><h3 class="texto-amarillo">Puntas de Medición (Arriba en la barra de Simulación)</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Punta</td>
+                        <td>Uso y Resultados</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- CAPTURA AQUÍ: Punta verde de Voltaje ('V') colocada en el circuito midiendo un voltaje. -->
+                            <img src="imgs/M_PuntaV.png" class="img-sencilla fondo-blanco" alt="Punta de Voltaje">
+                        </td>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Punta de Voltaje (V)</span></h2>
+                            Mide voltaje respecto a la referencia (GND). Al ponerla en la fuente, medimos los V totales. Al ponerla tras el LED cortado, la lectura cae a niveles minúsculos (ej. 6.2 pV).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- CAPTURA AQUÍ: Punta azul o amarilla de Corriente ('I' o 'A') midiendo miliamperios. -->
+                            <img src="imgs/M_PuntaA.png" class="img-sencilla fondo-blanco" alt="Punta de Corriente">
+                        </td>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Punta de Corriente (A)</span></h2>
+                            Se sobrepone en el cable. Registramos <strong>8.62 mA</strong> con el interruptor cerrado y un número negativo microscópico (<strong>-34 pA</strong>) al abrirlo por fugas del software.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- CAPTURA AQUÍ: Punta de Potencia ('W') colocada sobre la resistencia o LED. -->
+                            <img src="imgs/M_PuntaW.png" class="img-sencilla fondo-blanco" alt="Punta de Potencia">
+                        </td>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Punta de Potencia (W)</span></h2>
+                            Crucial: A diferencia de las otras, esta punta <strong>debe colocarse exactamente sobre el componente físico</strong> en el dibujo, no en el cable, para calcular la disipación.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="tabla-comparativa">
+                <tbody>
+                    <tr>
+                        <td colspan="2"><h3 class="texto-amarillo">Multímetro Virtual (Barra Lateral Derecha)</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Instrumento</td>
+                        <td>Configuración</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- CAPTURA AQUÍ: Panel frontal del Multímetro de Multisim mostrando los botones de V, A, Ohm, y la onda senoidal/recta (AC/DC). -->
+                            <img src="imgs/M_PanelMultimetro.png" class="img-sencilla fondo-blanco" alt="Panel Multímetro">
+                        </td>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Multímetro (DMM)</span></h2>
+                            Para medir caída de tensión local. Detenemos la simulación y arrastramos el ícono desde la barra derecha (es el primero de arriba).<br><br>
+                            Conectamos la terminal positiva a la entrada del LED y la negativa a la salida. Hacemos doble clic en el aparato, presionamos el botón <strong>"V" (Voltaje)</strong> y el botón de <strong>línea recta (DC)</strong>. Damos Play a la simulación y obtenemos la lectura de <strong>aprox. 3.4 V</strong> consumidos por el LED.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 6: PASO 4 Y 5 (AC Y OSCILOSCOPIOS) ================= -->
+    <section id="Paso_4">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 4 y 5:</span> Corriente Alterna (AC) y Osciloscopios</h2>
+
+        <div class="tarjeta-destacada">
+            <!-- CAPTURA AQUÍ: Ventana de propiedades de una Fuente AC, mostrando el campo de Voltage, Frequency y Offset. -->
+            <img src="imgs/M_PropiedadesAC.png" alt="Configuración AC" class="fondo-blanco">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Paso 4: Configuración de Fuente Alterna y "Offset"</span></h3>
+                <p>Abrimos una pestaña nueva en el programa y colocamos una fuente AC y su tierra. Damos doble clic a la fuente para abrir sus parámetros.</p>
+                <p>Establecemos el <strong>Voltaje = 120</strong>, <strong>Frecuencia = 60 Hz</strong> y bajamos hasta el campo de <strong>Offset</strong> y escribimos <strong>60</strong>.</p>
+                <p><em>¿Para qué sirve el Offset?</em> Consiste en inyectar una señal DC constante sumada a nuestra señal alterna. En una gráfica, esto provoca que toda la onda (que normalmente oscila entre el lado positivo y negativo) sea desplazada hacia arriba del eje central, simulando el comportamiento de sensores de presión o industriales.</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-bottom: 20px; font-size: 1.2rem;">
+            Para visualizar estos cambios invisibles en el cable, nos dirigimos a la barra lateral derecha para extraer los osciloscopios.
+        </p>
+
+        <div class="screenshot-container reverse">
+            <!-- Carrusel adaptado -->
+            <div class="mini-carrusel carrusel-captura">
+                <!-- CAPTURA AQUÍ: Pantalla gráfica negra del osciloscopio normal (el Agilent o el genérico de Multisim) mostrando la onda. -->
+                <img src="imgs/M_OscGen.png" class="mini-slide activo fondo-blanco" alt="Osciloscopio Genérico">
+                <!-- CAPTURA AQUÍ: El panel frontal del osciloscopio TEKTRONIX (el aparato negro con botones amarillos y verdes). -->
+                <img src="imgs/M_TekOsc.png" class="mini-slide fondo-blanco" alt="Tektronix">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Paso 5: Análisis Oscilográfico</span></h3>
+                <p><span class="texto-amarillo">Osciloscopio de 2 Canales (Genérico):</span> Lo sacamos de la barra y conectamos su entrada "+" al circuito y la "-" a GND. Damos doble clic para abrir la pantalla negra.</p>
+                <ul>
+                    <li><strong>Escala Horizontal:</strong> Modificamos la perilla de <em>Timebase (Tiempo por división)</em> a <strong>2 ms / div</strong> para ver múltiples periodos (ondas completas) en pantalla.</li>
+                    <li><strong>Escala Vertical:</strong> Ajustamos el Canal A a <strong>200 V / div</strong> para que el pico máximo de 120V+Offset quepa en la ventana sin cortarse.</li>
+                    <li><strong>Lectura Estática:</strong> En la parte inferior, activamos el botón <strong>Single</strong>. Esto congela la señal para analizarla sin que parpadee.</li>
+                </ul>
+
+                <p style="margin-top:20px;"><span class="texto-amarillo">Osciloscopio Tektronix:</span></p>
+                <p>Es el simulador idéntico al hardware físico que usamos en los laboratorios de electrónica de la universidad. Lo sacamos de la barra derecha (icono de osciloscopio con marco grueso). Al abrir su panel, debemos presionar el botón redondo de <strong>Encendido (Power)</strong>. Luego, pulsamos la tecla inteligente <strong>AUTOSET</strong> arriba a la derecha, lo cual encuadra automáticamente la señal en 16:9. Usando el submenú de "Measure", el aparato calcula y estampa matemáticamente la frecuencia exacta en pantalla.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN 7: LÓGICA DIGITAL Y LOGIC CONVERTER ================= -->
+    <section id="Paso_6">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 6 al 8:</span> Lógica Digital Booleana</h2>
         
         <p style="text-align: center; font-size: 1.2rem; color: #a1a1a6; margin-bottom: 50px;">
-            Diseño de funciones booleanas utilizando circuitos integrados comerciales, etiquetas de ruteo inteligente y el Logic Converter para deducción automática.
+            Diseño avanzado utilizando compuertas TTL, nombres de red inteligentes para evitar ruteo excesivo y la síntesis automática con el Convertidor Lógico.
         </p>
 
         <div class="accordion" id="accordionDigital">
             
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button abierto" type="button">Paso 6: Construcción de circuitos lógicos</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button abierto" type="button">Paso 6: Inserción de Familia TTL 74LS</button></h2>
                 <div class="accordion-collapse abierto">
                     <div class="accordion-body">
-                        <p>Del grupo TTL y la familia 74LS sacamos las compuertas físicas (terminación <strong>08 para AND</strong>, <strong>04 para NOT</strong>, <strong>32 para OR</strong>). Colocamos cuatro AND, un inversor y tres OR.</p>
-                        <p>Para controlarlas, usamos "Fuentes Digitales > Constante Digital". Colocamos cuatro variables de entrada (A, B, C, D) y asignamos a cada una su respectiva tecla del teclado para alternar entre 0 y 1 lógico dinámicamente.</p>
-                        <p>Finalmente, colocamos una Punta de Prueba Digital a la salida que nos indicará visualmente (encendido) cuándo el estado final del sistema es 1.</p>
+                        <p>Nos movemos a la sección lógica. En el buscador de componentes seleccionamos el <strong>Grupo TTL</strong> y la <strong>Familia 74LS</strong>.</p>
+                        <ul>
+                            <li>Compuerta AND: Buscamos terminación <strong>08</strong>. Colocamos 4 en el esquema.</li>
+                            <li>Compuerta NOT: Buscamos terminación <strong>04</strong>. Colocamos 1.</li>
+                            <li>Compuerta OR: Buscamos terminación <strong>32</strong>. Colocamos 3.</li>
+                        </ul>
+                        <p>Para controlar las entradas A, B, C y D, vamos al Grupo Sources > Digital Sources y seleccionamos <strong>Interactive Digital Constant</strong> (Constantes digitales 0/1). Al igual que los switches manuales, damos doble clic en cada constante y le asignamos una tecla (Ej. A, B, C, D) para cambiar su estado numérico presionando el teclado.</p>
+                        <p>En la pata final del sistema conectamos una <strong>Punta de Prueba (Probe)</strong> del Grupo Indicators, la cual brillará intensamente si el resultado algebraico es 1.</p>
+                        
+                        <!-- CAPTURA AQUÍ: El circuito de compuertas TTL con las 4 constantes (0/1) a la izquierda y la Probe (Foquito) a la derecha. -->
+                        <img src="imgs/M_CircuitoTTL.png" alt="Circuito Digital" class="img-acordeon fondo-blanco">
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 7: Conexiones mediante nombres de red</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 7: Conexión Invisible (Nombres de Red)</button></h2>
                 <div class="accordion-collapse">
                     <div class="accordion-body">
-                        <p>Para evitar cruzar decenas de cables físicos en todo el esquema, sacamos un cable corto, hacemos doble clic sobre él y le escribimos un <strong>Nombre de Referencia</strong> (ej. "Variable_A") activando "Mostrar nomenclatura".</p>
-                        <p>Si usamos un nombre que ya existe, Multisim preguntará si se trata de la misma red. Al confirmar, el software "conecta" invisiblemente todos los cables que tengan el mismo nombre en la misma pista, simplificando radicalmente el dibujo. También cambiamos el color de los cables según la entrada lógica para mayor claridad gráfica.</p>
+                        <p>En esquemas grandes, cruzar líneas de las entradas ABCD hasta cada compuerta hace el diagrama ilegible. Para arreglarlo usamos el concepto "Net Name" (Equivalente al Etiquetado de Redes en KiCad).</p>
+                        <ul>
+                            <li>Sacamos un pequeño cable del pin y damos doble clic sobre el alambre rojo (no sobre el pin).</li>
+                            <li>Se abrirá la ventana de <em>Net Properties</em>. En el campo "Net Name", escribimos un identificador único (Ej. "Red_A").</li>
+                            <li>Marcamos la casilla "Show Net Name" para que la etiqueta se vea en pantalla.</li>
+                            <li>Hacemos lo mismo en el pin de destino de la compuerta. Multisim lanzará una advertencia preguntando si queremos <strong>unir estas redes ("Merge Nets")</strong>. Damos clic en "Yes".</li>
+                        </ul>
+                        <p>Ahora, ambos puntos están eléctricamente unidos a través del software sin necesidad de un cable visual que cruce toda la pantalla. Es una práctica estándar de ingeniería para esquemáticos limpios.</p>
+                        
+                        <!-- CAPTURA AQUÍ: Ventana flotante de Net Properties mostrando dónde se escribe el nombre de la red y la casilla activada. -->
+                        <img src="imgs/M_NetName.png" alt="Net Name Config" class="img-acordeon fondo-blanco">
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 8: Uso de Logic Converter</button></h2>
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Paso 8: Operaciones con Logic Converter</button></h2>
                 <div class="accordion-collapse">
                     <div class="accordion-body">
-                        <p>Instrumento súper avanzado ubicado en la barra derecha.</p>
-                        <p><strong>Configuración Manual:</strong> Nos permite crear Tablas de Verdad seleccionando variables, editando las salidas (0, 1 o estado de no importa 'X') y obtener inmediatamente la forma canónica y simplificada del problema.</p>
-                        <p><strong>Análisis de Circuito:</strong> Detenemos la simulación, eliminamos las entradas manuales y conectamos las líneas de red del circuito a las entradas del conversor (manteniendo el orden A, B, C, D) y la terminal de salida final del sistema.</p>
-                        <p>Le pedimos al instrumento extraer la tabla, simplificarla (obteniendo <em>A·C' + B·C</em> y deduciendo que D no afecta) y como acto final, pedimos generar un circuito equivalente usando <strong>únicamente compuertas NAND</strong>. Multisim estampará este nuevo circuito óptimo automáticamente en la pantalla de trabajo.</p>
+                        <p>El <strong>Convertidor Lógico (Logic Converter)</strong> es una herramienta matemática exclusiva de Multisim (icono de compuerta AND/OR en la barra lateral derecha). Posee terminales enumeradas del 1 al 8 (entradas) y un pin OUT (salida).</p>
+                        <p><strong>Configuración:</strong> Detenemos la simulación (Play prohibido aquí). Eliminamos las fuentes manuales ABCD. Conectamos los Nombres de Red A, B, C, D en orden a las primeras 4 patas de entrada del instrumento, y la salida final de nuestro conjunto de compuertas al pin OUT del convertidor.</p>
+                        <p>Hacemos doble clic en el aparato. En su panel frontal encontramos una serie de botones de conversión de arriba hacia abajo:</p>
+                        <ul>
+                            <li><strong>Botón 1 (Circuito a Tabla):</strong> Extrae automáticamente la tabla de verdad midiendo todas las combinaciones posibles.</li>
+                            <li><strong>Botón 3 (Tabla a Ecuación):</strong> Genera la forma canónica de suma de productos.</li>
+                            <li><strong>Botón 4 (Simplificación):</strong> Utiliza Mapas de Karnaugh internos para darnos la ecuación mínima (Ej. obtuvimos <em>A·C' + B·C</em>, demostrando que D no servía para nada).</li>
+                            <li><strong>Botón 6 (Síntesis NAND):</strong> Genera físicamente en la pantalla de trabajo el circuito equivalente más barato utilizando exclusivamente compuertas NAND.</li>
+                        </ul>
+                        
+                        <!-- CAPTURA AQUÍ: Panel frontal del Logic Converter mostrando la tabla de verdad y las ecuaciones abajo, junto a los 6 botones de conversión. -->
+                        <img src="imgs/M_LogicPanel.png" alt="Panel Logic Converter" class="img-acordeon fondo-blanco">
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- VIDEO: Lógica Digital (Enlace) -->
-        <div class="video-wrapper" style="text-align: center; padding: 45px 20px;">
-            <div class="video-tag">▶ Video Tutorial</div>
-            <p style="color: #a1a1a6; font-size: 1.2rem; margin-bottom: 25px;">Demostración de Logic Converter y Nombres de Red.</p>
-            <a href="https://youtu.be/PON_TU_VIDEO" target="_blank" style="display: inline-block; padding: 15px 40px; font-size: 1.2rem; font-weight: bold; color: #000; background-color: #D4AC0D; border-radius: 30px; text-decoration: none; box-shadow: 0 5px 20px rgba(212, 172, 13, 0.4);">
-                Ver en YouTube ↗
-            </a>
-        </div>
     </section>
 
-    <!-- ================= SECCIÓN 6: ANÁLISIS AVANZADOS (TRANSIENT, DC, AC) ================= -->
-    <section id="paso9">
-        <h2 class="section-title">Análisis Avanzados: <span class="texto-amarillo">El Grapher View</span></h2>
-
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 50px;">
-            En el <strong>Paso 9</strong>, dejamos el modo de Simulación Interactiva y entramos al menú superior "Simulación > Análisis y Simulación" para realizar estudios paramétricos.
-        </p>
-
-        <div class="screenshot-container">
-            <img src="imgs/M_RC.png" alt="Carga RC" onerror="this.src='https://via.placeholder.com/600x400/151516/D4AC0D?text=Gráfica+Carga+RC'">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Paso 10: Análisis Transitorio (Curva RC)</span></h3>
-                <p>Observa el comportamiento eléctrico <strong>respecto al tiempo</strong>.</p>
-                <ul>
-                    <li>Colocamos fuente 5V, resistencia 1 kΩ y capacitor 1 µF referenciado a GND. Nombramos el nodo intermedio como "Voltaje del Capacitor".</li>
-                    <li>Configuramos el análisis transitorio: Tiempo inicial en 0, Tiempo final en <strong>1 ms</strong>.</li>
-                    <li>En pestaña de Salida añadimos "Voltaje del Capacitor" a la vista y ejecutamos.</li>
-                    <li>Para ver la curva exponencial hasta su estabilización a 5V, ampliamos el tiempo final a <strong>5 ms</strong>. <em>Nota: Si queremos correr otra prueba, debemos regresar al modo Simulación Interactiva desde el menú.</em></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="screenshot-container reverse">
-            <img src="imgs/M_BJT.png" alt="Barrido BJT" onerror="this.src='https://via.placeholder.com/600x400/151516/D4AC0D?text=Curvas+BJT'">
-            <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Paso 11: Barrido DC (Transistor BJT)</span></h3>
-                <p>Estudio de variación de fuentes DC (Curvas características de un Transistor).</p>
-                <ul>
-                    <li>Colocamos un BJT NPN modelo <strong>2N2222A</strong> con fuente de corriente en la Base y voltaje en el Colector.</li>
-                    <li>Seleccionamos Análisis DC. Configuramos la <strong>Fuente 1 (VCE)</strong> iniciando en 0V y terminando en 5V, con incrementos de 0.5V.</li>
-                    <li>Configuramos la <strong>Fuente 2 (Corriente Base)</strong> para trazar líneas paramétricas. En Salida agregamos "Corriente de Colector".</li>
-                    <li>Al ejecutar, el Grapher genera la icónica familia de curvas (IC vs VCE), vital para definir el punto de trabajo del transistor en un diseño de hardware.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="tarjeta-destacada" style="margin-top: 60px;">
-            <img src="imgs/M_Diodo.png" alt="Generador y Diodo" onerror="this.src='https://via.placeholder.com/800x400/000/FFF?text=Recorte+de+Diodo'">
-            <div class="tarjeta-destacada-texto">
-                <h3><span class="texto-amarillo">Paso 12: Generador de Funciones y Diodo AC</span></h3>
-                <p>Conectamos un Generador de Funciones (60 Hz, Amplitud 120), un diodo rectificador y una carga resistiva a tierra.</p>
-                <p>Usando cables de colores distintos (para que el osciloscopio separe los trazos) conectamos un osciloscopio o Tektronix midiendo la señal antes del diodo (Canal A) y después del diodo (Canal B). Al presionar Autoset, comparamos visualmente cómo la onda senoidal completa de entrada es amputada (rectificada en media onda) por la polarización directa del semiconductor, bloqueando el semiciclo inverso.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= SECCIÓN 7: RESULTADOS Y DOCUMENTACIÓN ================= -->
-    <section id="resultados" style="padding: 100px 10vw 50px 10vw;">
-        <h2 class="section-title">Resultados y <span class="texto-amarillo">Documentación Final</span></h2>
+    <!-- ================= SECCIÓN 8: PASO 9-12 (GRAPHER VIEW) ================= -->
+    <section id="Paso_9">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 9 al 12:</span> Análisis Avanzados (Grapher View)</h2>
         
-        <table class="tabla-comparativa tabla-centrada" style="max-width: 1200px;">
-            <tbody>
-                <tr>
-                    <th>Práctica Ejecutada</th>
-                    <th>Conocimiento y Resultado Validado</th>
-                </tr>
-                <tr>
-                    <td>Circuito DC Básico (LED)</td>
-                    <td>Interacción con switches, comprobación teórica de resistencia y leyes de voltaje.</td>
-                </tr>
-                <tr>
-                    <td>Uso de Multímetro</td>
-                    <td>Conexión en paralelo y lectura de caída de tensión en semiconductores (DC).</td>
-                </tr>
-                <tr>
-                    <td>Osciloscopios y Tektronix</td>
-                    <td>Ajustes V/Div y T/Div. Simulación de equipo real. Inserción de Offset en AC.</td>
-                </tr>
-                <tr>
-                    <td>Compuertas TTL / Logic Converter</td>
-                    <td>Extracción inversa: De circuito a Tabla de Verdad, y síntesis optimizada usando NANDs.</td>
-                </tr>
-                <tr>
-                    <td>Grapher View: Análisis Transitorio</td>
-                    <td>Extracción gráfica de la respuesta natural exponencial de un circuito RC en milisegundos.</td>
-                </tr>
-                <tr>
-                    <td>Grapher View: Barrido DC</td>
-                    <td>Levantamiento de la familia paramétrica de curvas operativas del transistor NPN 2N2222A.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p style="text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: 50px;">
-            <strong>Nota de Documentación:</strong> Para guardar evidencias (como lo hacemos en esta bitácora), se debe usar la función de impresión a PDF o capturas de ventana completa si se explica la interfaz de software. Si el objetivo es documentar mediciones, basta recortar exclusivamente el circuito y la pantalla del Grapher View para mantener legibilidad y calidad.
+        <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem; color: #a1a1a6;">
+            En el Paso 9, dejamos de usar el botón verde tradicional y la "Simulación Interactiva" del menú desplegable de la barra de simulación. Nos trasladamos al menú <strong>Simulate > Analyses and Simulation</strong>. Esto abre el poderoso motor gráfico <em>Grapher View</em>, capaz de trazar cálculos matriciales y paramétricos.
         </p>
+
+        <!-- BARRIDO TRANSITORIO RC -->
+        <div class="screenshot-container">
+            <div class="mini-carrusel carrusel-captura">
+                <!-- CAPTURA AQUÍ: Ventana de "Transient Analysis" mostrando los campos Tstart y Tstop. -->
+                <img src="imgs/M_AnalisisTransitorio.png" class="mini-slide activo fondo-blanco" alt="Ventana Transient Analysis">
+                <!-- CAPTURA AQUÍ: La gráfica blanca/negra del Grapher View mostrando la curvatura de carga del capacitor hasta 5V. -->
+                <img src="imgs/M_GraficaRC.png" class="mini-slide fondo-blanco" alt="Curva de Carga RC">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Paso 10: Análisis Transitorio (Capacitor RC)</span></h3>
+                <p>Mide la respuesta natural de un componente a través del tiempo en milisegundos.</p>
+                <ul>
+                    <li>Diseñamos el hardware: Fuente 5V, resistencia 1kΩ y Capacitor (Basic > Capacitor) de 1 µF a Tierra.</li>
+                    <li>Nombramos el cable entre la resistencia y el capacitor como "Voltaje_Capacitor".</li>
+                    <li>Abrimos <em>Simulate > Analyses > Transient Analysis</em>.</li>
+                    <li><strong>Pestaña Parameters:</strong> Tstart = 0, Tstop = 1 ms.</li>
+                    <li><strong>Pestaña Output:</strong> Seleccionamos "V(Voltaje_Capacitor)" en la lista izquierda y presionamos el botón <strong>Add (Añadir)</strong> para pasarlo a la derecha.</li>
+                    <li>Damos clic en el botón <strong>Run (Ejecutar)</strong>. Si la curva se ve cortada y no alcanza a llegar a los 5V, regresamos al menú y aumentamos el Tstop a <strong>5 ms</strong>. </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BARRIDO BJT -->
+        <div class="screenshot-container reverse">
+            <div class="mini-carrusel carrusel-captura">
+                <!-- CAPTURA AQUÍ: Ventana de "DC Sweep" configurando Fuente 1 y Fuente 2. -->
+                <img src="imgs/M_AnalisisDCSweep.png" class="mini-slide activo fondo-blanco" alt="Ventana DC Sweep">
+                <!-- CAPTURA AQUÍ: Gráfica Grapher View con múltiples líneas de colores horizontales (la familia de curvas operativas del transistor). -->
+                <img src="imgs/M_GraficaBJT.png" class="mini-slide fondo-blanco" alt="Familia Curvas BJT">
+                <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
+                <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
+            </div>
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Paso 11: Barrido DC Sweep (Transistor BJT)</span></h3>
+                <p>Generación de las familias de curvas del Datasheet alterando fuentes estáticas gradualmente.</p>
+                <ul>
+                    <li>Colocamos un Transistor BJT (Grupo Transistors > NPN) modelo <strong>2N2222A</strong>.</li>
+                    <li>Conectamos una fuente de <em>corriente DC</em> en su Base (I_Base) y una fuente de <em>voltaje DC</em> en su Colector (V_CE). El Emisor va a GND.</li>
+                    <li>Entramos a <em>Simulate > Analyses > DC Sweep</em>.</li>
+                    <li><strong>Source 1 (Fuente Principal):</strong> Seleccionamos V_CE. Inicio = 0V, Fin = 5V, Incremento = 0.5V.</li>
+                    <li><strong>Source 2 (Trazos secundarios):</strong> Seleccionamos I_Base. Se configuran rangos en microamperios.</li>
+                    <li>En la pestaña "Output", añadimos la variable matemática de la "Corriente del Colector". Al correr el simulador, se trazarán múltiples líneas representando los estados de corte, activa y saturación del transistor.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RECORTE DIODO -->
+        <div class="tarjeta-destacada">
+            <!-- CAPTURA AQUÍ: Esquema del generador de funciones (con su panel frontal abierto) conectado al diodo, con las señales comparativas en Tektronix si se puede. -->
+            <img src="imgs/M_RecorteDiodo.png" alt="Generador y Recorte de Diodo" class="fondo-blanco">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Paso 12: Generador de Funciones y Diodo Recortador</span></h3>
+                <p>Para esta prueba final, debemos asegurarnos que en el menú desplegable principal (arriba en la barra de simulación) hayamos quitado "DC Sweep" y regresado el texto a <strong>"Interactive Simulation"</strong>.</p>
+                <p>Sacamos de la barra derecha el <strong>Generador de Funciones (Function Generator)</strong>. Lo configuramos a <strong>60 Hz</strong> y Amplitud de <strong>120</strong>.</p>
+                <p>Conectamos su salida hacia un diodo rectificador y luego a GND mediante una resistencia. Para ver la magia de la electrónica, conectamos el Osciloscopio Tektronix: El canal 1 va a la entrada de la señal (antes del diodo) y el Canal 2 va a la salida (después del diodo). Para evitar confusiones, le damos clic derecho al cable del Canal 2, elegimos "Color del segmento" y lo ponemos rojo o amarillo.</p>
+                <p>Al dar Play y apretar <em>Autoset</em> en el Tektronix, visualizaremos cómo la onda senoidal entrante queda "recortada", perdiendo su semiciclo inferior debido a que el diodo solo permite el flujo de energía en una sola dirección.</p>
+            </div>
+        </div>
+
     </section>
 
     <!-- ================= SCRIPTS ================= -->
@@ -554,10 +687,10 @@
             slides[indexActivo].classList.add('activo');
         }
 
-        // --- ZOOM ---
+        // --- ZOOM OSCURO ---
         const fondoOscuro = document.getElementById('fondo-oscuro-zoom');
         document.querySelectorAll('img').forEach(img => {
-            if(!img.classList.contains('hero-logo') && !img.classList.contains('img-sencilla') && !img.classList.contains('personaje-animado')){
+            if(!img.classList.contains('hero-logo') && !img.classList.contains('personaje-animado')){
                 img.style.cursor = 'zoom-in';
                 img.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -571,7 +704,7 @@
             fondoOscuro.style.display = 'none';
         });
 
-        // --- ACORDEÓN ---
+        // --- ACORDEÓN MEJORADO ---
         const botonesAcordeon = document.querySelectorAll('.accordion-button');
         botonesAcordeon.forEach(boton => {
             boton.addEventListener('click', function() {
