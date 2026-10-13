@@ -135,6 +135,21 @@
             .hero h1 { font-size: 2.5rem; }
             .imagen-borde-amarillo { max-width: 100%; }
         }
+            /* Estilo del logo y su resplandor */
+        .hero-logo {
+            width: 250px; 
+            max-width: 80%; 
+            height: auto;   
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 40px rgba(212, 172, 13, 0.4)); /* Sombra dorada */
+            animation: flotar 4s ease-in-out infinite; /* Llama a la animación */
+        }
+
+/* Animación de movimiento arriba-abajo */
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
     </style>
 </head>
 <body>
@@ -170,10 +185,13 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
-        <img src="imgs/Multisim_Logo.png" alt="Logo de Multisim" class="hero-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/National_Instruments_logo.svg/512px-National_Instruments_logo.svg.png'">
-        <h1>Simulación en Multisim</h1>
-        <p class="texto-grande">Programa utilizado para construir circuitos, simular su funcionamiento, probar valores matemáticos y realizar mediciones mediante instrumentos.</p>
-    </header>
+    <!-- Aquí aplicas la clase "hero-logo" a tu imagen de Multisim -->
+    <img src="Multisim.png" alt="Logo de Multisim" class="hero-logo">
+    
+    <h1>Multisim</h1>
+    <p class="texto-grande">Programa utilizado para construir circuitos, simular su funcionamiento y hacer mediciones con instrumentos.
+</p>
+</header>
 
     <!-- ================= SECCIÓN 1: ¿QUÉ ES MULTISIM? ================= -->
     <section id="introduccion">
@@ -193,11 +211,11 @@
                 <h2 class="accordion-header"><button class="accordion-button abierto" type="button">1. Crear un Nuevo Archivo de Simulación</button></h2>
                 <div class="accordion-collapse abierto">
                     <div class="accordion-body">
-                        <p>Para iniciar un proyecto desde cero en Multisim, debes dirigirte a la barra de menús superior (esquina superior izquierda).</p>
+                        <p>Para iniciar un proyecto desde cero en Multisim, se debe ir a la barra de menús superior (esquina superior izquierda).</p>
                         <ul>
-                            <li>Haz clic en la pestaña <strong>File (Archivo)</strong>.</li>
-                            <li>En el menú desplegable, selecciona <strong>New (Nuevo)</strong>. Se abrirá una ventana.</li>
-                            <li>Elige la opción <strong>Design (Diseño en blanco)</strong> y presiona el botón "Create".</li>
+                            <li>Clic en la pestaña <span class="texto-amarillo">File</span></li>
+                            <li>En el menú desplegable, selecciona <span class="texto-amarillo">New</span> Se abrirá una ventana.</li>
+                            <li>Elige la opción Design (Diseño en blanco) y presiona el botón "Create".</li>
                         </ul>
                         <!-- CAPTURA AQUÍ: Captura del menú File > New abierto -->
                         <img src="imgs/M_NuevoArchivo.png" alt="Creación de archivo" class="img-acordeon fondo-blanco">
@@ -209,11 +227,11 @@
                 <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">2. Guardar el Proyecto Localmente</button></h2>
                 <div class="accordion-collapse">
                     <div class="accordion-body">
-                        <p>Es indispensable guardar el progreso para evitar pérdidas de información.</p>
+                        <p>Es importante guardar el progreso para evitar accidentes</p>
                         <ul>
-                            <li>Dirígete nuevamente a la barra superior y haz clic en <strong>File (Archivo)</strong>.</li>
-                            <li>Selecciona <strong>Save As... (Guardar como...)</strong>.</li>
-                            <li>Aparecerá el explorador de Windows. Navega hasta la carpeta deseada, asigna un nombre y presiona Guardar.</li>
+                            <li>Nuevamente en la barra superior y clic en <span class="texto-amarillo">File</span></li>
+                            <li>Selecciona <span class="texto-amarillo">Save As</span></li>
+                            <li>Aparecerá el explorador de Windows. Vamos hasta la carpeta deseada, se asigna un nombre y presionamos Guardar.</li>
                         </ul>
                         <!-- CAPTURA AQUÍ: Captura de la ventana "Guardar Como" dentro de Multisim -->
                         <img src="imgs/M_GuardarArchivo.png" alt="Guardar archivo" class="img-acordeon fondo-blanco">
@@ -229,7 +247,7 @@
         <h2 class="section-title"><span class="texto-amarillo">Entorno General de Trabajo</span></h2>
         
         <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">
-            A continuación se presentan las áreas fundamentales de la interfaz. Estas zonas centralizan todas las operaciones de diseño, simulación y medición de nuestro circuito. Se detallarán minuciosamente en las siguientes secciones.
+            A continuación se presentan las áreas fundamentales de la interfaz. Estas secciones muestran todas las operaciones de diseño, simulación y medición de nuestro circuito.
         </p>
 
         <div class="carrusel-contenedor" style="max-width: 1200px;">
@@ -246,7 +264,7 @@
                 <img src="imgs/M_Interfaz2.png" alt="Instrumentos en Multisim" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Barra de Instrumentos Electrónicos</span></h3>
-                    <p>Ubicada en el lateral derecho. Aloja equipos virtuales equivalentes a los de laboratorio físico: Multímetro, Generador de funciones, Osciloscopios (2 canales, 4 canales, Tektronix) y el Convertidor de lógica.</p>
+                    <p>Ubicada en el lado derecho. Hay equipos virtuales equivalentes a los de un laboratorio físico: Multímetro, Generador de funciones, Osciloscopios (2 canales, 4 canales, Tektronix) y el Convertidor de lógica.</p>
                 </div>
             </div>
             <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
@@ -262,8 +280,8 @@
             <img src="imgs/M_CursorConexion.png" alt="Conexión en el área de trabajo" class="fondo-blanco">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Ruteo de Componentes</span></h3>
-                <p>El Área de trabajo es la hoja cuadriculada central donde ubicamos físicamente todos los elementos del esquema.</p>
-                <p><strong>¿Cómo conectar?</strong> Acercamos el cursor a la terminal (pin) de un componente. El puntero cambiará automáticamente a un indicador en forma de punto o cruz negra. Hacemos clic para iniciar el cable, trazamos la ruta, y damos un clic final sobre la terminal del componente destino para confirmar la conexión.</p>
+                <p>El Área de trabajo es la hoja cuadriculada donde ubicamos físicamente todos los elementos del esquema.</p>
+                <p><span class="texto-amarillo">¿Cómo conectar?</span> Acercamos el cursor al pin de un componente. El puntero cambiará automáticamente a uno en forma de punto o cruz negra. Hacemos clic para iniciar el cable, trazamos la ruta, y damos un clic final sobre el pin del componente al cual queremos conectar para confirmar la conexión.</p>
             </div>
         </div>
     </section>
@@ -273,7 +291,7 @@
         <h2 class="section-title"><span class="texto-amarillo">Componentes de Circuito Básicos</span></h2>
         
         <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">
-            Al dar clic en el botón de componentes en la barra superior, se abre el buscador principal. A continuación, las familias elementales para un circuito DC y qué nos proporciona cada una.
+            Al dar clic en el botón de componentes en la barra superior, se abre el buscador principal. A continuación, las familias principales para un circuito DC y qué nos proporciona cada una.
         </p>
 
         <div class="contenedor-tablas">
@@ -292,7 +310,7 @@
                             <img src="imgs/M_Sel_Fuente.png" class="img-sencilla fondo-blanco" alt="Selección Fuente DC">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Fuente DC</span></h2>
-                            (Power Sources > DC_POWER). Nos da la energía principal en corriente directa para el circuito. La línea larga de su símbolo indica el polo positivo.
+                            Nos da la energía principal en corriente directa para el circuito. La línea larga de su símbolo indica el polo positivo. (Power Sources > DC_POWER)
                         </td>
                     </tr>
                     <tr>
@@ -301,7 +319,7 @@
                             <img src="imgs/M_Sel_Tierra.png" class="img-sencilla fondo-blanco" alt="Selección Tierra">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Tierra (GND)</span></h2>
-                            (Power Sources > GROUND). Nos da el punto de referencia eléctrico. Indispensable; la simulación no corre sin un punto de referencia a 0V.
+                            Nos da el punto de referencia eléctrico. Este es indispensable ya quela simulación no corre sin un punto de GND. (Power Sources > GROUND)
                         </td>
                     </tr>
                     <tr>
@@ -310,7 +328,7 @@
                             <img src="imgs/M_Sel_Resistencia.png" class="img-sencilla fondo-blanco" alt="Selección Resistencia">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Resistencias</span></h2>
-                            (Basic > Resistor). Nos da la oposición al flujo de corriente para proteger componentes (como el LED). Su valor se edita con doble clic.
+                            Nos da la oposición al flujo de corriente para proteger componentes (como el LED). Su valor se edita con doble clic. (Basic > Resistor)
                         </td>
                     </tr>
                     <tr>
@@ -319,7 +337,7 @@
                             <img src="imgs/M_Sel_LED.png" class="img-sencilla fondo-blanco" alt="Selección LED">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">LED</span></h2>
-                            (Diodes > LEDs). Nos da un indicador visual en el circuito. Permite seleccionar colores específicos de un listado.
+                            Nos da un indicador visual en el circuito. Permite seleccionar colores específicos de un listado. (Diodes > LEDs)
                         </td>
                     </tr>
                     <tr>
@@ -328,7 +346,7 @@
                             <img src="imgs/M_Sel_Switch.png" class="img-sencilla fondo-blanco" alt="Selección Interruptor">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Interruptor</span></h2>
-                            (Basic > Switch). Nos da control manual sobre la continuidad del circuito. Permite asignarle una letra del teclado (Ej. "A") para abrirlo/cerrarlo interactivamente.
+                            Nos da control manual sobre la continuidad del circuito. Permite asignarle una letra del teclado (Ej. "A") para abrirlo/cerrarlo interactivamente. (Basic > Switch)
                         </td>
                     </tr>
                 </tbody>
@@ -345,7 +363,7 @@
             <img src="imgs/M_BotonSimular.png" alt="Botones de Ejecución" class="fondo-blanco" style="max-height: 200px;">
             <div class="tarjeta-destacada-texto">
                 <h3><span class="texto-amarillo">Ejecutar Simulación</span></h3>
-                <p>Al pulsar el botón del triángulo verde, el motor de Multisim arranca. Ejecutar una simulación nos ayuda a "dar vida" al esquemático, calculando flujos de corriente y caídas de voltaje en tiempo real. <strong>Nota:</strong> Para modificar componentes o eliminar cables, es obligatorio detener el proceso usando el botón rojo.</p>
+                <p>Al pulsar el botón del triángulo verde, el circuito inicia. Ejecutar una simulación nos ayuda a "dar vida" al esquemático, podemoscalcular flujos de corriente y caídas de voltaje en tiempo real. <span class="texto-amarillo">Nota:</span> Para modificar componentes o eliminar cables, es obligatorio detener el proceso usando el botón rojo.</p>
             </div>
         </div>
 
@@ -354,7 +372,7 @@
             <table class="tabla-comparativa">
                 <tbody>
                     <tr>
-                        <td style="width: 250px;">Lectura Activa</td>
+                        <td style="width: 250px;">Herramienta</td>
                         <td>Función de la Herramienta</td>
                     </tr>
                     <tr>
@@ -363,7 +381,7 @@
                             <img src="imgs/M_MedidaV.png" class="img-sencilla fondo-blanco" alt="Medida Voltaje">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Medida de Voltaje (V)</span></h2>
-                            Nos da el voltaje absoluto en un punto específico del cable, comparado contra la referencia general de Tierra (GND). 
+                            Nos da el voltaje en un punto específico del cable, comparado contra la Tierra (GND). 
                         </td>
                     </tr>
                     <tr>
@@ -372,7 +390,7 @@
                             <img src="imgs/M_MedidaA.png" class="img-sencilla fondo-blanco" alt="Medida Corriente">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Medida de Corriente (A)</span></h2>
-                            Al posarse sobre un alambre de conexión, nos da la lectura en Amperios (o mA) del flujo de corriente circulando a través de ese tramo específico.
+                            Al colocarse sobre una conexión, nos da la cantidad en Amperios (o mA) del flujo de corriente circulando a través de ese tramo específico.
                         </td>
                     </tr>
                     <tr>
@@ -381,7 +399,7 @@
                             <img src="imgs/M_MedidaW.png" class="img-sencilla fondo-blanco" alt="Medida Potencia">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Medida de Potencia (W)</span></h2>
-                            <strong>Esta punta requiere colocarse estrictamente sobre el cuerpo del componente</strong> (no en el cable). Nos da la cantidad de energía en vatios que dicho componente está consumiendo o disipando.
+                            Esta punta requiere colocarse estrictamente sobre el cuerpo del componente, no en el cable. Nos da la cantidad de energía en vatios que dicho componente está consumiendo o disipando.
                         </td>
                     </tr>
                 </tbody>
@@ -399,7 +417,7 @@
             <img src="imgs/M_MultimetroPanel.png" alt="Panel del Multímetro" class="fondo-blanco">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Multímetro</span></h3>
-                <p>Nos sirve para medir parámetros fundamentales: Corriente (A), Voltaje (V) y Resistencia (Ohm). Su principal diferencia frente a las "medidas puntuales" es que el multímetro tiene dos terminales (positiva y negativa), permitiendo conectarlo en <strong>paralelo</strong> entre dos puntos exactos del circuito para medir caídas de tensión específicas (Ej. medir únicamente la pérdida a través de un LED).</p>
+                <p>Nos sirve para medir los parámetros más comunes y necesarios: Corriente (A), Voltaje (V) y Resistencia (Ohm). Su principal diferencia a las <span class="texto-amarillo">Medidas puntuales</span> es que el multímetro tiene dos terminales (positiva y negativa), permitiendo conectarlo en paralelo entre dos puntos exactos del circuito para medir caídas de tensión en puntos específicos (Ej. medir únicamente la pérdida a través de un LED).</p>
             </div>
         </div>
 
@@ -409,12 +427,12 @@
             <img src="imgs/M_GenFunciones.png" alt="Generador de Funciones" class="fondo-blanco">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Generador de Funciones</span></h3>
-                <p>Nos proporciona inyección de señales variables. Permite configurar:</p>
+                <p>Nos permite configurar:</p>
                 <ul>
                     <li>Forma de onda: Senoidal, triangular o cuadrada.</li>
                     <li>Frecuencia (Hz) de la oscilación.</li>
                     <li>Amplitud o voltaje máximo de inyección.</li>
-                    <li>Offset: Desplazamiento vertical DC de la onda.</li>
+                    <li>Offset: Desplazamiento vertical de la onda.</li>
                 </ul>
             </div>
         </div>
@@ -425,13 +443,13 @@
             <img src="imgs/M_ConvertidorLogica.png" alt="Convertidor Lógico" class="fondo-blanco">
             <div class="screenshot-info">
                 <h3><span class="texto-amarillo">Convertidor de Lógica (Logic Converter)</span></h3>
-                <p>Herramienta analítica de diseño digital. Consta de 8 pines de entrada y 1 de salida. Nos sirve para:</p>
+                <p>Consta de 8 pines de entrada y 1 de salida. Nos sirve para:</p>
                 <ul>
                     <li><strong>Área de Botones (Derecha):</strong> Ejecutan cálculos automáticos.</li>
                     <li><strong>Botón 1 (A tabla):</strong> Extrae la tabla de verdad de un circuito conectado.</li>
                     <li><strong>Botón 3 (A Ecuación):</strong> Genera la forma canónica a partir de la tabla.</li>
                     <li><strong>Botón 4 (Simplificación):</strong> Resuelve por Karnaugh y da la ecuación mínima.</li>
-                    <li><strong>Botón 6 (A NAND):</strong> Genera físicamente en la pantalla el circuito simplificado utilizando compuertas lógicas universales.</li>
+                    <li><strong>Botón 6 (A NAND):</strong> Genera físicamente el circuito simplificado utilizando compuertas lógicas universales.</li>
                 </ul>
             </div>
         </div>
@@ -439,7 +457,7 @@
         <!-- 4. OSCILOSCOPIOS (TABLA) -->
         <h3 class="section-subtitle" style="margin-top: 80px;"><span class="texto-amarillo">Equipos de Osciloscopio</span></h3>
         <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">
-            Instrumentos dedicados al análisis visual de señales eléctricas (voltaje vs tiempo).
+            Instrumentos que nos ayudan a visualizar señales eléctricas (voltaje vs tiempo).
         </p>
 
         <div class="contenedor-tablas">
@@ -455,7 +473,7 @@
                             <img src="imgs/M_Osc2Canales.png" class="img-sencilla fondo-blanco" alt="Osciloscopio 2 Canales">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Osciloscopio (2 Canales)</span></h2>
-                            Permite observar hasta dos señales simultáneas. Cuenta con controles directos de <strong>Timebase</strong> (escala horizontal o tiempo por división) y escalas para el Canal A y Canal B (Voltaje por división). Ideal para analizar rápidamente la entrada contra la salida de un circuito.
+                            Permite observar hasta dos señales simultáneas. Cuenta con controles directos de Timebase (escala horizontal o tiempo por división) y escalas para el Canal A y Canal B. Ideal para analizar rápidamente la entrada contra la salida de un circuito.
                         </td>
                     </tr>
                     <tr>
@@ -464,7 +482,7 @@
                             <img src="imgs/M_Osc4Canales.png" class="img-sencilla fondo-blanco" alt="Osciloscopio 4 Canales">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Osciloscopio (4 Canales)</span></h2>
-                            Utilizado para circuitos de complejidad media o sistemas trifásicos. A diferencia del anterior, agrupa sus diales, por lo que requiere seleccionar en el panel la letra correspondiente (A, B, C o D) antes de modificar su escala de Voltaje/División individual.
+                            Utilizado para circuitosde mayor complejidad. A diferencia del anterior, agrupa sus diales, por lo que requiere seleccionar en el panel la letra correspondiente (A, B, C o D) antes de modificar su escala de voltaje.
                         </td>
                     </tr>
                     <tr>
@@ -473,7 +491,7 @@
                             <img src="imgs/M_OscTektronix.png" class="img-sencilla fondo-blanco" alt="Osciloscopio Tektronix">
                         </td>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Osciloscopio Tektronix</span></h2>
-                            Simulador fotorrealista de un osciloscopio físico industrial. Nos sirve para familiarizarnos con el hardware del laboratorio real. Aporta el botón <strong>AUTOSET</strong>, que estabiliza matemáticamente la onda en la pantalla al instante, y el menú <em>Measure</em> para auto-calcular frecuencias en pantalla.
+                            Simulador casi realista de un osciloscopio físico. Nos sirve para familiarizarnos con el hardware del laboratorio real. Aporta el botón AUTOSET, que estabiliza la onda en la pantalla al instante, y el menú Measure para auto-calcular frecuencias en pantalla.
                         </td>
                     </tr>
                 </tbody>
