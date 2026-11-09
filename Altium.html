@@ -168,6 +168,23 @@
         .menu-desplegable a { color: #f5f5f7; text-decoration: none; padding: 15px 20px; border-bottom: 1px solid #333; transition: background 0.2s; font-size: 0.95rem; }
         .menu-desplegable a:hover { background: #D4AC0D; color: #000; font-weight: bold; }
 
+        /* ================= ANIMACIÓN DEL PERSONAJE ================= */
+        .personaje-animado { 
+            position: fixed; 
+            bottom: 0; 
+            left: -150px; 
+            z-index: 9999; 
+            width: 100px; 
+            height: auto; 
+            animation: caminar-izquierda 12s linear infinite; 
+            pointer-events: none; 
+            transform: scaleX(-1); 
+        }
+        @keyframes caminar-izquierda { 
+            0% { left: -150px; } 
+            100% { left: 100vw; } 
+        }
+
         @media (max-width: 900px) {
             .screenshot-container, .screenshot-container.reverse { flex-direction: column; text-align: center; }
             .screenshot-container img:not(.mini-slide), .screenshot-container.reverse img:not(.mini-slide) { width: 100%; margin: 0 0 25px 0; }
@@ -213,7 +230,6 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
-        <!-- CAPTURA AQUÍ: Necesitas guardar el logo de Altium Designer en tu carpeta imgs -->
         <img src="imgs_Altium/LogoAltium.png" alt="Logo de Altium" class="hero-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Altium_Designer_logo.svg/512px-Altium_Designer_logo.svg.png'">
         <h1>Diseño de PCB en Altium Designer</h1>
         <p class="texto-grande">Software de electrónica utilizado para dibujar conexiones en un esquemático y convertir ese diseño en una placa de circuito impreso</p>
@@ -264,7 +280,6 @@
                             <li>Revisa que en la parte superior aparezca <strong>Universidad Iberoamericana Puebla</strong>.</li>
                             <li>Si el espacio todavía no aparece, búscalo y solicita acceso. Cuando se autorice, cierra Altium y vuelve a abrirlo para ver si ya lo estas usando.</li>
                         </ul>
-                        <!-- CAPTURA AQUÍ: Captura de la pantalla de licencias en el minuto 00:00:18 del video -->
                         <img src="imgs_Altium/LicenseManagment.jpeg" alt="License Management" class="img-acordeon fondo-blanco">
                     </div>
                 </div>
@@ -278,7 +293,6 @@
         
         <div class="carrusel-contenedor">
             <div class="carrusel-slide activo">
-                <!-- CAPTURA AQUÍ: Hoja del esquemático en 00:13:41 -->
                 <img src="imgs_Altium/editor de equemas con recuadro de Projects.jpeg" alt="Editor de Esquemas" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Editor de Esquemas y Projects</span></h3>
@@ -286,7 +300,6 @@
                 </div>
             </div>
             <div class="carrusel-slide">
-                <!-- CAPTURA AQUÍ: Panel Components en 00:14:05 -->
                 <img src="imgs_Altium/Editor de esquemas con recuadro de paneles.jpeg" alt="Panel Components" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Panels (Ej. Components)</span></h3>
@@ -294,7 +307,6 @@
                 </div>
             </div>
             <div class="carrusel-slide">
-                <!-- CAPTURA AQUÍ: Editor de PCB en 00:54:23 -->
                 <img src="imgs_Altium/editor pcb sin nada.png" alt="Editor de PCB" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Editor de PCB</span></h3>
@@ -312,9 +324,7 @@
         
         <div class="screenshot-container">
             <div class="mini-carrusel carrusel-captura">
-                <!-- CAPTURA AQUÍ: Captura de Create Project en 00:08:30 -->
                 <img src="imgs_Altium/File_new_proyect.png" class="mini-slide activo fondo-blanco" alt="Crear Proyecto">
-                <!-- CAPTURA AQUÍ: Captura de Add New to Project en 00:09:23 -->
                 <img src="imgs_Altium/Add New to Project y Schematic.png" class="mini-slide fondo-blanco" alt="Agregar Esquema">
                 <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
                 <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
@@ -336,7 +346,6 @@
         
         <div class="carrusel-contenedor" style="margin-bottom: 60px;">
             <div class="carrusel-slide activo">
-                <!-- CAPTURA AQUÍ: Imagen de la barra mostrando las herramientas de la Primera Tabla (Líneas, Textos, Componentes, etc.) con sus nombres -->
                 <img src="imgs_Altium/primera foto de editor de esquemas con herramientas.jpeg" alt="Herramientas de Dibujo" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Herramientas de Dibujo y Selección</span></h3>
@@ -344,7 +353,6 @@
                 </div>
             </div>
             <div class="carrusel-slide">
-                <!-- CAPTURA AQUÍ: Imagen de la barra mostrando las herramientas de la Segunda Tabla (Place Wire, Puertos de alimentación, Net Label) con sus nombres -->
                 <img src="imgs_Altium/segunda foto de esquema con herramientas.jpeg" alt="Herramientas de Cableado" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Herramientas de Cableado y Etiquetas</span></h3>
@@ -371,7 +379,7 @@
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Components & Details</span></h2></td>
-                        <td>Pulsa <em>Use Existing Components</em>. En la lista All elige la familia y arrastra la pieza. <strong>Vital:</strong> En Details despliega Models para ver el símbolo, huella y 3D. <em>Comprueba que aparezca la huella antes de usar la pieza.</em> <!-- CAPTURA AQUÍ: Models en 00:19:41 (Puede ir como captura aparte o referencial) --></td>
+                        <td>Pulsa <em>Use Existing Components</em>. En la lista All elige la familia y arrastra la pieza. <strong>Vital:</strong> En Details despliega Models para ver el símbolo, huella y 3D. <em>Comprueba que aparezca la huella antes de usar la pieza.</em></td>
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Part Search y Rotación</span></h2></td>
@@ -395,11 +403,11 @@
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Net Label</span></h2></td>
-                        <td>Abre el desplegable de Wire y elige Net Label. Colócala sobre el cable. Con doble clic cambia su nombre. Usa Ctrl+C y Ctrl+V para vincular dos puntos con el mismo nombre. <!-- CAPTURA AQUÍ: Etiquetas en 00:33:46 --></td>
+                        <td>Abre el desplegable de Wire y elige Net Label. Colócala sobre el cable. Con doble clic cambia su nombre. Usa Ctrl+C y Ctrl+V para vincular dos puntos con el mismo nombre.</td>
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Annotate Schematics Quietly</span></h2></td>
-                        <td>Ve a <strong>Tools → Annotation → Annotate Schematics Quietly</strong> y confirma. Esto asigna un identificador a cada pieza automáticamente (ej. Las resistencias pasan a llamarse R1 y R2). <!-- CAPTURA AQUÍ: Menú de anotación en 00:39:34 --></td>
+                        <td>Ve a <strong>Tools → Annotation → Annotate Schematics Quietly</strong> y confirma. Esto asigna un identificador a cada pieza automáticamente (ej. Las resistencias pasan a llamarse R1 y R2).</td>
                     </tr>
                 </tbody>
             </table>
@@ -407,7 +415,6 @@
 
         <!-- CAPTURA FINAL DEL ESQUEMA -->
         <div class="tarjeta-destacada" style="margin-top: 40px;">
-            <!-- CAPTURA AQUÍ: Captura del Esquema Resultante Final en 00:40:25 -->
             <img src="imgs/A_EsquemaFinal.png" alt="Esquema Terminado" class="fondo-blanco">
             <div class="tarjeta-destacada-texto" style="text-align: center;">
                 <h3><span class="texto-amarillo">Esquema Resultante</span></h3>
@@ -429,7 +436,6 @@
                         <p>Haz clic derecho en el proyecto y elige <strong>Add New to Project → PCB</strong>. Guarda el documento <code>.PcbDoc</code> en la carpeta de trabajo. (Los indicadores rojos (*) en las pestañas señalan cambios sin guardar; usa Save All).</p>
                         <p>Desde el esquemático, selecciona <strong>Design → Update PCB Document</strong>. Se abrirá la ventana Engineering Change Order. Pulsa <em>Validate Changes</em>, revisa los avisos, pulsa <em>Execute Changes</em> y Close.</p>
                         <p>Las huellas de los componentes aparecerán abajo a la derecha en la zona negra. Selecciónalas y muévelas al área de la placa.</p>
-                        <!-- CAPTURA AQUÍ: Captura de la Transferencia (Engineering Change Order) en 00:43:00 -->
                         <img src="imgs_Altium/validate changes.png" alt="Transferencia a PCB" class="img-acordeon fondo-blanco">
                     </div>
                 </div>
@@ -445,7 +451,7 @@
                             <li><strong>Origen:</strong> Ve a <em>Edit → Origin → Set</em> y haz clic en una esquina del rectángulo para fijarlo.</li>
                             <li><strong>Girar en PCB:</strong> Mantén clic izquierdo sobre el componente y pulsa la barra espaciadora.</li>
                             <li><strong>Vista 3D:</strong> Pulsa <strong>3</strong> para ver la PCB en 3D. Pulsa <strong>2</strong> para regresar a 2D. (En 3D mantén Shift + clic derecho para girar la placa).</li>
-                            <li><strong>Filter:</strong> Elige una red como +12 o GND en la lista para resaltarla. Pulsa la X para quitar el filtro. <!-- CAPTURA AQUÍ: Filtro en 00:55:07 --></li>
+                            <li><strong>Filter:</strong> Elige una red como +12 o GND en la lista para resaltarla. Pulsa la X para quitar el filtro.</li>
                             <li><strong>Unidades:</strong> Presiona <strong>Q</strong> para alternar entre mils y milímetros.</li>
                         </ul>
                     </div>
@@ -457,16 +463,16 @@
                 <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">3. Reglas de Diseño y Ruteo (Pistas)</button></h2>
                 <div class="accordion-collapse">
                     <div class="accordion-body">
-                        <p><strong class="texto-amarillo">Reglas de Diseño (Design → Rules):</strong> Consulta el "Capabilities" de tu fabricante (ej. JLCPCB). <!-- CAPTURA AQUÍ: Capabilities JLCPCB en 01:01:42 --> <br>
-                        Revisa la sección <em>Clearance</em> para separación. En <em>Routing → Width</em> fija los anchos. <!-- CAPTURA AQUÍ: Los anchos en 01:03:49 --></p>
+                        <p><strong class="texto-amarillo">Reglas de Diseño (Design → Rules):</strong> Consulta el "Capabilities" de tu fabricante (ej. JLCPCB). <br>
+                        Revisa la sección <em>Clearance</em> para separación. En <em>Routing → Width</em> fija los anchos.</p>
                         <ul>
                             <li><strong>Top Layer:</strong> Min 0.1 mm | Preferido 0.4 mm | Max 0.7 mm</li>
                             <li><strong>Bottom Layer:</strong> Min 0.254 mm | Preferido 0.254 mm | Max 0.8 mm</li>
                         </ul>
                         <hr style="border-color:#333; margin: 15px 0;">
                         <p><strong class="texto-amarillo">Interactive Routing:</strong> Selecciona Top o Bottom Layer, activa la herramienta y haz clic en el punto de inicio. Guía con giros de 45° (GND se deja al final).</p>
-                        <p><strong class="texto-amarillo">Ancho de Pista:</strong> Durante el ruteo pulsa <strong>Shift + W</strong> para elegir otro ancho (el ancho se relaciona con la corriente). <!-- CAPTURA AQUÍ: Selección de ancho en 01:05:28 --></p>
-                        <p><strong class="texto-amarillo">Auto Route:</strong> <em>Route → Auto Route</em>. Permite rutear automáticamente todo (All), una red (Net) o una zona (Area). <!-- CAPTURA AQUÍ: Auto Route en 01:10:21 --></p>
+                        <p><strong class="texto-amarillo">Ancho de Pista:</strong> Durante el ruteo pulsa <strong>Shift + W</strong> para elegir otro ancho (el ancho se relaciona con la corriente).</p>
+                        <p><strong class="texto-amarillo">Auto Route:</strong> <em>Route → Auto Route</em>. Permite rutear automáticamente todo (All), una red (Net) o una zona (Area).</p>
                         <p><strong class="texto-amarillo">Place Via:</strong> Agrega un punto de perforación metalizado para saltar entre capas.</p>
                     </div>
                 </div>
@@ -480,9 +486,7 @@
         
         <div class="screenshot-container">
             <div class="mini-carrusel carrusel-captura">
-                <!-- CAPTURA AQUÍ: Comando de contorno en 01:15:54 -->
                 <img src="imgs_Altium/mechanical1.jpeg" class="mini-slide activo fondo-blanco" alt="Comando Board Shape">
-                <!-- CAPTURA AQUÍ: Placa circular en 01:16:09 -->
                 <img src="imgs_Altium/vista 3D.png" class="mini-slide fondo-blanco" alt="Placa Circular 3D">
                 <button class="mini-btn prev" onclick="moverMini(this, -1)">&#10094;</button>
                 <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
