@@ -216,7 +216,7 @@
         <!-- CAPTURA AQUÍ: Necesitas guardar el logo de Altium Designer en tu carpeta imgs -->
         <img src="imgs/Altium_Logo.png" alt="Logo de Altium" class="hero-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Altium_Designer_logo.svg/512px-Altium_Designer_logo.svg.png'">
         <h1>Diseño de PCB en Altium Designer</h1>
-        <p class="texto-grande">Software estándar de la industria electrónica utilizado para dibujar conexiones en un esquemático y convertir ese diseño en una placa de circuito impreso profesional.</p>
+        <p class="texto-grande">Software de electrónica utilizado para dibujar conexiones en un esquemático y convertir ese diseño en una placa de circuito impreso</p>
     </header>
 
     <!-- ================= SECCIÓN 1: INTRODUCCIÓN Y DIFERENCIAS ================= -->
@@ -224,7 +224,7 @@
         <h2 class="section-title"><span class="texto-amarillo">¿Qué es Altium Designer y Diferencias con KiCad?</span></h2>
         
         <p style="text-align: center; font-size: 1.2rem; color: #a1a1a6; margin-bottom: 50px; max-width: 900px; margin-left: auto; margin-right: auto;">
-            En esta práctica usamos Altium Designer para dibujar las conexiones de un circuito en un esquemático y convertir ese diseño en una placa de circuito impreso. Aunque cumple el mismo propósito final que KiCad, operan en diferentes niveles de la industria.
+            En esta práctica usamos Altium Designer para dibujar las conexiones de un circuito en un esquemático y convertir ese diseño en una placa de circuito impreso. Aunque tiene el mismo propósito que KiCad, operan de diferentes maneras.
         </p>
 
         <table class="tabla-comparativa tabla-centrada">
@@ -234,8 +234,8 @@
                     <th style="width: 50%;">Altium Designer</th>
                 </tr>
                 <tr>
-                    <td><strong>Software de Código Abierto (Open-Source):</strong> Completamente gratuito, ideal para estudiantes, makers, hardware abierto y empresas medianas.</td>
-                    <td><strong>Software Comercial (Licencia Privada):</strong> Es el estándar de oro en la industria corporativa e ingeniería avanzada. Requiere licencia de pago (o universitaria).</td>
+                    <td>Software de Código Abierto (Open-Source): Completamente gratuito, ideal para estudiantes, makers, hardware abierto y empresas medianas.</td>
+                    <td>Software Comercial (Licencia Privada): Es el estándar de oro en la industria corporativa e ingeniería avanzada. Requiere licencia de pago (o universitaria).</td>
                 </tr>
                 <tr>
                     <td>Flujo de trabajo separado. Debes exportar la netlist y asignar huellas manualmente en un paso intermedio.</td>
@@ -243,7 +243,7 @@
                 </tr>
                 <tr>
                     <td>Librerías locales e instalación de plugins externos para conexión con fabricantes.</td>
-                    <td>Panel nativo "Manufacturer Part Search" integrado con bases de datos en la nube (proveedores, precios y stock en tiempo real).</td>
+                    <td>Panel "Manufacturer Part Search" integrado con bases de datos en la nube (proveedores, precios y stock en tiempo real).</td>
                 </tr>
             </tbody>
         </table>
@@ -251,18 +251,18 @@
 
     <!-- ================= SECCIÓN 2: ACCESO Y LICENCIA ================= -->
     <section id="licencia">
-        <h2 class="section-title"><span class="texto-amarillo">Acceso y Licencia Universitaria</span></h2>
+        <h2 class="section-title"><span class="texto-amarillo">Acceso y Licencia de la Universidad</span></h2>
         
         <div class="accordion" id="accordionLicencia">
             <div class="accordion-item">
                 <h2 class="accordion-header"><button class="accordion-button abierto" type="button">Gestión de Licencias</button></h2>
                 <div class="accordion-collapse abierto">
                     <div class="accordion-body">
-                        <p>Dado que Altium Designer es un software comercial, necesitamos autenticarnos con las credenciales de la universidad:</p>
+                        <p>Ya que Altium Designer es un software comercial, necesitamos autenticarnos con las credenciales de la universidad:</p>
                         <ul>
                             <li>En el panel <strong>License Management</strong>, selecciona la licencia <em>Altium Designer Professional</em>.</li>
                             <li>Revisa que en la parte superior aparezca <strong>Universidad Iberoamericana Puebla</strong>.</li>
-                            <li>Si el espacio todavía no aparece, búscalo y solicita acceso. Cuando se autorice, cierra Altium y vuelve a abrirlo para verificar que ya aparece el espacio de la universidad.</li>
+                            <li>Si el espacio todavía no aparece, búscalo y solicita acceso. Cuando se autorice, cierra Altium y vuelve a abrirlo para ver si ya lo estas usando.</li>
                         </ul>
                         <!-- CAPTURA AQUÍ: Captura de la pantalla de licencias en el minuto 00:00:18 del video -->
                         <img src="imgs/A_Licencia.png" alt="License Management" class="img-acordeon fondo-blanco">
@@ -282,7 +282,7 @@
                 <img src="imgs/A_EditorEsquema.png" alt="Editor de Esquemas" class="fondo-blanco">
                 <div class="carrusel-texto">
                     <h3><span class="texto-amarillo">Editor de Esquemas y Projects</span></h3>
-                    <p><strong>Projects:</strong> Panel izquierdo donde vemos el proyecto y sus documentos. <br> <strong>Editor de esquemas:</strong> En la hoja cuadriculada colocamos los símbolos de los componentes, cables y etiquetas.</p>
+                    <p><strong>Projects:</strong> Panel izquierdo donde vemos el proyecto y sus documentos. <br> <strong>Editor de esquemas:</strong> En la hoja cuadriculada colocamos los símbolos de los componentes, conexiones y etiquetas.</p>
                 </div>
             </div>
             <div class="carrusel-slide">
@@ -320,9 +320,9 @@
                 <button class="mini-btn next" onclick="moverMini(this, 1)">&#10095;</button>
             </div>
             <div class="screenshot-info">
-                <h3><span class="texto-amarillo">Inicialización del Proyecto</span></h3>
+                <h3><span class="texto-amarillo">Creación de proyecto nuevo</span></h3>
                 <ul>
-                    <li>En <strong>File → New → Project</strong>, elige el espacio de la Ibero o Local Projects. Escribe el nombre del proyecto y pulsa Create (Ej. <em>HolamundoB.PrjPcb</em>).</li>
+                    <li>En <strong>File → New → Project</strong>, elige el espacio de la Ibero o Local Projects. Escribe el nombre del proyecto y pulsa Create.</li>
                     <li>Haz clic derecho sobre el proyecto y selecciona <strong>Add New to Project → Schematic</strong>. Se abrirá la hoja cuadriculada.</li>
                     <li>Pulsa <strong>Save</strong> y elige la carpeta de trabajo local. La hoja queda guardada como documento <code>.SchDoc</code> dentro de la jerarquía del proyecto.</li>
                 </ul>
@@ -334,9 +334,26 @@
     <section id="paso2">
         <h2 class="section-title"><span class="texto-amarillo">Paso 2:</span> Armar el Esquemático</h2>
         
-        <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">
-            Haz clic derecho en la barra superior para mostrar las barras <em>Schematic Standard, Formatting, Utilities</em> y <em>Wiring</em>. Primero se dibuja un recuadro para organizar las entradas y después se colocan los componentes (un conector, 2 resistencias, capacitor, inductor, transistor, diodo 1N4004 y LED 1206).
-        </p>
+        <div class="carrusel-contenedor" style="margin-bottom: 60px;">
+            <div class="carrusel-slide activo">
+                <!-- CAPTURA AQUÍ: Imagen de la barra mostrando las herramientas de la Primera Tabla (Líneas, Textos, Componentes, etc.) con sus nombres -->
+                <img src="imgs/A_HerramientasDibujo.png" alt="Herramientas de Dibujo" class="fondo-blanco">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Herramientas de Dibujo y Selección</span></h3>
+                    <p>Ubicación de las herramientas necesarias para trazar recuadros para tener una mejor organización, añadir textos y buscar piezas en las librerías.</p>
+                </div>
+            </div>
+            <div class="carrusel-slide">
+                <!-- CAPTURA AQUÍ: Imagen de la barra mostrando las herramientas de la Segunda Tabla (Place Wire, Puertos de alimentación, Net Label) con sus nombres -->
+                <img src="imgs/A_HerramientasCableado.png" alt="Herramientas de Cableado" class="fondo-blanco">
+                <div class="carrusel-texto">
+                    <h3><span class="texto-amarillo">Herramientas de Cableado y Etiquetas</span></h3>
+                    <p>Ubicación de las herramientas para trazar conexiones, colocar nodos de tierra (GND)/voltaje y nombrar líneas de red (Net Label).</p>
+                </div>
+            </div>
+            <button class="carrusel-btn prev" onclick="moverSlide(-1, this)">&#10094;</button>
+            <button class="carrusel-btn next" onclick="moverSlide(1, this)">&#10095;</button>
+        </div>
 
         <div class="contenedor-tablas">
             <!-- TABLA 1: DIBUJO Y BÚSQUEDA -->
@@ -350,7 +367,7 @@
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Texto</span></h2></td>
-                        <td>Coloca un texto sobre el recuadro. Haz doble clic para escribir "Entradas" y ajustar el tamaño de la letra.</td>
+                        <td>Coloca un texto sobre el recuadro. Haz doble clic para escribir y ajustar el tamaño de la letra.</td>
                     </tr>
                     <tr>
                         <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Components & Details</span></h2></td>
@@ -394,7 +411,7 @@
             <img src="imgs/A_EsquemaFinal.png" alt="Esquema Terminado" class="fondo-blanco">
             <div class="tarjeta-destacada-texto" style="text-align: center;">
                 <h3><span class="texto-amarillo">Esquema Resultante</span></h3>
-                <p>Así luce el circuito tras aplicar recuadros, conectar pistas, etiquetas de red y procesar la anotación silenciosa (R1, R2, Q1...).</p>
+                <p>Así luce el circuito tras aplicar recuadros, conectar pistas, etiquetas de red y procesar las anotaciones (R1, R2, Q1...).</p>
             </div>
         </div>
     </section>
@@ -409,7 +426,7 @@
                 <h2 class="accordion-header"><button class="accordion-button abierto" type="button">1. Transferencia al Editor de PCB</button></h2>
                 <div class="accordion-collapse abierto">
                     <div class="accordion-body">
-                        <p>Haz clic derecho en el proyecto y elige <strong>Add New to Project → PCB</strong>. Guarda el documento <code>.PcbDoc</code> en la carpeta de trabajo. (Los indicadores rojos en las pestañas señalan cambios sin guardar; usa Save All).</p>
+                        <p>Haz clic derecho en el proyecto y elige <strong>Add New to Project → PCB</strong>. Guarda el documento <code>.PcbDoc</code> en la carpeta de trabajo. (Los indicadores rojos (*) en las pestañas señalan cambios sin guardar; usa Save All).</p>
                         <p>Desde el esquemático, selecciona <strong>Design → Update PCB Document</strong>. Se abrirá la ventana Engineering Change Order. Pulsa <em>Validate Changes</em>, revisa los avisos, pulsa <em>Execute Changes</em> y Close.</p>
                         <p>Las huellas de los componentes aparecerán abajo a la derecha en la zona negra. Selecciónalas y muévelas al área de la placa.</p>
                         <!-- CAPTURA AQUÍ: Captura de la Transferencia (Engineering Change Order) en 00:43:00 -->
@@ -478,14 +495,6 @@
             </div>
         </div>
 
-        <div class="tarjeta-destacada">
-            <!-- CAPTURA AQUÍ: Herramienta de ajuste de longitud (zigzag) en 01:22:33 -->
-            <img src="imgs/A_LengthTuning.png" alt="Length Tuning" class="fondo-blanco">
-            <div class="tarjeta-destacada-texto">
-                <h3><span class="texto-amarillo">Interactive Length Tuning</span></h3>
-                <p>Esta herramienta avanzada, ubicada en el menú <em>Route</em>, alarga una pista existente creando un patrón de zigzagueo (serpentina). En el diseño de alta velocidad, se utiliza para igualar las longitudes de las pistas y reducir el desfase temporal entre señales de comunicación.</p>
-            </div>
-        </div>
     </section>
 
     <!-- ================= SCRIPTS ================= -->
