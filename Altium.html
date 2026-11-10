@@ -216,6 +216,9 @@
             <a href="#paso2" onclick="toggleIndice()">5. Paso 2: Armar el Esquemático</a>
             <a href="#paso3" onclick="toggleIndice()">6. Paso 3: Ruteo y PCB</a>
             <a href="#paso4" onclick="toggleIndice()">7. Paso 4: Contorno y Revisión</a>
+            <a href="#paso5" onclick="toggleIndice()">8. Paso 5: Planos de Tierra</a>
+            <a href="#paso6" onclick="toggleIndice()">9. Paso 6: Comprobar Reglas y Serigrafía</a>
+            <a href="#paso7" onclick="toggleIndice()">10. Paso 7: Generar Archivos Gerber</a>
         </div>
     </div>
 
@@ -415,7 +418,8 @@
 
         <!-- CAPTURA FINAL DEL ESQUEMA -->
         <div class="tarjeta-destacada" style="margin-top: 40px;">
-            <img src="imgs_Altium/Editor esquemas.jpeg" alt="Esquema Terminado" class="fondo-blanco">
+            <!-- CAPTURA AQUÍ: Pon la imagen final de tu esquema (ej. A_EsquemaFinal.png) -->
+            <img src="imgs/A_EsquemaFinal.png" alt="Esquema Terminado" class="fondo-blanco">
             <div class="tarjeta-destacada-texto" style="text-align: center;">
                 <h3><span class="texto-amarillo">Esquema Resultante</span></h3>
                 <p>Así luce el circuito tras aplicar recuadros, conectar pistas, etiquetas de red y procesar las anotaciones (R1, R2, Q1...).</p>
@@ -463,7 +467,7 @@
                 <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">3. Reglas de Diseño y Ruteo (Pistas)</button></h2>
                 <div class="accordion-collapse">
                     <div class="accordion-body">
-                        <p><strong class="texto-amarillo">Reglas de Diseño (Design → Rules):</strong> Consulta el "Capabilities" de tu fabricante (ej. JLCPCB). <br>
+                        <p><strong class="texto-amarillo">Reglas de Diseño (Design → Rules):</strong> Consulta el "Capabilities" de tu fabricante. <br>
                         Revisa la sección <em>Clearance</em> para separación. En <em>Routing → Width</em> fija los anchos.</p>
                         <ul>
                             <li><strong>Top Layer:</strong> Min 0.1 mm | Preferido 0.4 mm | Max 0.7 mm</li>
@@ -498,7 +502,102 @@
                 <p>Pulsa <strong>3</strong> para ver el contorno físico terminado en el motor de renderizado 3D.</p>
             </div>
         </div>
+    </section>
 
+    <!-- ================= NUEVA SECCIÓN 8: PASO 5 (PLANOS DE TIERRA) ================= -->
+    <section id="paso5">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 5:</span> Agregar Planos de Tierra (GND)</h2>
+
+        <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: #a1a1a6;">
+            En el editor de PCB dibujaremos un polígono asignado a la red GND. Acercar el plano de tierra ayuda a reducir el tamaño de los lazos de corriente y a mitigar interferencias en la placa.
+        </p>
+
+        <div class="contenedor-tablas">
+            <table class="tabla-comparativa">
+                <tbody>
+                    <tr><td colspan="2"><h3 class="texto-amarillo">Trazado y Asignación del Polígono</h3></td></tr>
+                    <tr><td style="width: 200px;">Herramienta</td><td>Para qué sirve y cómo se usa</td></tr>
+                    <tr>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Top Layer & Grid (Q)</span></h2></td>
+                        <td>Selecciona la capa en la barra inferior. El cursor se ajusta a la cuadrícula. Pulsa <strong>Q</strong> para alternar entre mm y mils. Usa el control Grid para mayor precisión.</td>
+                    </tr>
+                    <tr>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Place Polygon Plane</span></h2></td>
+                        <td>Pulsa el ícono de polígono, marca los vértices por el borde de la placa. Al llegar al último punto, haz clic derecho para que Altium cierre el polígono, luego presiona Esc.</td>
+                    </tr>
+                    <tr>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Properties → Net → GND</span></h2></td>
+                        <td>Abre Properties del polígono. En Net, cambia "No Net" por <strong>GND</strong>. Pulsa Repour para recalcular el relleno.</td>
+                    </tr>
+                    <tr>
+                        <td><h2 class="section-subtitle" style="text-align: left; font-size: 1.5rem;"><span class="texto-amarillo">Modificar (Repour)</span></h2></td>
+                        <td>Si cambias la forma arrastrando los bordes, siempre debes pulsar <strong>Repour</strong> después para que el relleno se ajuste a la nueva forma.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tarjeta-destacada" style="margin-top: 40px;">
+            <!-- CAPTURA AQUÍ: Pon una imagen del panel Properties donde se vea la opción Solid o Hatched (ej. A_PolygonProperties.png) -->
+            <img src="imgs/A_PolygonProperties.png" alt="Propiedades de Relleno" class="fondo-blanco">
+            <div class="tarjeta-destacada-texto">
+                <h3><span class="texto-amarillo">Relleno Sólido o Enmallado</span></h3>
+                <p>En Properties, elige <strong>Solid</strong> para rellenar de forma continua o <strong>Hatched</strong> para formar una malla. Puedes ajustar la malla a 90° o 45°, y cómo rodea los pads. La elección depende de la frecuencia de las señales y densidad pedida por el fabricante. (Repite el proceso en Bottom Layer para tener masa en ambas caras).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NUEVA SECCIÓN 9: PASO 6 (COMPROBAR Y SERIGRAFÍA) ================= -->
+    <section id="paso6">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 6:</span> Comprobar Reglas y Serigrafía</h2>
+        
+        <div class="accordion" id="accordionDRC">
+            <!-- Ejecutar DRC -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button abierto" type="button">Ejecutar Verificación (DRC)</button></h2>
+                <div class="accordion-collapse abierto">
+                    <div class="accordion-body">
+                        <p>Ve a <strong>Tools → Design Rule Check</strong> y pulsa <em>Run Design Rule Check</em>. El reporte mostrará las reglas que incumple la placa (ej. Clearance, la separación mínima entre elementos de cobre).</p>
+                        <p>Altium marcará en verde las zonas con infracciones en el editor. Debes corregir estas infracciones (ajustando las reglas en <em>Design → Rules</em> o moviendo pistas) antes de exportar los archivos de fabricación.</p>
+                        <!-- CAPTURA AQUÍ: Imagen del reporte DRC o de las infracciones en verde (ej. A_DRC_Check.png) -->
+                        <img src="imgs/A_DRC_Check.png" alt="Verificación DRC" class="img-acordeon fondo-blanco">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colocar Texto en las dos caras -->
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button">Añadir Textos y Etiquetas (Serigrafía)</button></h2>
+                <div class="accordion-collapse">
+                    <div class="accordion-body">
+                        <p>La serigrafía (letras blancas impresas en la PCB) permite identificar componentes, voltajes y polaridades. Se coloca en la capa Overlay correspondiente.</p>
+                        <ul>
+                            <li><strong>Top Overlay e Ícono A:</strong> Selecciona Top Overlay, pulsa el ícono de texto ('A') y colócalo en la placa. Abre sus propiedades (doble clic) para escribir el texto (ej. "Hola mundo") y cambiar el tamaño.</li>
+                            <li><strong>Bottom Overlay y Mirror:</strong> Para poner texto en la parte inferior, usa Bottom Overlay. <strong>Importante:</strong> en las propiedades del texto inferior debes activar <strong>Mirror</strong> para que se lea correctamente al voltear la placa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NUEVA SECCIÓN 10: PASO 7 (GENERAR ARCHIVOS GERBER) ================= -->
+    <section id="paso7">
+        <h2 class="section-title"><span class="texto-amarillo">Paso 7:</span> Generar los Archivos de Fabricación</h2>
+
+        <div class="screenshot-container reverse">
+            <!-- CAPTURA AQUÍ: Imagen de la generación de archivos Gerber o NC Drill (ej. A_GerberFiles.png) -->
+            <img src="imgs/A_GerberFiles.png" alt="Archivos Gerber" class="fondo-blanco">
+            <div class="screenshot-info">
+                <h3><span class="texto-amarillo">Exportación Final</span></h3>
+                <p>Guarda el proyecto completo. Necesitamos generar dos conjuntos de datos: las capas (Gerber) y las perforaciones (NC Drill).</p>
+                <ul>
+                    <li><strong>Gerber Files:</strong> Abre <em>File → Fabrication Outputs → Gerber Files</em>. En Plot Layers, asegúrate de marcar todas las capas usadas (Select Used). Pulsa Apply. Altium abrirá una vista de las capas generadas (guardadas en "Project Outputs for [Nombre]").</li>
+                    <li><strong>NC Drill Files:</strong> Regresa al editor PCB. Ve a <em>File → Fabrication Outputs → NC Drill Files</em>. Deja las unidades en milímetros (o pulgadas) y pulsa OK. Comprueba que las perforaciones coincidan en el visor.</li>
+                    <li><strong>Comprimir Archivos:</strong> Ve a la carpeta de salida (Project Outputs) en tu disco duro y comprime todos los archivos Gerber y NC Drill generados en un único archivo <strong>.ZIP</strong>. ¡Este es el archivo final que enviamos a fabricar!</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <!-- ================= SCRIPTS ================= -->
